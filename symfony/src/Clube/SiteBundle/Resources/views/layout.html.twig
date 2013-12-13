@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+		  {% block title %}
+			Clube dos criadores
+		  {% endblock %}
+		</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		{% block stylesheets %}
+		  <link rel="stylesheet" href="{{ asset('bundles/site/css/main.css') }}" type="text/css" media="all" />
+		  <link rel="stylesheet" href="{{ asset('bundles/site/css/home.css') }}" type="text/css" media="all" />
+		  <style>
+			.cc-ico-sprite{ background-image: url("{{ asset('bundles/site/images/sprite.png') }}"); }
+			.cc-img-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-home.png') }}"); }
+			.cc-decote{ background-image: url("{{ asset('bundles/site/images/decote.png') }}"); }
+		  </style>
+		{% endblock %}
+		{% block javascripts %}
+		{% endblock %}
+		<link rel="shortcut icon" href="{{ asset('bundles/ensjobeet/images/favicon.ico') }}" />
+	</head>
+	<body>		
+		<header class="cc-header">
+			<div class="cc-header-wrapper">
+				<div class="cc-logo">
+					<img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
+				</div>
+				<div class="cc-login">
+					<a href="#" class="cc-login-link">Criar uma conta</a>
+					<span class="cc-login-separator"> | </span>
+					<a href="#" class="cc-login-link">Login</a>
+				</div>
+			</div>
+ 		</div>			
+		</header>
+		<nav class="cc-nav">
+			<ul class="cc-nav-itens">
+				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Projetos</a></li>
+				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Galeria</a></li>
+				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Ranking</a></li>
+				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Sobre</a></li>
+			</ul>
+		</nav>
+		<div class="cc-content">
+			<div class="cc-wrapper">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+		<footer class="cc-footer">
+			<div class="cc-footer-wrapper">
+				<table class="cc-footer-table">
+					<tbody class="cc-footer-table-tbody">
+						<tr class="cc-footer-table-tr">
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">Para marcas</a></td>
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">Para criadores</a></td>
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Termos & Condições'}}</a></td>
+						</tr>
+						<tr class="cc-footer-table-tr">
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">Como funciona</a></td>
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">Contato</a></td>
+							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Politica de privacidade'}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="cc-footer-social">
+					<a href="#" class="cc-ico-twitter cc-ico-sprite">siga no twitter</a>
+					<a href="#" class="cc-ico-facebook cc-ico-sprite">siga no facebook</a>
+					<a href="#" class="cc-ico-linkedin cc-ico-sprite">siga no linkedin</a>
+				</div>
+			</div>
+		</footer>
+	</body>
+</html>
