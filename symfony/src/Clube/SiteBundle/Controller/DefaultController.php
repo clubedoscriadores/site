@@ -10,4 +10,19 @@ class DefaultController extends Controller
     {
         return $this->render('SiteBundle:Default:index.html.twig');
     }
+	
+	public function criadoresAction()
+    {
+        return $this->render('SiteBundle:Default:criadores.html.twig');
+    }
+	
+	public function empresasAction()
+    {
+        return $this->render('SiteBundle:Default:empresas.html.twig');
+    }
+	
+	public function comofuncionaAction()
+    {
+        return $this->render('SiteBundle:Default:comofunciona.html.twig');
+    }
 }

@@ -10,10 +10,13 @@
 		{% block stylesheets %}
 		  <link rel="stylesheet" href="{{ asset('bundles/site/css/main.css') }}" type="text/css" media="all" />
 		  <link rel="stylesheet" href="{{ asset('bundles/site/css/home.css') }}" type="text/css" media="all" />
+		  <link rel="stylesheet" href="{{ asset('bundles/site/css/criadores.css') }}" type="text/css" media="all" />
 		  <style>
 			.cc-ico-sprite{ background-image: url("{{ asset('bundles/site/images/sprite.png') }}"); }
 			.cc-img-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-home.png') }}"); }
+			.cc-img2-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-criadores.png') }}"); }
 			.cc-decote{ background-image: url("{{ asset('bundles/site/images/decote.png') }}"); }
+			.cc-about-nav-decote{ background-image: url("{{ asset('bundles/site/images/decote-2.png') }}"); }
 		  </style>
 		{% endblock %}
 		{% block javascripts %}
@@ -24,7 +27,7 @@
 		<header class="cc-header">
 			<div class="cc-header-wrapper">
 				<div class="cc-logo">
-					<img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
+					<a href="{{ path('site_homepage') }}"><img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
 				</div>
 				<div class="cc-login">
 					<a href="#" class="cc-login-link">Criar uma conta</a>

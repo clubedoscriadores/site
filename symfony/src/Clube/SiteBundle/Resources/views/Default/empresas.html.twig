@@ -1,0 +1,166 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+	<section class="cc-about-section">
+		<nav class="cc-about-nav">
+			<ul class="cc-about-nav-itens">
+				<li class="cc-about-nav-item"><a href="{{ path('site_criadores') }}" class="cc-about-nav-link">Para criadores</a></li>
+				<li class="cc-about-nav-item"><a href="{{ path('site_empresas') }}" class="cc-about-nav-link cc-selected">Para marcas</a></li>
+				<li class="cc-about-nav-item"><a href="{{ path('site_comofunciona') }}" class="cc-about-nav-link">Como funciona</a></li>
+			</ul>
+		</nav>
+		<div class="cc-about-nav-content">
+			<p class="cc-about-nav-company-text">{{ 'A comunidade criativa do Clube dos Criadores vai encontrar a história que liga a sua marca ou produto para o seu público, e trazê-lo à vida.' }}</p>
+			<p class="cc-about-nav-company-text">{{ 'Sua marca ou missão pode ser bem sucedido com o Clube dos Criadores, através do processo criativo da comunidade criadora.' }}</p>
+		</div>
+		<div class="cc-about-nav-decote"></div>
+	</section>
+	<section class="cc-about-section">
+		<div class="cc-briefing">
+			<div class="cc-briefing-wrapper">
+				<ul class="cc-briefing-itens">
+					<li class="cc-briefing-item">
+						<h2 class="cc-briefing-title">1 - Briefing</h2>
+						<p class="cc-briefing-text">{{ 'A marca insere o briefing, com os detalhes necessários para a criação do conceito. Um concurso é lançado para toda a rede de criadores, com prêmios em dinheiro e pontos para os vencedores.' }}</p>
+					</li>
+					<li class="cc-briefing-item cc-item-2">
+						<h2 class="cc-briefing-title">2 - Ideia</h2>
+						<p class="cc-briefing-text">{{ 'A rede criativa envia conceitos (roteiros e ideias) de acordo com o briefing. Uma comissão julgadora analisa todos os conceitos e escolhe os melhores. Os criadores ganham dinheiro e pontos por isso.' }}</p>
+					</li>
+					<li class="cc-briefing-item cc-item-3">
+						<h2 class="cc-briefing-title">{{ '3 - Produção' }}</h2>
+						<p class="cc-briefing-text">{{ 'A rede cria os vídeos de acordo com os conceitos vencedores, ou podem criar livremente. Uma comissão julgadora analisa e escolhe os vencedores. Criadores ganham dinheiro e pontos por isso.' }}</p>
+					</li>
+				</ul>
+			</div>
+			<div class="cc-briefing-feature">
+				<p class="cc-briefing-feature-text">Conteúdo rico para a sua marca!</p>
+			</div>
+			<div class="cc-briefing-background">
+				<div class="cc-arrow">
+					<div class="cc-arrow-shadow">
+						<div class="cc-arrow-shadow-body"></div>
+						<div class="cc-arrow-shadow-front"></div>
+					</div>
+					<div class="cc-arrow-inner">
+						<div class="cc-arrow-body"></div>
+						<div class="cc-arrow-front"></div>
+					</div>
+				</div>
+				<div class="cc-arrow-2">
+					<div class="cc-arrow-shadow">
+						<div class="cc-arrow-shadow-body"></div>
+						<div class="cc-arrow-shadow-front"></div>
+					</div>
+					<div class="cc-arrow-inner">
+						<div class="cc-arrow-body"></div>
+						<div class="cc-arrow-front"></div>
+					</div>
+				</div>
+				<div class="cc-arrow-3">
+					<div class="cc-arrow-shadow">
+						<div class="cc-arrow-shadow-body"></div>
+						<div class="cc-arrow-shadow-front"></div>
+					</div>
+					<div class="cc-arrow-inner">
+						<div class="cc-arrow-body"></div>
+						<div class="cc-arrow-front"></div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</section>
+	<section class="cc-about-section">
+		<div class="cc-benefits cc-benefits-company">
+			<h2 class="cc-benefits-header">{{ 'Benefícios' }}</h2>
+			<ul class="cc-benefits-itens">
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text"><br><br>{{ 'Redução de custos' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text cc-bottom">{{ 'Centenas de referências diferentes' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text">{{ 'Todos podem auxiliar na construção da marca' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text cc-bottom">{{ 'Identificação de hábitos de consumo com as ideias' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text"><br>{{ 'Criação rápida, eficiente e descentralizada' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text cc-bottom">{{ 'Proximidade dos criadores com a marca - formadores de opinião' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+				<li class="cc-benefits-item">
+					<p class="cc-benefits-text"><br>{{ 'Uso dos vídeos nas plataformas digitais' }}</p>
+					<div class="cc-benefits-ball"></div>
+				</li>
+			</ul>
+			<div class="cc-benefits-arrow">
+				<div class="cc-benefits-back">
+					<div class="cc-benefits-arrow-body">
+						<div class="cc-benefits-arrow-begin"></div>
+					</div>
+				</div>
+				<div class="cc-benefits-front">
+					<div class="cc-benefits-arrow-end"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="cc-about-section">
+		<div class="cc-gap">
+			<h2 class="cc-gap-title">GAP</h2>
+			<dl class="cc-gap-dl">
+				<dt class="cc-gap-dt">Custo</dt>
+				<dd class="cc-gap-dd">{{ 'Alto custo para manter uma estrutura de criação e também de produção.' }}</dd>
+			</dl>
+			<div class="cc-gap-arrow">
+				<div class="cc-gap-arrow-body"></div>
+				<div class="cc-gap-arrow-front"></div>
+			</div>
+			<dl class="cc-gap-dl cc-dl-2">
+				<dt class="cc-gap-dt">{{ 'Criação' }}</dt>
+				<dd class="cc-gap-dd">{{ 'Poucas referências criativas para cada job – desde a  conceituação criativa até a produção final.' }}</dd>
+			</dl>
+			<div class="cc-gap-arrow">
+				<div class="cc-gap-arrow-body"></div>
+				<div class="cc-gap-arrow-front"></div>
+			</div>
+			<dl class="cc-gap-dl cc-dl-3">
+				<dt class="cc-gap-dt">{{ 'Prazo' }}</dt>
+				<dd class="cc-gap-dd">{{ 'Prazos longos e complexidade do processo (agências, produtoras, RFPs, etc.).' }}</dd>
+			</dl>			
+		</div>
+		
+		<div class="cc-gap">
+			<h2 class="cc-gap-title">{{ 'Nossa Solução' }}</h2>
+			<dl class="cc-gap-dl cc-dl">
+				<dt class="cc-gap-dt">Custo</dt>
+				<dd class="cc-gap-dd">{{ 'Menor custo para a criação e produção de vídeo online.' }}</dd>
+			</dl>
+			<div class="cc-gap-arrow">
+				<div class="cc-gap-arrow-body"></div>
+				<div class="cc-gap-arrow-front"></div>
+			</div>
+			<dl class="cc-gap-dl cc-dl-2">
+				<dt class="cc-gap-dt">{{ 'Criação' }}</dt>
+				<dd class="cc-gap-dd">{{ 'Centenas da referências criativas: profissionais e estudantes de comunicação em todo o Brasil.' }}</dd>
+			</dl>
+			<div class="cc-gap-arrow">
+				<div class="cc-gap-arrow-body"></div>
+				<div class="cc-gap-arrow-front"></div>
+			</div>
+			<dl class="cc-gap-dl cc-dl-3">
+				<dt class="cc-gap-dt">{{ 'Prazo' }}</dt>
+				<dd class="cc-gap-dd">{{ 'Você define o prazo!' }}</dd>
+			</dl>			
+		</div>
+	</section>
+{% endblock %}

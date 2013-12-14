@@ -1,3 +1,12 @@
 site_homepage:
     pattern:  /
     defaults: { _controller: SiteBundle:Default:index }
+site_criadores:
+    pattern:  /criadores
+    defaults: { _controller: SiteBundle:Default:criadores }
+site_empresas:
+    pattern:  /empresas
+    defaults: { _controller: SiteBundle:Default:empresas }
+site_comofunciona:
+    pattern:  /como-funciona
+    defaults: { _controller: SiteBundle:Default:comofunciona }
