@@ -1,0 +1,156 @@
+.cc-wrapper
+{
+	width: 955px;
+	margin: 0px auto;
+}
+
+.cc-home-top
+{
+	background: #F7DB2F;
+	margin-bottom: 20px;
+}
+
+.cc-header
+{
+	font-size: 46px;
+	font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	text-align: center;
+	color: #000;
+	margin: 0px;
+	padding-top: 25px;
+}
+
+.cc-text
+{
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 25px;
+	color: #000;
+	margin: 0px 0px 20px 75px;
+	padding-top: 35px;
+	width: 650px;
+	display: inline-block;
+}
+
+.cc-img-ideia
+{
+	display: inline-block;
+	width: 160px;
+	height: 207px;
+	background-position: -167px 0;
+}
+
+.cc-decote
+{
+	height: 6px;
+}
+
+.cc-home-bottom
+{
+	background: #F1F1F1;
+	margin-bottom: 20px;
+}
+
+.cc-img-camera
+{
+	width: 135px;
+	height: 94px;
+	background-position: -1px 0px;
+	position: absolute;
+	top: 27px;
+	left: 88px;
+}
+
+.cc-img-predio
+{
+	width: 115px;
+	height: 90px;
+	background-position: -1px -94px;
+	position: absolute;
+	top: 25px;
+	left: 90px;
+}
+
+.cc-img-engrenagem
+{
+	width: 89px;
+	height: 89px;
+	background-position: -1px -185px;
+	position: absolute;
+	top: 26px;
+	left: 99px;
+}
+
+.cc-about-itens
+{
+	margin: 0px;
+	padding: 20px;
+	list-style: none;
+}
+
+.cc-about-item
+{
+	display: inline-block;
+	width: 298px;
+	margin-right: 5px;
+	position: relative;
+	vertical-align: top;
+}
+
+.cc-about-item.cc-last
+{
+	margin-right: 0px;
+}
+
+.cc-about-wrapper
+{
+	background: #FFF;
+	height: 255px;
+	margin-top: 85px;
+}
+
+.cc-header-2
+{
+	padding-top: 50px;
+	margin: 0px;
+	color: #333;
+	font-size: 25px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: normal;
+	text-align: center;
+}
+
+.cc-text-2
+{
+	margin: 0px;
+	color: #000;
+	font-size: 18px;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: normal;
+	text-align: left;
+	padding: 10px 13px;
+}
+
+.cc-button
+{
+	background: #9EC412;
+	width: 223px;
+	height: 50px;
+	display: inline-block;
+	line-height: 50px;
+	text-align: center;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	box-shadow: 0px 1px 2px #333;
+}
+
+.cc-button-area
+{
+	text-align: center;
+}

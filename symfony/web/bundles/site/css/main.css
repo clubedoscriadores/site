@@ -1,0 +1,140 @@
+body
+{
+	margin: 0px;
+	padding: 0px;
+}
+.cc-header-wrapper
+{
+	width: 955px;
+	margin: 0px auto;
+	padding: 10px 10px;
+	text-align: left;
+}
+
+.cc-logo-img
+{
+	width: 189px;
+	height: 79px;
+}
+
+.cc-login
+{
+	text-align: right;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #666666;
+}
+
+.cc-login-link
+{
+	color: #666666;
+	text-decoration: none;
+}
+
+.cc-login-link:hover
+{
+	text-decoration: underline;
+}
+
+.cc-login-separator
+{
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}
+
+.cc-nav-itens
+{
+	padding: 5px 20px;
+	margin: 0px auto;
+	width: 915px;
+	background: #4A77B7;
+	list-style: none;
+}
+
+.cc-nav-item
+{
+	display: inline-block;
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	color: #FFF;
+	font-size: 22px;
+	width: 170px;
+}
+
+.cc-nav-link
+{
+	color: #FFF;
+	text-decoration: none;
+}
+
+.cc-nav-link: hover
+{
+	text-decoration: underground;
+}
+
+.cc-footer-wrapper
+{
+	background: #F7DB2F;
+	width: 915px;
+	margin: 0px auto;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+}
+
+.cc-footer-table-td
+{
+	width: 262px;
+}
+
+.cc-footer-link
+{
+	text-decoration: none;
+	color: #000;
+}
+
+.cc-footer-link:hover
+{
+	text-decoration: underline;
+}
+
+.cc-ico-facebook
+{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	text-indent: -5000px;
+	background-position: -22px 0;
+	margin-right: 20px;
+}
+
+.cc-ico-twitter
+{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	text-indent: -5000px;
+	margin-right: 20px;
+}
+
+.cc-ico-linkedin
+{
+	display: inline-block;
+	width: 22px;
+	height: 22px;
+	text-indent: -5000px;
+	background-position: -44px 0;
+}
+
+.cc-footer-social
+{
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 10px;
+}
+
+.cc-footer-table
+{
+	display: inline-block;
+}
