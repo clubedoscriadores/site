@@ -5,7 +5,7 @@ site_criadores:
     pattern:  /criadores
     defaults: { _controller: SiteBundle:Default:criadores }
 site_empresas:
-    pattern:  /empresas
+    pattern:  /marcas
     defaults: { _controller: SiteBundle:Default:empresas }
 site_comofunciona:
     pattern:  /como-funciona
