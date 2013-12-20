@@ -2,6 +2,11 @@ parameters:
 #    site.example.class: Clube\SiteBundle\Example
 
 services:
+    site.registration.form.type:
+        class: Clube\SiteBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: site_user_registration }
 #    site.example:
 #        class: %site.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
