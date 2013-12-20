@@ -12,6 +12,7 @@
 		  <link rel="stylesheet" href="{{ asset('bundles/site/css/home.css') }}" type="text/css" media="all" />
 		  <link rel="stylesheet" href="{{ asset('bundles/site/css/criadores.css') }}" type="text/css" media="all" />
 		  <link rel="stylesheet" href="{{ asset('bundles/site/css/login.css') }}" type="text/css" media="all" />
+		  <link rel="stylesheet" href="{{ asset('bundles/site/fancy/jquery.fancybox.css') }}" type="text/css" media="all" />
 		  <style>
 			.cc-ico-sprite{ background-image: url("{{ asset('bundles/site/images/sprite.png') }}"); }
 			.cc-img-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-home.png') }}"); }
@@ -20,6 +21,9 @@
 			.cc-about-nav-decote{ background-image: url("{{ asset('bundles/site/images/decote-2.png') }}"); }
 		  </style>
 		{% endblock %}
+		<script type="text/javascript" src="{{ asset('bundles/site/js/jquery-1.10.1.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/site/js/jquery.mousewheel-3.0.6.pack.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/site/fancy/jquery.fancybox.js?v=2.1.5') }}"></script>
 		{% block javascripts %}
 		{% endblock %}
 		<link rel="shortcut icon" href="{{ asset('bundles/ensjobeet/images/favicon.ico') }}" />

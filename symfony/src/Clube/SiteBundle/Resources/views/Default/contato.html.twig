@@ -8,25 +8,21 @@
 
 		<div class="cc-form-input">
 			{{ form_label(form.name) }}
-			{{ form_errors(form.name) }}
 			{{ form_widget(form.name) }}
 		</div>
 
 		<div class="cc-form-input">
 			{{ form_label(form.email) }}
-			{{ form_errors(form.email) }}
 			{{ form_widget(form.email) }}
 		</div>
 
 		<div class="cc-form-input">
 			{{ form_label(form.subject) }}
-			{{ form_errors(form.subject) }}
 			{{ form_widget(form.subject) }}
 		</div>
 		
 		<div class="cc-form-textarea">
 			{{ form_label(form.message) }}
-			{{ form_errors(form.message) }}
 			{{ form_widget(form.message) }}
 		</div>
 		{{ form_widget(form._token) }}
@@ -37,6 +33,12 @@
 	<div class="cc-contact-image">
 		<img src="{{ asset('bundles/site/images/contato.png') }}" alt="Contato" />
 	</div>
-	{{ form_errors(form) }}
+	<div class="cc-errors">
+		{{ form_errors(form) }}
+		{{ form_errors(form.name) }}
+		{{ form_errors(form.email) }}
+		{{ form_errors(form.subject) }}
+		{{ form_errors(form.message) }}
+	</div>
 </form>
 {% endblock %}

@@ -1,4 +1,17 @@
 {% extends 'SiteBundle::layout.html.twig' %}
+{% block javascripts %}
+<script>
+	$(document).ready(function(){
+		var message = '{% for flashMessage in app.session.flashbag.get('send') %}{{ flashMessage }}{% endfor %}';
+		if (message != '')
+		{
+			$.fancybox({
+                    content: "<h1 class=\"cc-message-title\">" + message + "</h1>"
+                });
+		}
+	});
+</script>
+{% endblock %}
 {% block content %}
 	<section class="cc-home-top">
 		<h1 class="cc-header">{{ '“Conectamos grandes marcas com' }}<br>{{'o poder da criação coletiva”' }}</h1>

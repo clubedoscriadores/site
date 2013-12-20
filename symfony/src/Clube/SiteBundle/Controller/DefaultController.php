@@ -8,6 +8,8 @@ use Clube\SiteBundle\Form\ContactType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use \DateTime;
+use Symfony\Component\HttpFoundation\Session\Session;
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -44,8 +46,24 @@ class DefaultController extends Controller
 			$contact->setCreateDate(new DateTime("now"));
 			$em->persist($contact);
 			$em->flush();
+			
+			$mailBody = "Nome: " . $contact->getName() . "\r\nE-mail: " . $contact->getEmail() . "\r\n" . $contact->getMessage();
+			
+			$message = \Swift_Message::newInstance()
+				->setSubject($contact->getSubject())
+				->setFrom('info@clubedoscriadores.com.br'.'('.$contact->getName().')')
+				->setTo('japinha02@gmail.com')
+				->setBody($mailBody)
+			;
+			$this->get('mailer')->send($message);
 
-			return $this->redirect($this->generateUrl('site_homepage', array('send' => 'contact')));
+			$session = $this->getRequest()->getSession();
+			$session->getFlashBag()->add(
+				'send',
+				'Sua mensagem foi enviada com sucesso!'
+			);
+
+			return $this->redirect($this->generateUrl('site_homepage'));
 		}
 
         return $this->render(
