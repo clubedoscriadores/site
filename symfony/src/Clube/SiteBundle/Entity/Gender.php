@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Gender
  *
- * @ORM\Table(name="gender")
+ * @ORM\Table()
  * @ORM\Entity
  */
 class Gender

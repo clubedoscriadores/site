@@ -17,7 +17,7 @@ body
 	height: 79px;
 }
 
-.cc-login
+.cc-layout-login
 {
 	text-align: right;
 	font-family: Tahoma, Geneva, sans-serif;
@@ -26,18 +26,18 @@ body
 	color: #666666;
 }
 
-.cc-login-link
+.cc-layout-login-link
 {
 	color: #666666;
 	text-decoration: none;
 }
 
-.cc-login-link:hover
+.cc-layout-login-link:hover
 {
 	text-decoration: underline;
 }
 
-.cc-login-separator
+.cc-layout-login-separator
 {
 	display: inline-block;
 	width: 40px;
@@ -68,9 +68,9 @@ body
 	text-decoration: none;
 }
 
-.cc-nav-link: hover
+.cc-nav-link:hover
 {
-	text-decoration: underground;
+	text-decoration: underline;
 }
 
 .cc-footer-wrapper

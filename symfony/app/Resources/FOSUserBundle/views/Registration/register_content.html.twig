@@ -1,8 +1,13 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register cc-login-form">
-    <h1 class="cc-login-title">Registre-se para fazer parte do Clube dos Criadores</h1>
-	<div class="cc-login-wrapper">
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register cc-register-form">
+    <h1 class="cc-register-title">Registre-se para fazer parte do Clube dos Criadores</h1>
+	<div class="cc-register-wrapper">
+
+            <div class="cc-form-input">
+                {{ form_label(form.userName) }}
+                {{ form_widget(form.userName) }}
+            </div>
 
 			<div class="cc-form-input">
 				{{ form_label(form.email) }}
@@ -10,8 +15,8 @@
 			</div>
 
 			<div class="cc-form-input">
-				{{ form_label(form.username) }}
-				{{ form_widget(form.username) }}
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
 			</div>
 			
 			<div class="cc-form-input">
@@ -55,13 +60,14 @@
 			<div class="cc-login-text"><p class="cc-login-text-p">Ou use as redes sociais para entrar</p></div>
 		</div>
 	</div>
-	<div class="cc-login-image">
+	<div class="cc-register-image">
 		<img src="{{ asset('bundles/site/images/registrar.png') }}" alt="Registrar" />
 	</div>
 	<div class="cc-errors">
 		{{ form_errors(form) }}
 		{{ form_errors(form.email) }}
-		{{ form_errors(form.username) }}
+		{{ form_errors(form.userName) }}
+		{{ form_errors(form.name) }}
 		{{ form_errors(form.plainPassword.first) }}
 		{{ form_errors(form.plainPassword.second) }}
 		{{ form_errors(form.birthDate) }}

@@ -152,7 +152,7 @@
 	padding: 0px;
 	list-style: none;
 	position: absolute;
-	top: 188px;
+	top: 186px;
 	left: 50px;
 }
 
@@ -185,6 +185,7 @@
 	position: absolute;
 	top: -80px;
 	left: 0px;
+    height: 63px;
 }
 
 .cc-benefits-text.cc-bottom
@@ -441,7 +442,8 @@
 
 .cc-benefits-company .cc-benefits-text
 {
-	top: -90px;
+    top: -100px;
+    height: 107px;
 }
 
 .cc-benefits-company .cc-benefits-text.cc-bottom

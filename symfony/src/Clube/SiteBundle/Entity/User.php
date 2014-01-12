@@ -19,6 +19,13 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=70)
+     */
+    private $name;
+
 	/**
 	* @var date $birthDate
 	* @ORM\Column(name="birth_date", type="date", unique=false, nullable=false)
@@ -36,6 +43,13 @@ class User extends BaseUser
 	*/
 	protected $isAgree;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_id", type="string", nullable=true)
+     */
+    protected $facebookId;
+
     public function __construct()
     {
         parent::__construct();
@@ -50,6 +64,29 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Contact
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -120,4 +157,28 @@ class User extends BaseUser
     {
         return $this->isAgree;
     }
+
+    /**
+     * Set facebookId
+     *
+     * @param string $facebookId
+     * @return User
+     */
+    public function setFacebookId($facebookId)
+    {
+        $this->facebookId = $facebookId;
+
+        return $this;
+    }
+
+    /**
+     * Get facebookId
+     *
+     * @return string
+     */
+    public function getFacebookId()
+    {
+        return $this->facebookId;
+    }
+
 }

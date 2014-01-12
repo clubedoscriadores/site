@@ -1,24 +1,64 @@
-{% extends "SiteBundle::layout.html.twig" %}
-
 {% trans_default_domain 'FOSUserBundle' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/form.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/login.css') }}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('bundles/site/jqueryui/jquery-ui.min.css') }}" type="text/css" media="all" />
+    <script type="text/javascript" src="{{ asset('bundles/site/js/jquery-1.10.1.min.js') }}"></script>
+</head>
+<body>
+<div>
+    {% block content %}
+        {% if error %}
+            <div>{{ error|trans }}</div>
+        {% endif %}
 
-{% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans }}</div>
-{% endif %}
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="cc-login">
+            <div class="cc-login-logo">
+                <img alt="Clube dos Criadores" src="{{ asset('bundles/site/images/logo.png')}}" />
+            </div>
+            <h1 class="cc-login-title">{{ "Faça o Login para prosseguir no site" }}</h1>
+            <div class="cc-login-content">
+                <div class="cc-login-photo">
+                    <img src="{{ asset('bundles/site/images/anonymous.png')}}" />
+                </div>
+                <div class="cc-login-wrapper">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <div class="cc-form-input">
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
+                    </div>
+                    <div class="cc-form-input">
+                        <input type="password" id="password" name="_password" required="required" placeholder="{{ 'security.login.password'|trans }}"/>
+                    </div>
+                    <div class="cc-form-checkbox">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                    <div class="cc-form-submit">
+                       <input class="cc-button" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    </div>
 
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                    <div class="cc-login-row">
+                        <div class="cc-login-text"><p class="cc-login-text-p">Ou use as redes sociais para entrar</p></div>
+                        <ul class="cc-login-social">
+                            <li class="cc-login-social-item">
+                                <a href="#"><img src="/bundles/site/images/facebook.png" alt="facebook"></a>
+                            </li>
+                            <li class="cc-login-social-item">
+                                <a href="#"><img src="/bundles/site/images/googleplus.png" alt="google"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    {% endblock content %}
 
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
+</div>
+</body>
+</html>
 
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
-{% endblock fos_user_content %}

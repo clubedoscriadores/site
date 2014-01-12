@@ -34,7 +34,7 @@ class DefaultController extends Controller
 	
 	public function contatoAction(Request $request)
     {
-		$em = $this->getDoctrine()->getEntityManager();
+		$em = $this->getDoctrine()->getManager();
         $form = $this->createForm(new ContactType(), new Contact(), array(
             'action' => $this->generateUrl('site_contato'),
         ));

@@ -1,193 +1,49 @@
-.cc-errors
+.cc-login
 {
-	color: #d44950;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	font-size: 14px;
+    width: 375px;
+    text-align: center;
+    margin: 0px auto;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-.cc-errors ul
+.cc-login-row
 {
-	margin: 0px;
-	list-style: none;
-	padding: 0px 0px 20px 40px;
+    text-align: left;
+}
+
+.cc-login-photo
+{
+    position: absolute;
+    top: 20px;
+    left: 120px;
+}
+
+.cc-login-content
+{
+    position: relative;
+    background: none repeat scroll 0% 0% rgb(238, 238, 238);
+    padding: 95px 20px 20px;
+    border-radius: 10px;
 }
 
 .cc-login-title
 {
-	color: #000;
-	font-size: 46px;
-	font-weight: bold;
-	font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
-	margin: 0px auto;
-	text-align: center;
-	width: 700px;
-	padding: 10px 0px;
-}
-
-.cc-contact .cc-login-title
-{
-	width: 860px;
-}
-
-.cc-contact .cc-form-submit
-{
-	height: 50px;
-	margin-bottom: 20px;
-}
-
-.cc-login-form
-{
-	background: #F1F1F1;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: normal;
 }
 
 .cc-login-wrapper
 {
-	display: inline-block;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	color: #000;
-	font-size: 18px;
-	font-weight: normal;
-}
-
-.cc-login-image
-{
-	display: inline-block;
-	vertical-align: top;
-}
-
-.cc-contact-image
-{
-	display: inline-block;
-	vertical-align: top;
-	margin-left: 175px;
-}
-
-.cc-form-input
-{
-	height: 35px;
-	margin-bottom: 15px;
-}
-
-.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label
-{
-	width: 150px;
-	text-align: right;
-	padding-right: 20px;
-	line-height: 35px;
-	display: block;
-	height: 35px;
-	float: left;
-}
-
-.cc-form-date label
-{
-	line-height: 18px;
-}
-
-.cc-form-input input
-{
-	display: inline-block;
-	width: 250px;
-	height: 21px;
-	padding: 6px 12px;
-	font-size: 14px;
-	line-height: 21px;
-	color: #555;
-	vertical-align: middle;
-	background-color: #fff;
-	background-image: none;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-.cc-form-textarea
-{
-	height: 83px;
-	margin-bottom: 15px;
-}
-
-.cc-form-textarea textarea
-{
-	display: inline-block;
-	width: 250px;
-	height: 75px;
-	padding: 6px 12px;
-	font-size: 14px;
-	line-height: 21px;
-	color: #555;
-	vertical-align: middle;
-	background-color: #fff;
-	background-image: none;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
-
-.cc-form-date
-{
-	height: 35px;
-	margin-bottom: 15px;
-}
-
-.cc-form-date div
-{
-	display: inline-block;
-}
-
-.cc-form-date select
-{
-	height: 34px;
-	display: inline-block;
-	padding: 7px 28px;
-	width: 111px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	margin-right: 5px;
-}
-
-.cc-form-checkbox
-{
-	margin-left: 168px;
-	margin-bottom: 15px;
-	height: 20px;
-}
-
-.cc-form-checkbox label
-{
-	font-size: 14px;
-}
-
-.cc-form-select
-{
-	margin-bottom: 15px;
-	height: 35px;
-}
-
-.cc-form-select select
-{
-	height: 34px;
-	display: inline-block;
-	padding: 7px 11px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-}
-
-.cc-form-submit
-{
-	margin-left: 173px;
+    background: none repeat scroll 0% 0% #f7f7f7;
+    padding: 50px 29px 29px;
 }
 
 .cc-login-social
 {
-	margin: 20px 0px 30px 173px;
+	margin: 0px 0px 0px;
 	padding: 0px;
+    text-align: left;
 	list-style: none;
     display: inline-block;
 }
@@ -202,13 +58,46 @@
 {
 	display: inline-block;
 	vertical-align: top;
-	margin: 20px 10px;
+	margin: 0px;
 }
 
 .cc-login-text-p
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
 	color: #000;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: normal;
+}
+
+.cc-button
+{
+    border: 0px;
+    background: #9EC412;
+    width: 223px;
+    height: 50px;
+    display: inline-block;
+    line-height: 50px;
+    text-align: center;
+    color: #FFF;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 0px 1px 2px #333;
+}
+
+.cc-form-checkbox
+{
+    margin-left: 0px;
+    margin-bottom: 15px;
+    height: 22px;
+    text-align: left;
+}
+
+.cc-form-submit
+{
+    margin-left: 0px;
+    margin-bottom: 15px;
 }
