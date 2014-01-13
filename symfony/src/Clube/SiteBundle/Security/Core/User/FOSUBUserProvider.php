@@ -64,6 +64,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setEmail($email);
             $user->setPassword($username);
             $user->setBirthDate(date_create());
+            $user->setIsAgree(true);
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
             return $user;
