@@ -90,9 +90,9 @@ hwi_oauth:
     firewall_name: main
     connect:
         confirmation: true
-        #account_connector: hwi_oauth.user.provider.fosub_bridge
-        #registration_form_handler: hwi_oauth.registration.form.handler.fosub_bridge
-        #registration_form: fos_user.registration.form
+        account_connector: hwi_oauth.user.provider.fosub_bridge
+        registration_form_handler: hwi_oauth.registration.form.handler.fosub_bridge
+        registration_form: site_user_registration.form
 
     resource_owners:
         facebook:
