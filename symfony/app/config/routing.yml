@@ -33,5 +33,8 @@ hwi_oauth_connect:
     resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
     prefix:   /connect
 
-hwi_facebook_login:
+facebook_login:
     pattern: /login/check-facebook
+
+google_login:
+    pattern: /login/check-google

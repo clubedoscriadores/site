@@ -1,4 +1,5 @@
 parameters:
+    my_user_provider.class: Clube\SiteBundle\Security\Core\User\FOSUBUserProvider
 #    site.example.class: Clube\SiteBundle\Example
 
 services:
@@ -7,6 +8,10 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: site_user_registration }
+    my_user_provider:
+        class: "%my_user_provider.class%"
+        #this is the place where the properties are passed to the UserProvider - see config.yml
+        arguments: [@fos_user.user_manager,{facebook: facebook_id, google: google_id}]
 #    site.example:
 #        class: %site.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

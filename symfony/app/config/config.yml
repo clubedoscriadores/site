@@ -97,11 +97,16 @@ hwi_oauth:
     resource_owners:
         facebook:
             type:                facebook
-            client_id:           <client_id>
-            client_secret:       <client_secret>
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
             infos_url:     "https://graph.facebook.com/me?fields=username,name,picture.type(square)"
             paths:
                 profilepicture: picture.data.url
+        google:
+            type:                google
+            client_id:           "%google_app_id%"
+            client_secret:       "%google_app_secret%"
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 
     fosub:
         # try 30 times to check if a username is available (foo, foo1, foo2 etc)
@@ -109,4 +114,4 @@ hwi_oauth:
 
         # mapping between resource owners (see below) and properties
         properties:
-            facebook: facebookId
+            facebook: facebook_id
