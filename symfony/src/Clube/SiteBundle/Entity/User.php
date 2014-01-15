@@ -33,7 +33,7 @@ class User extends BaseUser
 	protected $birthDate;
 	
 	/**
-	* @ORM\OneToOne(targetEntity="Gender")
+	* @ORM\ManyToOne(targetEntity="Gender")
 	* @ORM\JoinColumn(name="gender_id", referencedColumnName="id")
 	*/
 	protected $gender;
