@@ -59,7 +59,7 @@ class FOSUBUserProvider extends BaseClass
             $user->$setter_token($response->getAccessToken());
             //I have set all requested data with the user's username
             //modify here with relevant data
-            $user->setUsername($realName);
+            $user->setUsername($email);
             $user->setName($realName);
             $user->setEmail($email);
             $user->setPassword('alf8834kjkdfd');

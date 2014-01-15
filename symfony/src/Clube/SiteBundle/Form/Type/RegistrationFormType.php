@@ -13,11 +13,9 @@ class RegistrationFormType extends BaseType
 
         // add your custom field
         $builder
+            ->remove('username')
             ->add('name', null, array(
                 'label' => 'Nome'
-            ))
-            ->add('userName', null, array(
-                'label' => 'Login'
             ))
 			->add('birthDate', 'date', array(
 				'label' => 'Data de nascimento',
@@ -37,19 +35,5 @@ class RegistrationFormType extends BaseType
     {
         return 'site_user_registration';
     }
-	
-	public function getBirthDate()
-    {
-        return 'site_user_registration';
-    }
-	
-	public function getIsAgree()
-    {
-        return 'site_user_registration';
-    }
-	
-	public function getGender()
-    {
-        return 'site_user_registration';
-    }
+
 }
