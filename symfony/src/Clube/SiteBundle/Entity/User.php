@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user_profile")
  */
 class User extends BaseUser
 {
@@ -54,6 +54,24 @@ class User extends BaseUser
 
     /** @ORM\Column(name="google_access_token", type="string", length=255, nullable=true) */
     protected $google_access_token;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Company")
+     * @ORM\JoinTable(name="users_companies",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")}
+     * )
+     */
+    private $companies;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Project")
+     * @ORM\JoinTable(name="users_projects",
+     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")}
+     * )
+     */
+    private $projects;
 
     public function __construct()
     {
@@ -266,5 +284,71 @@ class User extends BaseUser
     public function getGoogleAccessToken()
     {
         return $this->google_access_token;
+    }
+
+    /**
+     * Add companies
+     *
+     * @param \Clube\SiteBundle\Entity\Company $companies
+     * @return User
+     */
+    public function addCompany(\Clube\SiteBundle\Entity\Company $companies)
+    {
+        $this->companies[] = $companies;
+
+        return $this;
+    }
+
+    /**
+     * Remove companies
+     *
+     * @param \Clube\SiteBundle\Entity\Company $companies
+     */
+    public function removeCompany(\Clube\SiteBundle\Entity\Company $companies)
+    {
+        $this->companies->removeElement($companies);
+    }
+
+    /**
+     * Get companies
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * Add projects
+     *
+     * @param \Clube\SiteBundle\Entity\Project $projects
+     * @return User
+     */
+    public function addProject(\Clube\SiteBundle\Entity\Project $projects)
+    {
+        $this->projects[] = $projects;
+
+        return $this;
+    }
+
+    /**
+     * Remove projects
+     *
+     * @param \Clube\SiteBundle\Entity\Project $projects
+     */
+    public function removeProject(\Clube\SiteBundle\Entity\Project $projects)
+    {
+        $this->projects->removeElement($projects);
+    }
+
+    /**
+     * Get projects
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProjects()
+    {
+        return $this->projects;
     }
 }

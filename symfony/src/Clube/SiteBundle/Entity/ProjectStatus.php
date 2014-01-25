@@ -5,12 +5,12 @@ namespace Clube\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Gender
+ * ProjectStatus
  *
- * @ORM\Table(name="gender")
+ * @ORM\Table(name="project_status")
  * @ORM\Entity
  */
-class Gender
+class ProjectStatus
 {
     /**
      * @var integer
@@ -24,7 +24,7 @@ class Gender
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=10)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     private $name;
 
@@ -43,7 +43,7 @@ class Gender
      * Set name
      *
      * @param string $name
-     * @return Gender
+     * @return ProjectStatus
      */
     public function setName($name)
     {
@@ -61,9 +61,4 @@ class Gender
     {
         return $this->name;
     }
-	
-	public function __toString()
-	{
-		return $this->name;
-	}
 }

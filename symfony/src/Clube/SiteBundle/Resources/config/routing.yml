@@ -10,6 +10,9 @@ site_empresas:
 site_comofunciona:
     pattern:  /como-funciona
     defaults: { _controller: SiteBundle:Default:comofunciona }
+site_comofunciona:
+    pattern:  /projetos
+    defaults: { _controller: SiteBundle:Default:projetos }
 site_contato:
     pattern:  /contato
     defaults: { _controller: SiteBundle:Default:contato }

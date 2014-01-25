@@ -31,6 +31,11 @@ class DefaultController extends Controller
     {
         return $this->render('SiteBundle:Default:comofunciona.html.twig');
     }
+
+    public function projetosAction()
+    {
+        return $this->render('SiteBundle:Default:projetos.html.twig');
+    }
 	
 	public function contatoAction(Request $request)
     {
