@@ -1,0 +1,39 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/edit.css') }}" type="text/css" media="all" />
+
+    <h1 class="cc-header">Marcas cadastradas</h1>
+
+    <table class="cc-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>{{ "Data de criação" }}</th>
+                <th>{{ "Ações" }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('marca_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.name }}</td>
+                <td>{% if entity.createDate %}{{ entity.createDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul class="cc-table-actions">
+                    <li>
+                        <a href="{{ path('marca_edit', { 'id': entity.id }) }}">editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <p>
+        <a href="{{ path('marca_new') }}">Adicionar marca</a>
+    </p>
+
+
+    {% endblock %}

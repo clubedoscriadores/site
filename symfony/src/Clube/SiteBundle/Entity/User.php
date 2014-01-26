@@ -20,6 +20,15 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Clube\SiteBundle\Entity\Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=70)
@@ -56,16 +65,12 @@ class User extends BaseUser
     protected $google_access_token;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Company")
-     * @ORM\JoinTable(name="users_companies",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToMany(targetEntity="Company", mappedBy="users",cascade={"persist"})
      */
     private $companies;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Project")
+     * @ORM\ManyToMany(targetEntity="Project", inversedBy="users")
      * @ORM\JoinTable(name="users_projects",
      *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *     inverseJoinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")}
@@ -350,5 +355,15 @@ class User extends BaseUser
     public function getProjects()
     {
         return $this->projects;
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }

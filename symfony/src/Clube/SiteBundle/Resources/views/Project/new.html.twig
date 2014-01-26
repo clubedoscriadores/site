@@ -1,0 +1,14 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <h1>Project creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('projetos') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

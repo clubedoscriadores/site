@@ -1,0 +1,47 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <form action="{{ path('marca_update',{ 'id': entity.id } ) }}" {{ form_enctype(edit_form) }} method="POST" class="cc-register-form cc-contact">
+        <h1 class="cc-register-title">{{ 'Atualizar marca' }}</h1>
+        <div class="cc-register-wrapper">
+            <div class="cc-errors">
+                {{ form_errors(edit_form) }}
+            </div>
+
+            <input type="hidden" name="_method" value="PUT" />
+            <div class="cc-form-input">
+                {{ form_label(edit_form.name) }}
+                {{ form_widget(edit_form.name) }}
+                {{ form_errors(edit_form.name) }}
+            </div>
+            <div class="cc-form-multiple">
+                {{ form_label(edit_form.users) }}
+                <ul class="cc-form-multiple-itens">
+                    {% for u in edit_form.users %}
+                        <li class="cc-form-multiple-item">
+                            {{ form_widget(u) }}
+                            {{ form_label(u) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {{ form_widget(edit_form._token) }}
+
+            <div class="cc-form-submit">
+                <button class="cc-button">Atualizar</button>
+            </div>
+
+            <div class="cc-form-input">
+                <label><a href="{{ path('marca') }}">Voltar para lista</a></label>
+            </div>
+        </div>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('marca') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

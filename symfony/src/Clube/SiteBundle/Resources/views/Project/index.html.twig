@@ -1,0 +1,32 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <section class="cc-project">
+        <h1 class="cc-project-title">{{ 'Escolha um projeto' }}</h1>
+        <ul class="cc-project-itens">
+            {% for entity in entities %}
+                <li class="cc-project-item{% if loop.index % 4 == 0 %}{{ ' cc-last' }}{% endif %}">
+                    <div class="cc-project-image">
+                        <a href="{{ path('projetos_show', { 'id': entity.id }) }}">
+                            <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="venere" />
+                        </a>
+
+                    </div>
+                    <h2 class="cc-project-name">{{ entity.name }}</h2>
+                    <p class="cc-project-prize">{{ entity.totalPrize }}</p>
+                    <div class="cc-project-end">
+                        <p class="cc-project-end-text">{{ entity.renderEndDate() }}</p>
+                        <div class="cc-project-end-bar" style="width:{{ entity.renderBar() }}"></div>
+                    </div>
+                    <div class="cc-project-status">
+                        {% if entity.projectStatus.name == 'Ideia' %}
+                            <img src="{{ asset('bundles/site/images/project/idea-icon.png')}}" alt="Ideia" />
+                        {% endif %}
+                        {% if entity.projectStatus.name == 'Video' %}
+                            <img src="{{ asset('bundles/site/images/project/movie-icon.png')}}" alt="Video" />
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

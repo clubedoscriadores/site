@@ -1,0 +1,60 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Project</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Objective</th>
+                <td>{{ entity.objective }}</td>
+            </tr>
+            <tr>
+                <th>Detail</th>
+                <td>{{ entity.detail }}</td>
+            </tr>
+            <tr>
+                <th>Requirements</th>
+                <td>{{ entity.requirements }}</td>
+            </tr>
+            <tr>
+                <th>Createdate</th>
+                <td>{{ entity.createDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ideaenddate</th>
+                <td>{{ entity.ideaEndDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Videoenddate</th>
+                <td>{{ entity.videoEndDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Totalprize</th>
+                <td>{{ entity.totalPrize }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('projetos') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('projetos_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

@@ -41,7 +41,11 @@ class Company
     protected $projects;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="companies")
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="companies")
+     * @ORM\JoinTable(name="users_companies",
+     *     joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
+     * )
      */
     private $users;
 
@@ -107,6 +111,7 @@ class Company
     {
         $this->projects = new \Doctrine\Common\Collections\ArrayCollection();
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createDate = new \DateTime('now');
     }
 
     /**

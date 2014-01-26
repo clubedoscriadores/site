@@ -3,12 +3,15 @@
 namespace Clube\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Project
  *
  * @ORM\Table(name="project")
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Project
 {
@@ -90,13 +93,6 @@ class Project
     private $totalPrize;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="image_thumb", type="string", length=150)
-     */
-    private $imageThumb;
-
-    /**
      * @ORM\OneToMany(targetEntity="Idea", mappedBy="project")
      */
     protected $ideas;
@@ -115,6 +111,224 @@ class Project
      * @ORM\OneToMany(targetEntity="Prize", mappedBy="project")
      */
     protected $prizes;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    public $path;
+
+    public function getAbsolutePath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path
+            ? null
+            : $this->getUploadDir().'/'.$this->id.'.'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view.
+        return 'uploads/documents';
+    }
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+    /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    private $temp;
+
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+        // check if we have an old image path
+        if (is_file($this->getAbsolutePath())) {
+            // store the old name to delete after the update
+            $this->temp = $this->getAbsolutePath();
+        } else {
+            $this->path = 'initial';
+        }
+    }
+
+    /**
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
+     */
+    public function preUpload()
+    {
+        if (null !== $this->getFile()) {
+            $this->path = $this->getFile()->guessExtension();
+        }
+    }
+
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // check if we have an old image
+        if (isset($this->temp)) {
+            // delete the old image
+            unlink($this->temp);
+            // clear the temp image path
+            $this->temp = null;
+        }
+
+        // you must throw an exception here if the file cannot be moved
+        // so that the entity is not persisted to the database
+        // which the UploadedFile move() method does
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->id.'.'.$this->getFile()->guessExtension()
+        );
+
+        $this->setFile(null);
+    }
+
+    /**
+     * @ORM\PreRemove()
+     */
+    public function storeFilenameForRemove()
+    {
+        $this->temp = $this->getAbsolutePath();
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if (isset($this->temp)) {
+            unlink($this->temp);
+        }
+    }
+
+    public function renderBar()
+    {
+        $dStart = $this->createDate;
+        $dEnd  = new \DateTime('now');
+        if($this->ideaEndDate > new \DateTime('now'))
+        {
+            $dEnd = $this->ideaEndDate;
+        }
+        else
+        {
+            $dEnd = $this->videoEndDate;
+        }
+
+        $iTotal = $dEnd->diff($dStart);
+        $dStart = new \DateTime('now');
+        $iPeriod = $dEnd->diff($dStart);
+        if ($iTotal->days == 0)
+            return '100%';
+        return (100-100*$iPeriod->days/$iTotal->days).'%';
+    }
+
+    public function renderEndDate()
+    {
+        $dStart = new \DateTime('now');
+        $dEnd  = new \DateTime('now');
+        if($this->ideaEndDate > new \DateTime('now'))
+        {
+            $dEnd = $this->ideaEndDate;
+        }
+        else
+        {
+            $dEnd = $this->videoEndDate;
+        }
+
+        return $this->formatDateDiff($dStart, $dEnd).' para terminar';
+
+    }
+
+    public function formatDateDiff($start, $end=null) {
+        if(!($start instanceof \DateTime)) {
+            $start = new \DateTime($start);
+        }
+
+        if($end === null) {
+            $end = new \DateTime();
+        }
+
+        if(!($end instanceof \DateTime)) {
+            $end = new \DateTime($start);
+        }
+
+        $interval = $end->diff($start);
+        $doPlural = function($nb,$str){return $nb>1?$str.'s':$str;}; // adds plurals
+
+        $format = array();
+        if($interval->y !== 0) {
+            $format[] = "%y ".$doPlural($interval->y, "ano");
+        }
+        if($interval->m !== 0) {
+            if($interval->m === 1)
+                $format[] = "%m mês";
+            else
+                $format[] = "%m meses";
+        }
+        if($interval->d !== 0) {
+            $format[] = "%d ".$doPlural($interval->d, "dia");
+        }
+        if($interval->h !== 0) {
+            $format[] = "%h ".$doPlural($interval->h, "hora");
+        }
+        if($interval->i !== 0) {
+            $format[] = "%i ".$doPlural($interval->i, "minuto");
+        }
+        if($interval->s !== 0) {
+            if(!count($format)) {
+                return "menos de um minuto";
+            } else {
+                $format[] = "%s ".$doPlural($interval->s, "segundo");
+            }
+        }
+
+        // We use the two biggest parts
+        if(count($format) > 1) {
+            $format = array_shift($format);
+        } else {
+            $format = array_pop($format);
+        }
+
+        // Prepend 'since ' or whatever you like
+        return $interval->format($format);
+    }
 
     /**
      * Get id
@@ -333,28 +547,6 @@ class Project
         return $this->totalPrize;
     }
 
-    /**
-     * Set imageThumb
-     *
-     * @param string $imageThumb
-     * @return Project
-     */
-    public function setImageThumb($imageThumb)
-    {
-        $this->imageThumb = $imageThumb;
-
-        return $this;
-    }
-
-    /**
-     * Get imageThumb
-     *
-     * @return string 
-     */
-    public function getImageThumb()
-    {
-        return $this->imageThumb;
-    }
     /**
      * Constructor
      */

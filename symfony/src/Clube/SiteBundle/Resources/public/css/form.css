@@ -18,7 +18,7 @@
     margin-bottom: 15px;
 }
 
-.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label
+.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label, .cc-form-multiple-label
 {
     width: 150px;
     text-align: right;
@@ -132,4 +132,11 @@
 .cc-form-submit
 {
     margin-left: 173px;
+}
+
+.cc-form-multiple-itens
+{
+    margin: 0 0 20px 170px;
+    padding: 7px 0 0;
+    list-style: none;
 }
