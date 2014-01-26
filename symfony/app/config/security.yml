@@ -17,7 +17,6 @@ security:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
                 login_path:     /login
-                check_path:     /login_check
             oauth:
                 failure_path: /login
                 login_path: /login
