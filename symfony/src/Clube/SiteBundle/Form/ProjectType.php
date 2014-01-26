@@ -23,7 +23,10 @@ class ProjectType extends AbstractType
             ->add('ideaEndDate')
             ->add('videoEndDate')
             ->add('totalPrize')
-            ->add('projectStatus')
+            ->add('projectStatus','entity',array(
+                'class' => 'SiteBundle:ProjectStatus',
+                'property' => 'name'
+            ))
             ->add('company','entity',array(
                 'class' => 'SiteBundle:Company',
                 'property' => 'name'
