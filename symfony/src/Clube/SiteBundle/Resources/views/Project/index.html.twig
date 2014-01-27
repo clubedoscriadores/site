@@ -12,7 +12,7 @@
 
                     </div>
                     <h2 class="cc-project-name">{{ entity.name }}</h2>
-                    <p class="cc-project-prize">{{ entity.totalPrize }}</p>
+                    <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
                     <div class="cc-project-end">
                         <p class="cc-project-end-text">{{ entity.renderEndDate() }}</p>
                         <div class="cc-project-end-bar" style="width:{{ entity.renderBar() }}"></div>
