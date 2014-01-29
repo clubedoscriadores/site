@@ -8,18 +8,21 @@
 		</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		{% block stylesheets %}
-		  <link rel="stylesheet" href="{{ asset('bundles/site/css/main.css') }}" type="text/css" media="all" />
-		  <link rel="stylesheet" href="{{ asset('bundles/site/css/home.css') }}" type="text/css" media="all" />
-		  <link rel="stylesheet" href="{{ asset('bundles/site/css/criadores.css') }}" type="text/css" media="all" />
-		  <link rel="stylesheet" href="{{ asset('bundles/site/css/login.css') }}" type="text/css" media="all" />
-		  <link rel="stylesheet" href="{{ asset('bundles/site/fancy/jquery.fancybox.css') }}" type="text/css" media="all" />
-		  <style>
-			.cc-ico-sprite{ background-image: url("{{ asset('bundles/site/images/sprite.png') }}"); }
-			.cc-img-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-home.png') }}"); }
-			.cc-img2-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-criadores.png') }}"); }
-			.cc-decote{ background-image: url("{{ asset('bundles/site/images/decote.png') }}"); }
-			.cc-about-nav-decote{ background-image: url("{{ asset('bundles/site/images/decote-2.png') }}"); }
-		  </style>
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/main.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/home.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/criadores.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/login.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/registro.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/projetos.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/css/form.css') }}" type="text/css" media="all" />
+            <link rel="stylesheet" href="{{ asset('bundles/site/fancy/jquery.fancybox.css') }}" type="text/css" media="all" />
+            <style>
+                .cc-ico-sprite{ background-image: url("{{ asset('bundles/site/images/sprite.png') }}"); }
+                .cc-img-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-home.png') }}"); }
+                .cc-img2-sprite{ background-image: url("{{ asset('bundles/site/images/sprite-criadores.png') }}"); }
+                .cc-decote{ background-image: url("{{ asset('bundles/site/images/decote.png') }}"); }
+                .cc-about-nav-decote{ background-image: url("{{ asset('bundles/site/images/decote-2.png') }}"); }
+            </style>
 		{% endblock %}
 		<script type="text/javascript" src="{{ asset('bundles/site/js/jquery-1.10.1.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('bundles/site/js/jquery.mousewheel-3.0.6.pack.js') }}"></script>
@@ -36,15 +39,15 @@
 						<img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
 					</a>
 				</div>
-				<div class="cc-login">
+				<div class="cc-layout-login">
 					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 						<span class="">{{app.user.username}}</span>
-						<span class="cc-login-separator"> | </span>
-						<a class="cc-login-link" href="{{ path('fos_user_security_logout') }}">Sair</a>
+						<span class="cc-layout-login-separator"> | </span>
+						<a class="cc-layout-login-link" href="{{ path('fos_user_security_logout') }}">Sair</a>
 					{% else %}
-						<a href="{{ path('fos_user_registration_register') }}" class="cc-login-link">Criar uma conta</a>
-						<span class="cc-login-separator"> | </span>
-						<a class="cc-login-link" href="{{ path('fos_user_security_login') }}">Login</a>
+						<a href="{{ path('fos_user_registration_register') }}" class="cc-layout-login-link">Criar uma conta</a>
+						<span class="cc-layout-login-separator"> | </span>
+						<a class="cc-layout-login-link" href="{{ path('fos_user_security_login') }}">Login</a>
 					{% endif %}
 
 					{% for type, messages in app.session.flashbag.all() %}
@@ -63,7 +66,7 @@
 		</header>
 		<nav class="cc-nav">
 			<ul class="cc-nav-itens">
-				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Projetos</a></li>
+				<li class="cc-nav-item"><a href="{{ path('projetos') }}" class="cc-nav-link">Projetos</a></li>
 				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Ranking</a></li>
 				<li class="cc-nav-item"><a href="{{ path('site_contato') }}" class="cc-nav-link">Contato</a></li>
 				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Sobre</a></li>

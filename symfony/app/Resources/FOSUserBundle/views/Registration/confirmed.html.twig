@@ -2,10 +2,14 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+{% block content %}
+    <div class="cc-register-confirmed">
+        <h1 class="cc-register-confirmed_title">{{ 'registration.confirmed_title'|trans() }}</h1>
+        <p class="cc-register-confirmed_text">{{ 'registration.confirmed_text'|trans({'%username%': user.username}) }}</p>
+        <p class="cc-register-confirmed_text">{{ 'registration.confirmed_text_2'|trans() }}</p>
+    </div>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
     {% endif %}
-{% endblock fos_user_content %}
+{% endblock content %}

@@ -16,7 +16,7 @@ group:
 
 security:
     login:
-        username: "Usuário:"
+        username: "Usuário/E-mail:"
         password: "Senha:"
         remember_me: Permanecer conectado
         submit: Entrar
@@ -39,21 +39,30 @@ change_password:
 
 # Registration
 registration:
-    check_email: Um email foi enviado para o endereço %email%. Para para ativar a sua conta, clique no link na mensagem.
-    confirmed: Parabéns, %username%. A sua conta foi ativada.
+    check_email_title: Verifique seu email!
+    check_email_text: Um email foi enviado para o endereço %email%.
+    check_email_text_2: Para para ativar a sua conta, clique no link na mensagem.
+    confirmed_title: Conta ativada!
+    confirmed_text: Seja bem-vindo à comunidade Clube dos Criadores, %username%. A sua conta foi ativada com sucesso.
+    confirmed_text_2: Aproveite, agora mesmo, os briefings que as marcas disponibilizaram na aba Projetos e mande o que é requisitado (ideias, roteiros ou videos).
     back: Retornar para a página de origem.
     submit: Registrar
     flash:
         user_created: O usuário foi criado com sucesso.
     email:
-        subject: Bem-vindo(a), %username%!
+        subject: Clube dos Criadores: Confirme seu registro
         message: |
-            Olá, %username%!
 
-            Para completar a validação da sua conta, clique no link: %confirmationUrl%
+            Olá %username%,
+
+            Obrigado por se cadastrar conosco, porém para certificarmos que é realmente você, acesse o link abaixo e confirme seu cadastro conosco.
+
+            %confirmationUrl%
+
+            Em breve você receberá por e-mail, novos projetos e assim poderá concorrer aos mesmos e ver suas ideias e videos nas melhores marcas do mundo.
 
             Atenciosamente,
-            a Equipe.
+            Equipe Clube dos Criadores
 
 # Password resetting
 resetting:

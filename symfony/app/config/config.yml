@@ -72,10 +72,52 @@ swiftmailer:
     port: 587
     logging: %kernel.debug%
 
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: secure_area
+    connect:
+        confirmation: true
+        account_connector: my_user_provider
+        #account_connector: hwi_oauth.user.provider.fosub_bridge
+        #registration_form_handler: hwi_oauth.registration.form.handler.fosub_bridge
+        #registration_form: site_user_registration.registration.form
+
+    resource_owners:
+        facebook:
+            type:                facebook
+            client_id:           "%facebook_app_id%"
+            client_secret:       "%facebook_app_secret%"
+            scope:         "email"
+            infos_url:     "https://graph.facebook.com/me?fields=username,name,email,picture.type(square)"
+            paths:
+                email:          email
+                profilepicture: picture.data.url
+        google:
+            type:                google
+            client_id:           "%google_app_id%"
+            client_secret:       "%google_app_secret%"
+            scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
+    fosub:
+        # try 30 times to check if a username is available (foo, foo1, foo2 etc)
+        username_iterations: 30
+
+        # mapping between resource owners (see below) and properties
+        properties:
+            facebook: facebook_id
+            google: google_id
+
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
+    firewall_name: secure_area
     user_class: Clube\SiteBundle\Entity\User
+    group:
+        group_class: Clube\SiteBundle\Entity\Group
+    from_email:
+        address: "info@clubedoscriadores.com.br"
+        sender_name: "Clube dos Criadores"
     registration:
+        confirmation:
+            enabled: true # change to true for required email confirmation
         form:
             type: site_user_registration

@@ -12,7 +12,11 @@ class RegistrationFormType extends BaseType
         parent::buildForm($builder, $options);
 
         // add your custom field
-        $builder            
+        $builder
+            ->remove('username')
+            ->add('name', null, array(
+                'label' => 'Nome'
+            ))
 			->add('birthDate', 'date', array(
 				'label' => 'Data de nascimento',
 				'format' => 'ddMMyyyy',
@@ -31,19 +35,5 @@ class RegistrationFormType extends BaseType
     {
         return 'site_user_registration';
     }
-	
-	public function getBirthDate()
-    {
-        return 'site_user_registration';
-    }
-	
-	public function getIsAgree()
-    {
-        return 'site_user_registration';
-    }
-	
-	public function getGender()
-    {
-        return 'site_user_registration';
-    }
+
 }

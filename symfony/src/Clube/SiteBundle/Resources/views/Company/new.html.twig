@@ -1,0 +1,39 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+
+<form action="{{ path('marca_create') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
+    <h1 class="cc-register-title">{{ 'Adicionar marca' }}</h1>
+    <div class="cc-register-wrapper">
+        <div class="cc-errors">
+            {{ form_errors(form) }}
+        </div>
+
+
+        <div class="cc-form-input">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <div class="cc-form-multiple">
+            {{ form_label(form.users) }}
+            <ul class="cc-form-multiple-itens">
+                {% for u in form.users %}
+                    <li class="cc-form-multiple-item">
+                        {{ form_widget(u) }}
+                        {{ form_label(u) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {{ form_widget(form._token) }}
+
+        <div class="cc-form-submit">
+            <button class="cc-button">Registrar</button>
+        </div>
+
+        <div class="cc-form-input">
+            <label><a href="{{ path('marca') }}">Voltar para lista</a></label>
+        </div>
+    </div>
+</form>
+{% endblock %}

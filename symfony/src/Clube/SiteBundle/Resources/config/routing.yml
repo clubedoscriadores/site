@@ -10,6 +10,48 @@ site_empresas:
 site_comofunciona:
     pattern:  /como-funciona
     defaults: { _controller: SiteBundle:Default:comofunciona }
+projetos:
+    pattern:  /projetos
+    defaults: { _controller: SiteBundle:Project:index }
+projetos_new:
+    pattern:  /novo/projeto
+    defaults: { _controller: SiteBundle:Project:new }
+projetos_create:
+    pattern:  /criar/projeto
+    defaults: { _controller: SiteBundle:Project:create }
+projetos_show:
+    pattern:  /projeto/{id}
+    defaults: { _controller: SiteBundle:Project:show }
+projetos_delete:
+    pattern:  /ed/projetos/delete/{id}
+    defaults: { _controller: SiteBundle:Project:delete }
+projetos_edit:
+    pattern:  /editar/projeto/{id}
+    defaults: { _controller: SiteBundle:Project:edit }
+projetos_update:
+    pattern:  /atualizar/projeto/{id}
+    defaults: { _controller: SiteBundle:Project:update }
 site_contato:
     pattern:  /contato
     defaults: { _controller: SiteBundle:Default:contato }
+marca:
+    pattern:  /ed/marcas
+    defaults: { _controller: SiteBundle:Company:index }
+marca_new:
+    pattern:  /ed/marcas/novo
+    defaults: { _controller: SiteBundle:Company:new }
+marca_create:
+    pattern:  /ed/marcas/criar
+    defaults: { _controller: SiteBundle:Company:create }
+marca_edit:
+    pattern:  /ed/marcas/editar/{id}
+    defaults: { _controller: SiteBundle:Company:edit }
+marca_update:
+    pattern:  /ed/marcas/atualizar/{id}
+    defaults: { _controller: SiteBundle:Company:update }
+marca_show:
+    pattern:  /ed/marcas/detalhe/{id}
+    defaults: { _controller: SiteBundle:Company:show }
+marca_delete:
+    pattern:  /ed/marcas/excluir/{id}
+    defaults: { _controller: SiteBundle:Company:delete }

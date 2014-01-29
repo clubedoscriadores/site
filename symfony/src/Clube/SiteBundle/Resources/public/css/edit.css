@@ -1,0 +1,32 @@
+.cc-table
+{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    border-spacing: 0px;
+}
+.cc-table th
+{
+    border-bottom: 2px solid rgb(221, 221, 221);
+    text-align: left;
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: bottom;
+}
+.cc-table td
+{
+    padding: 8px;
+    line-height: 1.42857;
+    vertical-align: top;
+    border-top: 1px solid rgb(221, 221, 221);
+}
+.cc-table-actions
+{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.cc-table-actions li
+{
+    display: inline;
+}
