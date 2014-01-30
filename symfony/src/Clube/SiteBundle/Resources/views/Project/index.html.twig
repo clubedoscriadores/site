@@ -7,7 +7,7 @@
                 <li class="cc-project-item{% if loop.index % 4 == 0 %}{{ ' cc-last' }}{% endif %}">
                     <div class="cc-project-image">
                         <a href="{{ path('projetos_show', { 'id': entity.id }) }}">
-                            <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="venere" />
+                            <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
                         </a>
 
                     </div>

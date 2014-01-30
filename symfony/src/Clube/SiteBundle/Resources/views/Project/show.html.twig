@@ -1,7 +1,56 @@
-{% extends '::base.html.twig' %}
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <section class="cc-project-show">
+        <div>
+            <div>
+                <img src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
+            </div>
+            <div>
+                <h1>{{ entity.name }}</h1>
+                <p>{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
+                <dl>
+                    <dt>Fev</dt>
+                    <dd>05</dd>
+                </dl>
+                <div>
+                    <a href="" />
 
-{% block body -%}
-    <h1>Project</h1>
+                </div>
+                <div><span>01</span>M<span>8</span>D</div>
+            </div>
+        </div>
+        <div></div>
+        <div>
+            <nav>
+                <ul>
+                    <li>{{ 'Instruções' }}</li>
+                    <li>{{ 'Premiados' }}</li>
+                    <li>{{ 'Fórum' }}</li>
+                </ul>
+            </nav>
+            <section>
+                <dl>
+                    <dt>{{ 'Objetivos' }}</dt>
+                    <dd>{{ entity.objective }}</dd>
+                    <dt>{{ 'Detalhes' }}</dt>
+                    <dd>{{ entity.detail }}</dd>
+                    <dt>{{ 'Requisitos' }}</dt>
+                    <dd>{{ entity.requirements }}</dd>
+                </dl>
+            </section>
+            <section>
+                <dl>
+                    <dt>{{ 'Ideias premiadas' }}</dt>
+                    <dd></dd>
+                    <dt>{{ 'Videos premiados' }}</dt>
+                    <dd></dd>
+                </dl>
+            </section>
+            <section>
+
+            </section>
+        </div>
+    </section>
 
     <table class="record_properties">
         <tbody>
@@ -15,15 +64,15 @@
             </tr>
             <tr>
                 <th>Objective</th>
-                <td>{{ entity.objective }}</td>
+                <td></td>
             </tr>
             <tr>
                 <th>Detail</th>
-                <td>{{ entity.detail }}</td>
+                <td></td>
             </tr>
             <tr>
                 <th>Requirements</th>
-                <td>{{ entity.requirements }}</td>
+                <td></td>
             </tr>
             <tr>
                 <th>Createdate</th>
