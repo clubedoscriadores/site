@@ -11,7 +11,7 @@
                         </a>
 
                     </div>
-                    <h2 class="cc-project-name">{{ entity.name }}</h2>
+                    <h2 class="cc-project-name" title="{{ entity.name }}">{{ entity.name }}</h2>
                     <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
                     <div class="cc-project-end">
                         <p class="cc-project-end-text">{{ entity.renderEndDate() }}</p>
