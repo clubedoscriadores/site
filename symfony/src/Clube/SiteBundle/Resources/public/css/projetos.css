@@ -75,6 +75,7 @@
     margin: 0;
     text-align: center;
     background: #FFF;
+	border-bottom: 1px solid #ccc;
 }
 
 .cc-project-end
@@ -167,6 +168,7 @@
 	font-size: 36px;
 	text-align: left;
 	margin: 0px 0px 20px 0px;
+	border: 0px;
 }
 
 .cc-calendar 
