@@ -237,6 +237,19 @@ class Project
             unlink($this->temp);
         }
     }
+	
+	public function renderBarReverse()
+	{
+		$dStart = $this->createDate;
+		$dEnd = $this->videoEndDate;
+
+        $iTotal = $dEnd->diff($dStart);
+        $dStart = new \DateTime('now');
+        $iPeriod = $dEnd->diff($dStart);
+        if ($iTotal->days == 0)
+            return '100%';
+        return (100*$iPeriod->days/$iTotal->days);
+	}
 
     public function renderBar()
     {
@@ -256,8 +269,61 @@ class Project
         $iPeriod = $dEnd->diff($dStart);
         if ($iTotal->days == 0)
             return '100%';
-        return (100-100*$iPeriod->days/$iTotal->days).'%';
+        return (100-100*$iPeriod->days/$iTotal->days);
     }
+	
+	public function renderRemaining()
+	{
+		$dStart = $this->createDate;
+        $dEnd  = new \DateTime('now');
+        if($this->ideaEndDate > new \DateTime('now'))
+        {
+            $dEnd = $this->ideaEndDate;
+        }
+        else
+        {
+            $dEnd = $this->videoEndDate;
+        }
+		
+		if ($dStart > $dEnd)
+			return 'Finalizado';
+
+        $iRest = $dEnd->diff(new \DateTime('now'));
+		$lday = 'dias';
+		
+		if ($iRest->days == 1)
+			return 'Último dia para enviar.';
+				
+		return 'Restam ' . $iRest->days . ' dias para enviar.';
+	}
+	
+	public function getEndDate()
+	{
+		$dStart = $this->createDate;
+        $dEnd  = new \DateTime('now');
+        if($this->ideaEndDate > new \DateTime('now'))
+        {
+            $dEnd = $this->ideaEndDate;
+        }
+        else
+        {
+            $dEnd = $this->videoEndDate;
+        }
+		return $dEnd;
+	}
+	
+	public function renderPositionIdea()
+	{
+		$dStart = $this->createDate;
+		$dEnd = $this->videoEndDate;
+
+        $iTotal = $dEnd->diff($dStart);
+        $dStart = $this->createDate;
+        $iPeriod = $this->ideaEndDate->diff($dStart);
+        if ($iTotal->days == 0)
+            return '100%';
+        return (100*$iPeriod->days/$iTotal->days);
+	}
 
     public function renderEndDate()
     {

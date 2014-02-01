@@ -15,7 +15,7 @@
                     <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
                     <div class="cc-project-end">
                         <p class="cc-project-end-text">{{ entity.renderEndDate() }}</p>
-                        <div class="cc-project-end-bar" style="width:{{ entity.renderBar() }}"></div>
+                        <div class="cc-project-end-bar" style="width:{{ entity.renderBar() }}%"></div>
                     </div>
                     <div class="cc-project-status">
                         {% if entity.projectStatus.name == 'Ideia' %}

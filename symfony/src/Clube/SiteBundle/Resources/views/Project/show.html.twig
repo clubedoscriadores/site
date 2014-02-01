@@ -1,109 +1,69 @@
 {% extends 'SiteBundle::layout.html.twig' %}
 {% block content %}
+	<!--[if gte IE 9]>
+	  <style type="text/css">
+		.gradient {
+		   filter: none;
+		}
+	  </style>
+	<![endif]-->
     <section class="cc-project-show">
-        <div>
-            <div>
-                <img src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
+        <div class="cc-project-top">
+            <div class="cc-project-image">
+                <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
             </div>
-            <div>
-                <h1>{{ entity.name }}</h1>
-                <p>{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
-                <dl>
-                    <dt>Fev</dt>
-                    <dd>05</dd>
+            <div class="cc-project-submit">
+                <h1 class="cc-project-title">{{ entity.name }}</h1>
+                <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
+				<div class="cc-progress">
+					<div class="cc-progress-title">
+						<div class="cc-progress-title-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ 'Ideia' }}</div> 
+						<div class="cc-progress-title-last">{{ 'Vídeo' }}</div> 
+					</div>
+					<div class="cc-progress-back">
+						<div class="cc-progress-bar" style="width:{{ entity.renderBarReverse() }}%"></div>
+						<div class="cc-progress-end cc-progress-idea" style="left:{{ entity.renderPositionIdea() }}%"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
+						<div class="cc-progress-end cc-progress-last"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
+					</div>
+					<div class="cc-progress-date">
+						<div class="cc-progress-date-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ entity.ideaEndDate|date('d-m-Y') }}</div> 
+						<div class="cc-progress-date-last">{{ entity.videoEndDate|date('d-m-Y') }}</div> 
+					</div>
+				</div>
+                <dl class="cc-calendar">
+                    <dt class="cc-calendar-title">{{ entity.endDate|datetime('%b') }}</dt>
+                    <dd class="cc-calendar-content">{{ entity.endDate|date('d') }}</dd>
                 </dl>
-                <div>
-                    <a href="" />
-
-                </div>
-                <div><span>01</span>M<span>8</span>D</div>
+				<div class="cc-project-submit-area">
+					<div class="cc-project-end-date">
+						<p class="cc-project-end-date-text">{{ entity.renderRemaining() }}</p>
+					</div>
+					<div class="cc-project-submit-button">
+						<a class="cc-button" href="" >Envie seu video</a>
+					</div>
+				</div>
             </div>
         </div>
         <div></div>
         <div>
-            <nav>
-                <ul>
-                    <li>{{ 'Instruções' }}</li>
-                    <li>{{ 'Premiados' }}</li>
-                    <li>{{ 'Fórum' }}</li>
+            <nav class="cc-project-nav">
+                <ul class="cc-project-nav-itens">
+                    <li class="cc-project-nav-item cc-selected"><a href="#" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
+                    <li class="cc-project-nav-item"><a href="#" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
+                    <li class="cc-project-nav-item"><a href="#" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
                 </ul>
             </nav>
-            <section>
-                <dl>
-                    <dt>{{ 'Objetivos' }}</dt>
-                    <dd>{{ entity.objective }}</dd>
-                    <dt>{{ 'Detalhes' }}</dt>
-                    <dd>{{ entity.detail }}</dd>
-                    <dt>{{ 'Requisitos' }}</dt>
-                    <dd>{{ entity.requirements }}</dd>
+            <section class="cc-project-section">
+                <dl class="cc-project-brief-itens">
+                    <dt class="cc-project-brief-title">{{ 'Objetivos' }}</dt>
+                    <dd class="cc-project-brief-detail">{{ entity.objective }}</dd>
+                    <dt class="cc-project-brief-title">{{ 'Detalhes' }}</dt>
+                    <dd class="cc-project-brief-detail">{{ entity.detail }}</dd>
+                    <dt class="cc-project-brief-title">{{ 'Requisitos' }}</dt>
+                    <dd class="cc-project-brief-detail">{{ entity.requirements }}</dd>
                 </dl>
-            </section>
-            <section>
-                <dl>
-                    <dt>{{ 'Ideias premiadas' }}</dt>
-                    <dd></dd>
-                    <dt>{{ 'Videos premiados' }}</dt>
-                    <dd></dd>
-                </dl>
-            </section>
-            <section>
-
             </section>
         </div>
     </section>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Objective</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Detail</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Requirements</th>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Createdate</th>
-                <td>{{ entity.createDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Ideaenddate</th>
-                <td>{{ entity.ideaEndDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Videoenddate</th>
-                <td>{{ entity.videoEndDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Totalprize</th>
-                <td>{{ entity.totalPrize }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('projetos') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('projetos_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
 {% endblock %}
