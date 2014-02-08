@@ -65,7 +65,7 @@ class Idea
      * @ORM\OneToOne(targetEntity="IdeaPrize")
      * @ORM\JoinColumn(name="idea_prize_id", referencedColumnName="id")
      */
-    protected $prize;
+    protected $ideaPrize;
 
     /**
      * Get id
@@ -216,25 +216,25 @@ class Idea
     }
 
     /**
-     * Set prize
+     * Set ideaPrize
      *
-     * @param \Clube\SiteBundle\Entity\Prize $prize
+     * @param \Clube\SiteBundle\Entity\IdeaPrize $ideaPrize
      * @return Idea
      */
-    public function setPrize(\Clube\SiteBundle\Entity\Prize $prize = null)
+    public function setIdeaPrize(\Clube\SiteBundle\Entity\IdeaPrize $ideaPrize = null)
     {
-        $this->prize = $prize;
+        $this->ideaPrize = $ideaPrize;
 
         return $this;
     }
 
     /**
-     * Get prize
+     * Get ideaPrize
      *
-     * @return \Clube\SiteBundle\Entity\Prize 
+     * @return \Clube\SiteBundle\Entity\IdeaPrize 
      */
-    public function getPrize()
+    public function getIdeaPrize()
     {
-        return $this->prize;
+        return $this->ideaPrize;
     }
 }

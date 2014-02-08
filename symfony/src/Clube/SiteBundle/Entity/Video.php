@@ -56,12 +56,10 @@ class Video
     private $isWinner;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="prize_id", type="integer")
+     * @ORM\OneToOne(targetEntity="VideoPrize")
+     * @ORM\JoinColumn(name="video_prize_id", referencedColumnName="id")
      */
-    private $prizeId;
-
+    protected $videoPrize;
 
     /**
      * Get id
@@ -189,29 +187,6 @@ class Video
     }
 
     /**
-     * Set prizeId
-     *
-     * @param integer $prizeId
-     * @return Video
-     */
-    public function setPrizeId($prizeId)
-    {
-        $this->prizeId = $prizeId;
-
-        return $this;
-    }
-
-    /**
-     * Get prizeId
-     *
-     * @return integer 
-     */
-    public function getPrizeId()
-    {
-        return $this->prizeId;
-    }
-
-    /**
      * Set project
      *
      * @param \Clube\SiteBundle\Entity\Project $project
@@ -232,5 +207,28 @@ class Video
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set videoPrize
+     *
+     * @param \Clube\SiteBundle\Entity\VideoPrize $videoPrize
+     * @return Video
+     */
+    public function setVideoPrize(\Clube\SiteBundle\Entity\VideoPrize $videoPrize = null)
+    {
+        $this->videoPrize = $videoPrize;
+
+        return $this;
+    }
+
+    /**
+     * Get videoPrize
+     *
+     * @return \Clube\SiteBundle\Entity\VideoPrize 
+     */
+    public function getVideoPrize()
+    {
+        return $this->videoPrize;
     }
 }
