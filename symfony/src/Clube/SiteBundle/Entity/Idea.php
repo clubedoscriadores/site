@@ -49,6 +49,12 @@ class Idea
     protected $project;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="ideas")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="is_winner", type="boolean")
@@ -56,12 +62,10 @@ class Idea
     private $isWinner;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="prize_id", type="integer")
+     * @ORM\OneToOne(targetEntity="IdeaPrize")
+     * @ORM\JoinColumn(name="idea_prize_id", referencedColumnName="id")
      */
-    private $prizeId;
-
+    protected $prize;
 
     /**
      * Get id
@@ -143,29 +147,6 @@ class Idea
     }
 
     /**
-     * Set projectId
-     *
-     * @param integer $projectId
-     * @return Idea
-     */
-    public function setProjectId($projectId)
-    {
-        $this->projectId = $projectId;
-
-        return $this;
-    }
-
-    /**
-     * Get projectId
-     *
-     * @return integer 
-     */
-    public function getProjectId()
-    {
-        return $this->projectId;
-    }
-
-    /**
      * Set isWinner
      *
      * @param boolean $isWinner
@@ -189,29 +170,6 @@ class Idea
     }
 
     /**
-     * Set prizeId
-     *
-     * @param integer $prizeId
-     * @return Idea
-     */
-    public function setPrizeId($prizeId)
-    {
-        $this->prizeId = $prizeId;
-
-        return $this;
-    }
-
-    /**
-     * Get prizeId
-     *
-     * @return integer 
-     */
-    public function getPrizeId()
-    {
-        return $this->prizeId;
-    }
-
-    /**
      * Set project
      *
      * @param \Clube\SiteBundle\Entity\Project $project
@@ -232,5 +190,51 @@ class Idea
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \Clube\SiteBundle\Entity\User $user
+     * @return Idea
+     */
+    public function setUser(\Clube\SiteBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Clube\SiteBundle\Entity\User 
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set prize
+     *
+     * @param \Clube\SiteBundle\Entity\Prize $prize
+     * @return Idea
+     */
+    public function setPrize(\Clube\SiteBundle\Entity\Prize $prize = null)
+    {
+        $this->prize = $prize;
+
+        return $this;
+    }
+
+    /**
+     * Get prize
+     *
+     * @return \Clube\SiteBundle\Entity\Prize 
+     */
+    public function getPrize()
+    {
+        return $this->prize;
     }
 }

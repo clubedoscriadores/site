@@ -5,12 +5,12 @@ namespace Clube\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Prize
+ * IdeaPrize
  *
- * @ORM\Table(name="prize")
+ * @ORM\Table(name="idea_prize")
  * @ORM\Entity
  */
-class Prize
+class IdeaPrize
 {
     /**
      * @var integer
@@ -29,12 +29,6 @@ class Prize
     private $prizeAmount;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PrizeType")
-     * @ORM\JoinColumn(name="prize_type_id", referencedColumnName="id")
-     */
-    protected $prizeType;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="prize_place", type="integer")
@@ -42,7 +36,7 @@ class Prize
     private $prizePlace;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Project", inversedBy="prizes")
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="ideaPrizes")
      * @ORM\JoinColumn(name="project_id", referencedColumnName="id")
      */
     protected $project;
@@ -54,6 +48,10 @@ class Prize
      */
     private $createDate;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Idea")
+     */
+    protected $idea;
 
     /**
      * Get id
@@ -135,29 +133,6 @@ class Prize
     }
 
     /**
-     * Set prizeType
-     *
-     * @param \Clube\SiteBundle\Entity\PrizeType $prizeType
-     * @return Prize
-     */
-    public function setPrizeType(\Clube\SiteBundle\Entity\PrizeType $prizeType = null)
-    {
-        $this->prizeType = $prizeType;
-
-        return $this;
-    }
-
-    /**
-     * Get prizeType
-     *
-     * @return \Clube\SiteBundle\Entity\PrizeType 
-     */
-    public function getPrizeType()
-    {
-        return $this->prizeType;
-    }
-
-    /**
      * Set project
      *
      * @param \Clube\SiteBundle\Entity\Project $project
@@ -178,5 +153,28 @@ class Prize
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set idea
+     *
+     * @param \Clube\SiteBundle\Entity\Idea $idea
+     * @return IdeaPrize
+     */
+    public function setIdea(\Clube\SiteBundle\Entity\Idea $idea = null)
+    {
+        $this->idea = $idea;
+
+        return $this;
+    }
+
+    /**
+     * Get idea
+     *
+     * @return \Clube\SiteBundle\Entity\Idea 
+     */
+    public function getIdea()
+    {
+        return $this->idea;
     }
 }

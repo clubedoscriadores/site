@@ -1,6 +1,5 @@
 .cc-project
 {
-    background: #F1F1F1;
 }
 .cc-project-title
 {
@@ -16,7 +15,7 @@
 {
     list-style: none outside none;
     margin: 0;
-    padding: 10px;
+    padding: 10px 0px;
 }
 
 .cc-project-item
@@ -389,3 +388,19 @@
  {
 	margin: 0px 0px 25px;
  }
+
+.cc-project-prize-itens-title
+{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 18px;
+    margin: 0px 0px 10px;
+}
+
+.cc-project-prize-itens
+{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-size: 14px;
+    list-style: none;
+    margin: 0px 0px 15px 20px;
+    padding: 0px;
+}

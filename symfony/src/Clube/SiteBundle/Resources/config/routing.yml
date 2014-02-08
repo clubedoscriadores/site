@@ -22,6 +22,11 @@ projetos_create:
 projetos_show:
     pattern:  /projeto/{id}
     defaults: { _controller: SiteBundle:Project:show }
+projetos_show_2:
+    pattern:  /projeto/{id}/{aba}
+    defaults: { _controller: SiteBundle:Project:show }
+    requirements:
+        aba : premiados|forum
 projetos_delete:
     pattern:  /ed/projetos/delete/{id}
     defaults: { _controller: SiteBundle:Project:delete }
@@ -55,3 +60,66 @@ marca_show:
 marca_delete:
     pattern:  /ed/marcas/excluir/{id}
     defaults: { _controller: SiteBundle:Company:delete }
+ideia:
+    pattern:  /ed/ideias
+    defaults: { _controller: SiteBundle:Idea:index }
+ideia_new:
+    pattern:  /ideia/nova/{id}
+    defaults: { _controller: SiteBundle:Idea:new }
+ideia_create:
+    pattern:  /ideia/criar
+    defaults: { _controller: SiteBundle:Idea:create }
+ideia_edit:
+    pattern:  /ed/ideia/editar/{id}
+    defaults: { _controller: SiteBundle:Idea:edit }
+ideia_update:
+    pattern:  /ed/ideia/atualizar/{id}
+    defaults: { _controller: SiteBundle:Idea:update }
+ideia_show:
+    pattern:  /ed/ideia/detalhe/{id}
+    defaults: { _controller: SiteBundle:Idea:show }
+ideia_delete:
+    pattern:  /ed/ideia/excluir/{id}
+    defaults: { _controller: SiteBundle:Idea:delete }
+premiacao_ideia:
+    pattern:  /premiacao/ideia
+    defaults: { _controller: SiteBundle:IdeaPrize:index }
+premiacao_ideia_new:
+    pattern:  /premiacao/ideia/nova/{id}
+    defaults: { _controller: SiteBundle:IdeaPrize:new }
+premiacao_ideia_create:
+    pattern:  /premiacao/ideia/criar
+    defaults: { _controller: SiteBundle:IdeaPrize:create }
+premiacao_ideia_edit:
+    pattern:  /premiacao/ideia/editar/{id}
+    defaults: { _controller: SiteBundle:IdeaPrize:edit }
+premiacao_ideia_update:
+    pattern:  /premiacao/ideia/atualizar/{id}
+    defaults: { _controller: SiteBundle:IdeaPrize:update }
+premiacao_ideia_show:
+    pattern:  /premiacao/ideia/detalhe/{id}
+    defaults: { _controller: SiteBundle:IdeaPrize:show }
+premiacao_ideia_delete:
+    pattern:  /premiacao/ideia/excluir/{id}
+    defaults: { _controller: SiteBundle:IdeaPrize:delete }
+premiacao_video:
+    pattern:  /premiacao/video
+    defaults: { _controller: SiteBundle:VideoPrize:index }
+premiacao_video_new:
+    pattern:  /premiacao/video/nova/{id}
+    defaults: { _controller: SiteBundle:VideoPrize:new }
+premiacao_video_create:
+    pattern:  /premiacao/video/criar
+    defaults: { _controller: SiteBundle:VideoPrize:create }
+premiacao_video_edit:
+    pattern:  /premiacao/video/editar/{id}
+    defaults: { _controller: SiteBundle:VideoPrize:edit }
+premiacao_video_update:
+    pattern:  /premiacao/video/atualizar/{id}
+    defaults: { _controller: SiteBundle:VideoPrize:update }
+premiacao_video_show:
+    pattern:  /premiacao/video/detalhe/{id}
+    defaults: { _controller: SiteBundle:VideoPrize:show }
+premiacao_video_delete:
+    pattern:  /premiacao/video/excluir/{id}
+    defaults: { _controller: SiteBundle:VideoPrize:delete }

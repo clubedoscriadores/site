@@ -1,0 +1,22 @@
+<section class="cc-project-section">
+    <dl class="cc-project-brief-itens">
+        <dt class="cc-project-brief-title">{{ 'Ideias' }}</dt>
+        <dd class="cc-project-brief-detail">
+            <h2 class="cc-project-prize-itens-title">{{ "Premiação" }}</h2>
+            <ul class="cc-project-prize-itens">
+                {% for prize in entity.ideaPrizes %}
+                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }}</li>
+                {% endfor %}
+            </ul>
+        </dd>
+        <dt class="cc-project-brief-title">{{ 'Videos' }}</dt>
+        <dd class="cc-project-brief-detail">
+            <h2 class="cc-project-prize-itens-title">{{ "Premiação" }}</h2>
+            <ul class="cc-project-prize-itens">
+                {% for prize in entity.videoPrizes %}
+                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }}</li>
+                {% endfor %}
+            </ul>
+        </dd>
+    </dl>
+</section>

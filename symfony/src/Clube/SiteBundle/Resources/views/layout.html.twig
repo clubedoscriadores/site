@@ -31,75 +31,80 @@
 		{% endblock %}
 		<link rel="shortcut icon" href="{{ asset('bundles/ensjobeet/images/favicon.ico') }}" />
 	</head>
-	<body>		
-		<header class="cc-header">
-			<div class="cc-header-wrapper">
-				<div class="cc-logo">
-					<a href="{{ path('site_homepage') }}">
-						<img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
-					</a>
-				</div>
-				<div class="cc-layout-login">
-					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-						<span class="">{{app.user.username}}</span>
-						<span class="cc-layout-login-separator"> | </span>
-						<a class="cc-layout-login-link" href="{{ path('fos_user_security_logout') }}">Sair</a>
-					{% else %}
-						<a href="{{ path('fos_user_registration_register') }}" class="cc-layout-login-link">Criar uma conta</a>
-						<span class="cc-layout-login-separator"> | </span>
-						<a class="cc-layout-login-link" href="{{ path('fos_user_security_login') }}">Login</a>
-					{% endif %}
+	<body>
+        <div id="container">
+            <div id="header">
+                <header class="cc-header">
+                    <div class="cc-header-wrapper">
+                        <div class="cc-logo">
+                            <a href="{{ path('site_homepage') }}">
+                                <img class="cc-logo-img" src="{{ asset('bundles/site/images/logo.png')}}" alt="Clube dos criadores" />
+                            </a>
+                        </div>
+                        <div class="cc-layout-login">
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <span class="">{{app.user.username}}</span>
+                                <span class="cc-layout-login-separator"> | </span>
+                                <a class="cc-layout-login-link" href="{{ path('fos_user_security_logout') }}">Sair</a>
+                            {% else %}
+                                <a href="{{ path('fos_user_registration_register') }}" class="cc-layout-login-link">Criar uma conta</a>
+                                <span class="cc-layout-login-separator"> | </span>
+                                <a class="cc-layout-login-link" href="{{ path('fos_user_security_login') }}">Login</a>
+                            {% endif %}
 
-					{% for type, messages in app.session.flashbag.all() %}
-						{% for key, message in messages %}
-							<div class="flash-{{ type }}">
-								{{ message|trans({}, 'FOSUserBundle') }}
-							</div>
-						{% endfor %}
-					{% endfor %}
-					
-				</div>
-				
-				
-			</div>
- 		</div>			
-		</header>
-		<nav class="cc-nav">
-			<ul class="cc-nav-itens">
-				<li class="cc-nav-item"><a href="{{ path('projetos') }}" class="cc-nav-link">Projetos</a></li>
-				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Ranking</a></li>
-				<li class="cc-nav-item"><a href="{{ path('site_contato') }}" class="cc-nav-link">Contato</a></li>
-				<li class="cc-nav-item"><a href="#" class="cc-nav-link">Sobre</a></li>
-			</ul>
-		</nav>
-		<div class="cc-content">
-			<div class="cc-wrapper">
-				{% block content %}
-				{% endblock %}
-			</div>
-		</div>
-		<footer class="cc-footer">
-			<div class="cc-footer-wrapper">
-				<table class="cc-footer-table">
-					<tbody class="cc-footer-table-tbody">
-						<tr class="cc-footer-table-tr">
-							<td class="cc-footer-table-td"><a href="{{ path('site_empresas') }}" class="cc-footer-link">Para marcas</a></td>
-							<td class="cc-footer-table-td"><a href="{{ path('site_criadores') }}" class="cc-footer-link">Para criadores</a></td>
-							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Termos & Condições'}}</a></td>
-						</tr>
-						<tr class="cc-footer-table-tr">
-							<td class="cc-footer-table-td"><a href="{{ path('site_comofunciona') }}" class="cc-footer-link">Como funciona</a></td>
-							<td class="cc-footer-table-td"><a href="{{ path('site_contato') }}" class="cc-footer-link">Contato</a></td>
-							<td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Politica de privacidade'}}</a></td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="cc-footer-social">
-					<a href="#" class="cc-ico-twitter cc-ico-sprite">siga no twitter</a>
-					<a href="#" class="cc-ico-facebook cc-ico-sprite">siga no facebook</a>
-					<a href="#" class="cc-ico-linkedin cc-ico-sprite">siga no linkedin</a>
-				</div>
-			</div>
-		</footer>
+                            {% for type, messages in app.session.flashbag.all() %}
+                                {% for key, message in messages %}
+                                    <div class="flash-{{ type }}">
+                                        {{ message|trans({}, 'FOSUserBundle') }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+                </header>
+                <nav class="cc-nav">
+                    <ul class="cc-nav-itens">
+                        <li class="cc-nav-item"><a href="{{ path('projetos') }}" class="cc-nav-link">Projetos</a></li>
+                        <li class="cc-nav-item"><a href="#" class="cc-nav-link">Ranking</a></li>
+                        <li class="cc-nav-item"><a href="{{ path('site_contato') }}" class="cc-nav-link">Contato</a></li>
+                        <li class="cc-nav-item"><a href="#" class="cc-nav-link">Sobre</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="cc-content" id="body">
+                <div class="cc-wrapper">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div id="footer">
+                <footer class="cc-footer">
+                    <div class="cc-footer-wrapper">
+                        <table class="cc-footer-table">
+                            <tbody class="cc-footer-table-tbody">
+                                <tr class="cc-footer-table-tr">
+                                    <td class="cc-footer-table-td"><a href="{{ path('site_empresas') }}" class="cc-footer-link">Para marcas</a></td>
+                                    <td class="cc-footer-table-td"><a href="{{ path('site_criadores') }}" class="cc-footer-link">Para criadores</a></td>
+                                    <td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Termos & Condições'}}</a></td>
+                                </tr>
+                                <tr class="cc-footer-table-tr">
+                                    <td class="cc-footer-table-td"><a href="{{ path('site_comofunciona') }}" class="cc-footer-link">Como funciona</a></td>
+                                    <td class="cc-footer-table-td"><a href="{{ path('site_contato') }}" class="cc-footer-link">Contato</a></td>
+                                    <td class="cc-footer-table-td"><a href="#" class="cc-footer-link">{{'Politica de privacidade'}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="cc-footer-social">
+                            <a href="#" class="cc-ico-twitter cc-ico-sprite">siga no twitter</a>
+                            <a href="#" class="cc-ico-facebook cc-ico-sprite">siga no facebook</a>
+                            <a href="#" class="cc-ico-linkedin cc-ico-sprite">siga no linkedin</a>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
 	</body>
 </html>

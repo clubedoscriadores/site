@@ -1,0 +1,27 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+<form action="{{ path('premiacao_ideia_create') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
+    <h1 class="cc-register-title">{{ 'Cadastro de prêmios para ideias' }}</h1>
+    <div class="cc-register-wrapper">
+        <div class="cc-errors">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="cc-form-input">
+            {{ form_label(form.prizeAmount) }}
+            {{ form_widget(form.prizeAmount) }}
+            {{ form_errors(form.prizeAmount) }}
+        </div>
+
+        {{ form_widget(form.project) }}
+
+
+        {{ form_widget(form._token) }}
+
+        <div class="cc-form-submit">
+            <button class="cc-button">Enviar</button>
+        </div>
+
+    </div>
+</form>
+{% endblock %}

@@ -29,6 +29,11 @@ class User extends BaseUser
     protected $groups;
 
     /**
+     * @ORM\OneToMany(targetEntity="Idea", mappedBy="user", fetch="EXTRA_LAZY")
+     */
+    protected $ideas;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=70)
@@ -104,6 +109,39 @@ class User extends BaseUser
     {
         parent::setEmailCanonical($emailCanonical);
         parent::setUsernameCanonical($emailCanonical);
+    }
+
+    /**
+     * Add ideas
+     *
+     * @param \Clube\SiteBundle\Entity\Idea $ideas
+     * @return User
+     */
+    public function addIdea(\Clube\SiteBundle\Entity\Idea $ideas)
+    {
+        $this->ideas[] = $ideas;
+
+        return $this;
+    }
+
+    /**
+     * Remove ideas
+     *
+     * @param \Clube\SiteBundle\Entity\Idea $ideas
+     */
+    public function removeIdea(\Clube\SiteBundle\Entity\Idea $ideas)
+    {
+        $this->ideas->removeElement($ideas);
+    }
+
+    /**
+     * Get ideas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIdeas()
+    {
+        return $this->ideas;
     }
 
     /**

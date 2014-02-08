@@ -18,7 +18,7 @@
     margin-bottom: 15px;
 }
 
-.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label, .cc-form-multiple-label
+.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label, .cc-form-textarea-large label, .cc-form-multiple-label
 {
     width: 150px;
     text-align: right;
@@ -60,6 +60,11 @@
     margin-bottom: 15px;
 }
 
+.cc-form-textarea-large
+{
+    margin-bottom: 20px;
+}
+
 .cc-form-textarea textarea
 {
     display: inline-block;
@@ -78,6 +83,16 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.cc-form-textarea-large textarea
+{
+    height: 150px;
+    width: 626px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0px 0px 4px;
+    padding: 8px 11px;
+
 }
 
 .cc-form-date
@@ -139,4 +154,9 @@
     margin: 0 0 20px 170px;
     padding: 7px 0 0;
     list-style: none;
+}
+
+.cc-form-message
+{
+    margin: 20px 0px 20px 170px;
 }

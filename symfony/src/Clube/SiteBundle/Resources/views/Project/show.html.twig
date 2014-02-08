@@ -39,7 +39,12 @@
 						<p class="cc-project-end-date-text">{{ entity.renderRemaining() }}</p>
 					</div>
 					<div class="cc-project-submit-button">
-						<a class="cc-button" href="" >Envie seu video</a>
+                        {% if entity.projectStatus.name == 'Ideia' %}
+                            <a class="cc-button" href="{{ path('ideia_new', { 'id': entity.id }) }}" >Envie sua ideia</a>
+                        {% endif %}
+                        {% if entity.projectStatus.name == 'Video' %}
+                            <a class="cc-button" href="{{ path('ideia_new', { 'id': entity.id }) }}" >Envie seu video</a>
+                        {% endif %}
 					</div>
 				</div>
             </div>
@@ -48,21 +53,20 @@
         <div>
             <nav class="cc-project-nav">
                 <ul class="cc-project-nav-itens">
-                    <li class="cc-project-nav-item cc-selected"><a href="#" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
-                    <li class="cc-project-nav-item"><a href="#" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
-                    <li class="cc-project-nav-item"><a href="#" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
+                    <li class="cc-project-nav-item{% if aba == 'instrucoes' %} cc-selected{% endif %}"><a href="{{ path('projetos_show', { 'id': entity.id }) }}" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
+                    <li class="cc-project-nav-item{% if aba == 'premiados' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'premiados' }) }}" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
+                    <li class="cc-project-nav-item{% if aba == 'forum' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'forum' }) }}" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
                 </ul>
             </nav>
-            <section class="cc-project-section">
-                <dl class="cc-project-brief-itens">
-                    <dt class="cc-project-brief-title">{{ 'Objetivos' }}</dt>
-                    <dd class="cc-project-brief-detail">{{ entity.objective }}</dd>
-                    <dt class="cc-project-brief-title">{{ 'Detalhes' }}</dt>
-                    <dd class="cc-project-brief-detail">{{ entity.detail }}</dd>
-                    <dt class="cc-project-brief-title">{{ 'Requisitos' }}</dt>
-                    <dd class="cc-project-brief-detail">{{ entity.requirements }}</dd>
-                </dl>
-            </section>
+            {% if aba == 'instrucoes' %}
+                {% include "SiteBundle:Project:show_brief.html.twig" %}
+            {% endif %}
+            {% if aba == 'premiados' %}
+                {% include "SiteBundle:Project:show_prize.html.twig" %}
+            {% endif %}
+            {% if aba == 'forum' %}
+                {% include "SiteBundle:Project:show_forum.html.twig" %}
+            {% endif %}
         </div>
     </section>
 

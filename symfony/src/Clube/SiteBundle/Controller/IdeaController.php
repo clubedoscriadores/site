@@ -7,21 +7,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Clube\SiteBundle\Entity\Project;
-use Clube\SiteBundle\Form\ProjectType;
+use Clube\SiteBundle\Entity\Idea;
+use Clube\SiteBundle\Form\IdeaType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Project controller.
+ * Idea controller.
  *
- * @Route("/projetos")
+ * @Route("/ideia")
  */
-class ProjectController extends Controller
+class IdeaController extends Controller
 {
 
     /**
-     * Lists all Project entities.
+     * Lists all Idea entities.
      *
-     * @Route("/", name="projetos")
+     * @Route("/", name="ideia")
      * @Method("GET")
      * @Template()
      */
@@ -29,31 +30,37 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SiteBundle:Project')->findAll();
+        $entities = $em->getRepository('SiteBundle:Idea')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Project entity.
+     * Creates a new Idea entity.
      *
-     * @Route("/", name="projetos_create")
+     * @Route("/", name="ideia_create")
      * @Method("POST")
-     * @Template("SiteBundle:Project:new.html.twig")
+     * @Template("SiteBundle:Idea:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Project();
-        $form = $this->createCreateForm($entity)->add('file');
+        $em = $this->getDoctrine()->getManager();
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $userProfile = $em->getRepository('SiteBundle:User')->find($usr->getId());
+
+        $entity = new Idea();
+        $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        if ($form->isValid() && $userProfile != null) {
+            $entity->setUser($userProfile);
+            $entity->setCreateDate(new \DateTime("now"));
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('ideia_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -63,16 +70,16 @@ class ProjectController extends Controller
     }
 
     /**
-    * Creates a form to create a Project entity.
+    * Creates a form to create a Idea entity.
     *
-    * @param Project $entity The entity
+    * @param Idea $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Project $entity)
+    private function createCreateForm(Idea $entity)
     {
-        $form = $this->createForm(new ProjectType(), $entity, array(
-            'action' => $this->generateUrl('projetos_create'),
+        $form = $this->createForm(new IdeaType(), $entity, array(
+            'action' => $this->generateUrl('ideia_create'),
             'method' => 'POST',
         ));
 
@@ -82,38 +89,53 @@ class ProjectController extends Controller
     }
 
     /**
-     * Displays a form to create a new Project entity.
+     * Displays a form to create a new Idea entity.
      *
-     * @Route("/new", name="projetos_new")
+     * @Route("/new", name="ideia_new")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
-        $entity = new Project();
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('SiteBundle:Project')->find($id);
+
+        if ($project == null)
+            throw new NotFoundHttpException("Page not found");
+
+        $maxIdeas = $project->getMaxIdeas();
+
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $total = $em->getRepository('SiteBundle:User')->find($usr->getId())->getIdeas()->count();
+
+        $maxIdeas = $maxIdeas - $total;
+
+        $entity = new Idea();
+        $entity->setProject($project);
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'maxIdeas' => $maxIdeas
         );
     }
 
     /**
-     * Finds and displays a Project entity.
+     * Finds and displays a Idea entity.
      *
-     * @Route("/{id}", name="projetos_show")
+     * @Route("/{id}", name="ideia_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id, $aba = 'instrucoes')
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Idea')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Idea entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -121,14 +143,13 @@ class ProjectController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-            'aba' => $aba
         );
     }
 
     /**
-     * Displays a form to edit an existing Project entity.
+     * Displays a form to edit an existing Idea entity.
      *
-     * @Route("/{id}/edit", name="projetos_edit")
+     * @Route("/{id}/edit", name="ideia_edit")
      * @Method("GET")
      * @Template()
      */
@@ -136,10 +157,10 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Idea')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Idea entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -153,16 +174,16 @@ class ProjectController extends Controller
     }
 
     /**
-    * Creates a form to edit a Project entity.
+    * Creates a form to edit a Idea entity.
     *
-    * @param Project $entity The entity
+    * @param Idea $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Project $entity)
+    private function createEditForm(Idea $entity)
     {
-        $form = $this->createForm(new ProjectType(), $entity, array(
-            'action' => $this->generateUrl('projetos_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new IdeaType(), $entity, array(
+            'action' => $this->generateUrl('ideia_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -171,20 +192,20 @@ class ProjectController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Project entity.
+     * Edits an existing Idea entity.
      *
-     * @Route("/{id}", name="projetos_update")
+     * @Route("/{id}", name="ideia_update")
      * @Method("PUT")
-     * @Template("SiteBundle:Project:edit.html.twig")
+     * @Template("SiteBundle:Idea:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Idea')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Idea entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -194,7 +215,7 @@ class ProjectController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('projetos_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('ideia_edit', array('id' => $id)));
         }
 
         return array(
@@ -204,9 +225,9 @@ class ProjectController extends Controller
         );
     }
     /**
-     * Deletes a Project entity.
+     * Deletes a Idea entity.
      *
-     * @Route("/{id}", name="projetos_delete")
+     * @Route("/{id}", name="ideia_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -216,21 +237,21 @@ class ProjectController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SiteBundle:Project')->find($id);
+            $entity = $em->getRepository('SiteBundle:Idea')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Project entity.');
+                throw $this->createNotFoundException('Unable to find Idea entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('projetos'));
+        return $this->redirect($this->generateUrl('ideia'));
     }
 
     /**
-     * Creates a form to delete a Project entity by id.
+     * Creates a form to delete a Idea entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -239,7 +260,7 @@ class ProjectController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('projetos_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('ideia_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

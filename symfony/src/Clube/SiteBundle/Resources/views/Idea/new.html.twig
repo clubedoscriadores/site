@@ -1,0 +1,35 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <form action="{{ path('ideia_create') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
+        <h1 class="cc-register-title">{{ 'Envie sua ideia' }}</h1>
+        <div class="cc-register-wrapper">
+            <div class="cc-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="cc-form-input">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="cc-form-textarea-large">
+                {{ form_label(form.detail) }}
+                {{ form_widget(form.detail) }}
+                {{ form_errors(form.detail) }}
+            </div>
+            {{ form_widget(form.project) }}
+
+
+            {{ form_widget(form._token) }}
+            <div>
+                <p class="cc-form-message"">{{ 'Você pode enviar mais ' }}{{ maxIdeas }}{{ ' ideias.' }}</p>
+            </div>
+
+            <div class="cc-form-submit">
+                <button class="cc-button">Enviar</button>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}

@@ -98,9 +98,23 @@ class Project
     protected $ideas;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="maxIdeas", type="integer")
+     */
+    private $maxIdeas;
+
+    /**
      * @ORM\OneToMany(targetEntity="Video", mappedBy="project")
      */
     protected $videos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="maxVideos", type="integer")
+     */
+    private $maxVideos;
 
     /**
      * @ORM\ManyToMany(targetEntity="User", mappedBy="users")
@@ -108,9 +122,14 @@ class Project
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity="Prize", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="IdeaPrize", mappedBy="project")
      */
-    protected $prizes;
+    protected $ideaPrizes;
+
+    /**
+     * @ORM\OneToMany(targetEntity="VideoPrize", mappedBy="project")
+     */
+    protected $videoPrizes;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -568,6 +587,29 @@ class Project
     }
 
     /**
+     * Set maxIdeas
+     *
+     * @param integer $maxIdeas
+     * @return Project
+     */
+    public function setMaxIdeas($maxIdeas)
+    {
+        $this->maxIdeas = $maxIdeas;
+
+        return $this;
+    }
+
+    /**
+     * Get maxIdeas
+     *
+     * @return integer
+     */
+    public function getMaxIdeas()
+    {
+        return $this->maxIdeas;
+    }
+
+    /**
      * Set videoEndDate
      *
      * @param \DateTime $videoEndDate
@@ -588,6 +630,29 @@ class Project
     public function getVideoEndDate()
     {
         return $this->videoEndDate;
+    }
+
+    /**
+     * Set maxVideos
+     *
+     * @param integer $maxVideos
+     * @return Project
+     */
+    public function setMaxVideos($maxVideos)
+    {
+        $this->maxVideos = $maxVideos;
+
+        return $this;
+    }
+
+    /**
+     * Get maxVideos
+     *
+     * @return integer
+     */
+    public function getMaxVideos()
+    {
+        return $this->maxVideos;
     }
 
     /**
@@ -769,36 +834,93 @@ class Project
         return $this->users;
     }
 
+
     /**
-     * Add prizes
+     * Set path
      *
-     * @param \Clube\SiteBundle\Entity\Prize $prizes
+     * @param string $path
      * @return Project
      */
-    public function addPrize(\Clube\SiteBundle\Entity\Prize $prizes)
+    public function setPath($path)
     {
-        $this->prizes[] = $prizes;
+        $this->path = $path;
 
         return $this;
     }
 
     /**
-     * Remove prizes
+     * Get path
      *
-     * @param \Clube\SiteBundle\Entity\Prize $prizes
+     * @return string 
      */
-    public function removePrize(\Clube\SiteBundle\Entity\Prize $prizes)
+    public function getPath()
     {
-        $this->prizes->removeElement($prizes);
+        return $this->path;
     }
 
     /**
-     * Get prizes
+     * Add ideaPrizes
+     *
+     * @param \Clube\SiteBundle\Entity\IdeaPrize $ideaPrizes
+     * @return Project
+     */
+    public function addIdeaPrize(\Clube\SiteBundle\Entity\IdeaPrize $ideaPrizes)
+    {
+        $this->ideaPrizes[] = $ideaPrizes;
+
+        return $this;
+    }
+
+    /**
+     * Remove ideaPrizes
+     *
+     * @param \Clube\SiteBundle\Entity\IdeaPrize $ideaPrizes
+     */
+    public function removeIdeaPrize(\Clube\SiteBundle\Entity\IdeaPrize $ideaPrizes)
+    {
+        $this->ideaPrizes->removeElement($ideaPrizes);
+    }
+
+    /**
+     * Get ideaPrizes
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPrizes()
+    public function getIdeaPrizes()
     {
-        return $this->prizes;
+        return $this->ideaPrizes;
+    }
+
+    /**
+     * Add videoPrizes
+     *
+     * @param \Clube\SiteBundle\Entity\VideoPrize $videoPrizes
+     * @return Project
+     */
+    public function addVideoPrize(\Clube\SiteBundle\Entity\VideoPrize $videoPrizes)
+    {
+        $this->videoPrizes[] = $videoPrizes;
+
+        return $this;
+    }
+
+    /**
+     * Remove videoPrizes
+     *
+     * @param \Clube\SiteBundle\Entity\VideoPrize $videoPrizes
+     */
+    public function removeVideoPrize(\Clube\SiteBundle\Entity\VideoPrize $videoPrizes)
+    {
+        $this->videoPrizes->removeElement($videoPrizes);
+    }
+
+    /**
+     * Get videoPrizes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideoPrizes()
+    {
+        return $this->videoPrizes;
     }
 }
