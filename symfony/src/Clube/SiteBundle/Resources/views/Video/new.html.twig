@@ -1,0 +1,37 @@
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <form action="{{ path('video_create') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
+        <h1 class="cc-register-title">{{ 'Envie seu vídeo' }}</h1>
+        <div class="cc-register-wrapper">
+            <div class="cc-errors">
+                {{ form_errors(form) }}
+            </div>
+
+            <div class="cc-form-input">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="cc-form-input">
+                {{ form_label(form.file) }}
+                {{ form_widget(form.file) }}
+                {{ form_errors(form.file) }}
+            </div>
+
+            <div>
+                <p class="cc-form-message"">{{ 'Você pode enviar mais ' }}{{ maxVideos }}{{ ' videos.' }}</p>
+            </div>
+
+            {{ form_widget(form.project) }}
+
+
+            {{ form_widget(form._token) }}
+
+            <div class="cc-form-submit">
+                <button class="cc-button">Enviar</button>
+            </div>
+
+        </div>
+    </form>
+{% endblock %}

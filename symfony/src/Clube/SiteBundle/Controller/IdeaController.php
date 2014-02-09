@@ -60,7 +60,7 @@ class IdeaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ideia_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getProject()->getId())));
         }
 
         return array(

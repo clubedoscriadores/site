@@ -81,6 +81,27 @@ ideia_show:
 ideia_delete:
     pattern:  /ed/ideia/excluir/{id}
     defaults: { _controller: SiteBundle:Idea:delete }
+video:
+    pattern:  /ed/videos
+    defaults: { _controller: SiteBundle:Video:index }
+video_new:
+    pattern:  /video/novo/{id}
+    defaults: { _controller: SiteBundle:Video:new }
+video_create:
+    pattern:  /video/criar
+    defaults: { _controller: SiteBundle:Video:create }
+video_edit:
+    pattern:  /ed/video/editar/{id}
+    defaults: { _controller: SiteBundle:Video:edit }
+video_update:
+    pattern:  /ed/video/atualizar/{id}
+    defaults: { _controller: SiteBundle:Video:update }
+video_show:
+    pattern:  /ed/video/detalhe/{id}
+    defaults: { _controller: SiteBundle:Video:show }
+video_delete:
+    pattern:  /ed/video/excluir/{id}
+    defaults: { _controller: SiteBundle:Video:delete }
 premiacao_ideia:
     pattern:  /premiacao/ideia
     defaults: { _controller: SiteBundle:IdeaPrize:index }

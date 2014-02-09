@@ -7,21 +7,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Clube\SiteBundle\Entity\Project;
-use Clube\SiteBundle\Form\ProjectType;
+use Clube\SiteBundle\Entity\Video;
+use Clube\SiteBundle\Form\VideoType;
 
 /**
- * Project controller.
+ * Video controller.
  *
- * @Route("/projetos")
+ * @Route("/video")
  */
-class ProjectController extends Controller
+class VideoController extends Controller
 {
 
     /**
-     * Lists all Project entities.
+     * Lists all Video entities.
      *
-     * @Route("/", name="projetos")
+     * @Route("/", name="video")
      * @Method("GET")
      * @Template()
      */
@@ -29,34 +29,37 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SiteBundle:Project')->findAll();
+        $entities = $em->getRepository('SiteBundle:Video')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Project entity.
+     * Creates a new Video entity.
      *
-     * @Route("/", name="projetos_create")
+     * @Route("/", name="video_create")
      * @Method("POST")
-     * @Template("SiteBundle:Project:new.html.twig")
+     * @Template("SiteBundle:Video:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Project();
+        $em = $this->getDoctrine()->getManager();
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $userProfile = $em->getRepository('SiteBundle:User')->find($usr->getId());
+
+        $entity = new Video();
         $form = $this->createCreateForm($entity)->add('file');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity->setMaxIdeas(5);
-            $entity->setMaxVideos(5);
+            $entity->setUser($userProfile);
+            $entity->setCreateDate(new \DateTime("now"));
 
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getProject()->getId())));
         }
 
         return array(
@@ -66,16 +69,16 @@ class ProjectController extends Controller
     }
 
     /**
-    * Creates a form to create a Project entity.
+    * Creates a form to create a Video entity.
     *
-    * @param Project $entity The entity
+    * @param Video $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Project $entity)
+    private function createCreateForm(Video $entity)
     {
-        $form = $this->createForm(new ProjectType(), $entity, array(
-            'action' => $this->generateUrl('projetos_create'),
+        $form = $this->createForm(new VideoType(), $entity, array(
+            'action' => $this->generateUrl('video_create'),
             'method' => 'POST',
         ));
 
@@ -85,38 +88,53 @@ class ProjectController extends Controller
     }
 
     /**
-     * Displays a form to create a new Project entity.
+     * Displays a form to create a new Video entity.
      *
-     * @Route("/new", name="projetos_new")
+     * @Route("/new", name="video_new")
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
-        $entity = new Project();
+        $em = $this->getDoctrine()->getManager();
+        $project = $em->getRepository('SiteBundle:Project')->find($id);
+
+        if ($project == null)
+            throw new NotFoundHttpException("Page not found");
+
+        $maxVideos = $project->getMaxVideos();
+
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $total = $em->getRepository('SiteBundle:User')->find($usr->getId())->getVideos()->count();
+
+        $maxVideos = $maxVideos - $total;
+
+        $entity = new Video();
+        $entity->setProject($project);
         $form   = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'maxVideos' => $maxVideos
         );
     }
 
     /**
-     * Finds and displays a Project entity.
+     * Finds and displays a Video entity.
      *
-     * @Route("/{id}", name="projetos_show")
+     * @Route("/{id}", name="video_show")
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id, $aba = 'instrucoes')
+    public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -124,14 +142,13 @@ class ProjectController extends Controller
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
-            'aba' => $aba
         );
     }
 
     /**
-     * Displays a form to edit an existing Project entity.
+     * Displays a form to edit an existing Video entity.
      *
-     * @Route("/{id}/edit", name="projetos_edit")
+     * @Route("/{id}/edit", name="video_edit")
      * @Method("GET")
      * @Template()
      */
@@ -139,10 +156,10 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -156,16 +173,16 @@ class ProjectController extends Controller
     }
 
     /**
-    * Creates a form to edit a Project entity.
+    * Creates a form to edit a Video entity.
     *
-    * @param Project $entity The entity
+    * @param Video $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Project $entity)
+    private function createEditForm(Video $entity)
     {
-        $form = $this->createForm(new ProjectType(), $entity, array(
-            'action' => $this->generateUrl('projetos_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new VideoType(), $entity, array(
+            'action' => $this->generateUrl('video_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -174,20 +191,20 @@ class ProjectController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Project entity.
+     * Edits an existing Video entity.
      *
-     * @Route("/{id}", name="projetos_update")
+     * @Route("/{id}", name="video_update")
      * @Method("PUT")
-     * @Template("SiteBundle:Project:edit.html.twig")
+     * @Template("SiteBundle:Video:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SiteBundle:Project')->find($id);
+        $entity = $em->getRepository('SiteBundle:Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Project entity.');
+            throw $this->createNotFoundException('Unable to find Video entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -197,7 +214,7 @@ class ProjectController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('projetos_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('video_edit', array('id' => $id)));
         }
 
         return array(
@@ -207,9 +224,9 @@ class ProjectController extends Controller
         );
     }
     /**
-     * Deletes a Project entity.
+     * Deletes a Video entity.
      *
-     * @Route("/{id}", name="projetos_delete")
+     * @Route("/{id}", name="video_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -219,21 +236,21 @@ class ProjectController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SiteBundle:Project')->find($id);
+            $entity = $em->getRepository('SiteBundle:Video')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Project entity.');
+                throw $this->createNotFoundException('Unable to find Video entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('projetos'));
+        return $this->redirect($this->generateUrl('video'));
     }
 
     /**
-     * Creates a form to delete a Project entity by id.
+     * Creates a form to delete a Video entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -242,7 +259,7 @@ class ProjectController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('projetos_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('video_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

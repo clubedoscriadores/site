@@ -34,6 +34,11 @@ class User extends BaseUser
     protected $ideas;
 
     /**
+     * @ORM\OneToMany(targetEntity="Video", mappedBy="user", fetch="EXTRA_LAZY")
+     */
+    protected $videos;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=70)
@@ -403,5 +408,38 @@ class User extends BaseUser
     public function getGroups()
     {
         return $this->groups;
+    }
+
+    /**
+     * Add videos
+     *
+     * @param \Clube\SiteBundle\Entity\Video $videos
+     * @return User
+     */
+    public function addVideo(\Clube\SiteBundle\Entity\Video $videos)
+    {
+        $this->videos[] = $videos;
+
+        return $this;
+    }
+
+    /**
+     * Remove videos
+     *
+     * @param \Clube\SiteBundle\Entity\Video $videos
+     */
+    public function removeVideo(\Clube\SiteBundle\Entity\Video $videos)
+    {
+        $this->videos->removeElement($videos);
+    }
+
+    /**
+     * Get videos
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVideos()
+    {
+        return $this->videos;
     }
 }
