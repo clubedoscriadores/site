@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
 		"friendsofsymfony/user-bundle": "~2.0@dev",
 		"aws/aws-sdk-php": "2.*",
-        "hwi/oauth-bundle": "0.3.*@dev"
+        "hwi/oauth-bundle": "0.3.*@dev",
+        "google/apiclient": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
@@ -51,5 +52,11 @@
         "branch-alias": {
             "dev-master": "2.4-dev"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/google/google-api-php-client"
+        }
+    ]
 }

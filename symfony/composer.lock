@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "db043aa6752330396515b649b535b361",
+    "hash": "53969c24ac87b5548f8c7e38ca357cb0",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -760,6 +760,46 @@
             "time": "2014-01-26 23:20:11"
         },
         {
+            "name": "google/apiclient",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "1c21b00e26df6520e32014231ea66ba04ce54855"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/1c21b00e26df6520e32014231ea66ba04ce54855",
+                "reference": "1c21b00e26df6520e32014231ea66ba04ce54855",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "include-path": [
+                "src/"
+            ],
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "source": "https://github.com/google/google-api-php-client/tree/master",
+                "issues": "https://github.com/google/google-api-php-client/issues"
+            },
+            "time": "2014-02-08 05:12:06"
+        },
+        {
             "name": "guzzle/guzzle",
             "version": "v3.8.1",
             "source": {
@@ -858,12 +898,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "071bd0de9245cbbc0bce057e4d3a8c696d790894"
+                "reference": "8a42cccda1a60bbbbba724c5c3cd313aa24d66a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/071bd0de9245cbbc0bce057e4d3a8c696d790894",
-                "reference": "071bd0de9245cbbc0bce057e4d3a8c696d790894",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/8a42cccda1a60bbbbba724c5c3cd313aa24d66a1",
+                "reference": "8a42cccda1a60bbbbba724c5c3cd313aa24d66a1",
                 "shasum": ""
             },
             "require": {
@@ -962,7 +1002,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2014-02-07 11:44:56"
+            "time": "2014-02-10 09:20:16"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1932,7 +1972,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
-        "hwi/oauth-bundle": 20
+        "hwi/oauth-bundle": 20,
+        "google/apiclient": 20
     },
     "platform": {
         "php": ">=5.3.3"

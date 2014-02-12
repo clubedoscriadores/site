@@ -38,6 +38,13 @@ class Video
     private $title;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="youtube_code", type="string", length=150, nullable=true)
+     */
+    private $youtubeCode;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="create_date", type="datetime")
@@ -358,5 +365,51 @@ class Video
     public function getVideoPrize()
     {
         return $this->videoPrize;
+    }
+
+    /**
+     * Set youtubeCode
+     *
+     * @param string $youtubeCode
+     * @return Video
+     */
+    public function setYoutubeCode($youtubeCode)
+    {
+        $this->youtubeCode = $youtubeCode;
+
+        return $this;
+    }
+
+    /**
+     * Get youtubeCode
+     *
+     * @return string 
+     */
+    public function getYoutubeCode()
+    {
+        return $this->youtubeCode;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Video
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 }
