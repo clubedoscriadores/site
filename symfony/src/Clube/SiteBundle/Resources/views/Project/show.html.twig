@@ -56,6 +56,8 @@
                     <li class="cc-project-nav-item{% if aba == 'instrucoes' %} cc-selected{% endif %}"><a href="{{ path('projetos_show', { 'id': entity.id }) }}" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
                     <li class="cc-project-nav-item{% if aba == 'premiados' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'premiados' }) }}" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
                     <li class="cc-project-nav-item{% if aba == 'forum' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'forum' }) }}" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
+                    <li class="cc-project-nav-item{% if aba == 'ideia' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'ideia' }) }}" class="cc-project-nav-link">{{ 'Ideia' }}</a></li>
+                    <li class="cc-project-nav-item{% if aba == 'video' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'video' }) }}" class="cc-project-nav-link">{{ 'Vídeo' }}</a></li>
                 </ul>
             </nav>
             {% if aba == 'instrucoes' %}
@@ -66,6 +68,12 @@
             {% endif %}
             {% if aba == 'forum' %}
                 {% include "SiteBundle:Project:show_forum.html.twig" %}
+            {% endif %}
+            {% if aba == 'ideia' %}
+                {% include "SiteBundle:Project:show_ideia.html.twig" %}
+            {% endif %}
+            {% if aba == 'video' %}
+                {% include "SiteBundle:Project:show_video.html.twig" %}
             {% endif %}
         </div>
     </section>

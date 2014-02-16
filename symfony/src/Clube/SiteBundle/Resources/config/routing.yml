@@ -26,7 +26,7 @@ projetos_show_2:
     pattern:  /projeto/{id}/{aba}
     defaults: { _controller: SiteBundle:Project:show }
     requirements:
-        aba : premiados|forum
+        aba : premiados|forum|ideia|video
 projetos_delete:
     pattern:  /ed/projetos/delete/{id}
     defaults: { _controller: SiteBundle:Project:delete }

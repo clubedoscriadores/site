@@ -22,7 +22,8 @@
 		"friendsofsymfony/user-bundle": "~2.0@dev",
 		"aws/aws-sdk-php": "2.*",
         "hwi/oauth-bundle": "0.3.*@dev",
-        "google/apiclient": "dev-master"
+        "google/apiclient": "dev-master",
+        "knplabs/knp-paginator-bundle": "~2.4"
     },
     "scripts": {
         "post-install-cmd": [

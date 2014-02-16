@@ -119,13 +119,54 @@ class ProjectController extends Controller
             throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $pagination = null;
+
+        if ($aba == 'ideia')
+        {
+            $pagination = $this->_getIdeaPagination();
+        }
+        else if ($aba == 'video')
+        {
+            $pagination = $this->_getVideoPagination();
+        }
 
         return array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-            'aba' => $aba
+            'aba' => $aba,
+            'pagination' => $pagination
         );
+    }
+
+    private function _getIdeaPagination()
+    {
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT a FROM SiteBundle:Idea a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return $pagination;
+    }
+
+    private function _getVideoPagination()
+    {
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT a FROM SiteBundle:Video a";
+        $query = $em->createQuery($dql);
+
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $this->get('request')->query->get('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
+        return $pagination;
     }
 
     /**

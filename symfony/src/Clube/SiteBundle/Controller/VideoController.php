@@ -9,6 +9,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Clube\SiteBundle\Entity\Video;
 use Clube\SiteBundle\Form\VideoType;
+use Aws\S3\S3Client;
+use Aws\ElasticTranscoder\ElasticTranscoderClient;
 
 /**
  * Video controller.
@@ -58,11 +60,7 @@ class VideoController extends Controller
 
             $em->persist($entity);
             $em->flush();
-
-            $youtubeCode = $this->_sendYoutube($entity->getAbsolutePath(), $entity->getTitle());
-            $entity->setYoutubeCode($youtubeCode);
-            $em->persist($entity);
-            $em->flush();
+            $this->_sendS3($entity);
 
             return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getProject()->getId())));
         }
@@ -71,6 +69,76 @@ class VideoController extends Controller
             'entity' => $entity,
             'form'   => $form->createView(),
         );
+    }
+
+    private function _sendS3($video)
+    {
+        $bucket = $this->container->getParameter('aws_bucket');
+        $pathToFile = $video->getAbsolutePath();
+        $fileName = $video->getId() . '.' . $video->getPath();
+
+        // Create an Amazon S3 client object
+        $client = S3Client::factory(array(
+            'key'    => $this->container->getParameter('aws_access_key'),
+            'secret' => $this->container->getParameter('aws_secret_key')
+        ));
+
+        $result = $client->putObject(array(
+            'Bucket'     => $bucket,
+            'Key'        => $fileName,
+            'SourceFile' => $pathToFile
+        ));
+
+        $this->_transcoding($video);
+    }
+
+    private function _transcoding($video)
+    {
+        $client = ElasticTranscoderClient::factory(array(
+            'key'    => $this->container->getParameter('aws_access_key'),
+            'secret' => $this->container->getParameter('aws_secret_key'),
+            'region' => 'us-west-2'
+        ));
+
+        $inputKey = $video->getId() . '.' . $video->getPath();
+        $outputPrefix360 = 'cc360/';
+        $outputPrefix720 = 'cc720/';
+
+        $client->createJob(array(
+            'PipelineId' => '1392428016548-ijb5wx',
+            'Input' => array(
+                'Key' => $inputKey,
+            ),
+            'ThumbnailPattern' => 't-{resolution}',
+            'Thumbnails' => array(
+                'Format' => 'jpg',
+                'Interval' => '3',
+                'AspectRatio' => 'auto',
+            ),
+            'Output' => array(
+                'Key' => $inputKey,
+                'PresetId' => '1351620000001-000040'
+            ),
+            'OutputKeyPrefix' => $outputPrefix360,
+        ));
+
+        $client->createJob(array(
+            'PipelineId' => '1392428016548-ijb5wx',
+            'Input' => array(
+                'Key' => $inputKey,
+            ),
+            'ThumbnailPattern' => 't-{resolution}',
+            'Output' => array(
+                'Key' => $inputKey,
+                'PresetId' => '1351620000001-000010'
+            ),
+            'OutputKeyPrefix' => $outputPrefix720,
+            'Thumbnails' => array(
+                'Format' => 'png',
+                'Interval' => '3',
+                'AspectRatio' => 'auto',
+            ),
+        ));
     }
 
     private function _sendYoutube($videoFile, $videoTitle)
@@ -194,11 +262,11 @@ class VideoController extends Controller
             $_SESSION['token'] = $client->getAccessToken();
         } else {
             // If the user hasn't authorized the app, initiate the OAuth flow
-            //$state = mt_rand();
-            // $client->setState($state);
-            // $_SESSION['state'] = $state;
+            $state = mt_rand();
+            $client->setState($state);
+            $_SESSION['state'] = $state;
 
-            //$authUrl = $client->createAuthUrl();
+            $authUrl = $client->createAuthUrl();
             //$htmlBody = <<<END
             //<h3>Authorization Required</h3>
             //<p>You need to <a href="$authUrl">authorize access</a> before proceeding.<p>

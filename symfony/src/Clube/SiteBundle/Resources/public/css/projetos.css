@@ -335,7 +335,7 @@
 {
 	display: inline-block;
 	border: 1px solid #ccc;
-	margin-right: 17px;
+	margin-right: 0px;
 }
 
 .cc-project-nav-item.cc-selected
@@ -403,4 +403,17 @@
     list-style: none;
     margin: 0px 0px 15px 20px;
     padding: 0px;
+}
+
+.cc-project-prize-item
+{
+    border-bottom: 1px dotted #ccc;
+    margin-bottom: 15px;
+}
+
+.cc-project-video-item
+{
+    margin-bottom: 15px;
+    padding-bottom: 25px;
+    border-bottom: 1px dotted #ccc;
 }

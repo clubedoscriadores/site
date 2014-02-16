@@ -1,0 +1,23 @@
+<section class="cc-project-section">
+    <dl class="cc-project-brief-itens">
+        <dt class="cc-project-brief-title">{{ 'Ideias enviadas' }}</dt>
+        <dd class="cc-project-brief-detail">
+            <ul class="cc-project-prize-itens">
+                {% for idea in pagination %}
+                    <li class="cc-project-prize-item">
+                        <h2 class="cc-project-prize-itens-title">{{ idea.title }}</h2>
+                        <p>{{ idea.detail }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </dd>
+    </dl>
+
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/pagination.css') }}" type="text/css" media="all" />
+
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</section>
