@@ -100,12 +100,13 @@ class VideoController extends Controller
             'region' => 'us-west-2'
         ));
 
+        $pipelineId = $this->container->getParameter('aws_pipeline_id');
         $inputKey = $video->getId() . '.' . $video->getPath();
         $outputPrefix360 = 'cc360/';
         $outputPrefix720 = 'cc720/';
 
         $client->createJob(array(
-            'PipelineId' => '1392428016548-ijb5wx',
+            'PipelineId' => $pipelineId,
             'Input' => array(
                 'Key' => $inputKey,
             ),
@@ -123,7 +124,7 @@ class VideoController extends Controller
         ));
 
         $client->createJob(array(
-            'PipelineId' => '1392428016548-ijb5wx',
+            'PipelineId' => $pipelineId,
             'Input' => array(
                 'Key' => $inputKey,
             ),
