@@ -97,7 +97,7 @@ class VideoController extends Controller
         $client = ElasticTranscoderClient::factory(array(
             'key'    => $this->container->getParameter('aws_access_key'),
             'secret' => $this->container->getParameter('aws_secret_key'),
-            'region' => 'us-west-2'
+            'region' => 'us-east-1'
         ));
 
         $pipelineId = $this->container->getParameter('aws_pipeline_id');
