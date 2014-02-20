@@ -110,20 +110,15 @@ class VideoController extends Controller
             'Input' => array(
                 'Key' => $inputKey,
             ),
-            'ThumbnailPattern' => 't-{resolution}',
-            'Thumbnails' => array(
-                'Format' => 'jpg',
-                'Interval' => '3',
-                'AspectRatio' => 'auto',
-            ),
             'Output' => array(
                 'Key' => $inputKey,
-                'PresetId' => '1351620000001-000040'
+                'PresetId' => '1351620000001-000040',
+                'ThumbnailPattern' => 't' . $video->getId() . '-{count}',
             ),
             'OutputKeyPrefix' => $outputPrefix360,
         ));
 
-        $client->createJob(array(
+        /*$client->createJob(array(
             'PipelineId' => $pipelineId,
             'Input' => array(
                 'Key' => $inputKey,
@@ -139,7 +134,7 @@ class VideoController extends Controller
                 'Interval' => '3',
                 'AspectRatio' => 'auto',
             ),
-        ));
+        ));*/
     }
 
     private function _sendYoutube($videoFile, $videoTitle)
