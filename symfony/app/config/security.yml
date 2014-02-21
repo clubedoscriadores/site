@@ -23,7 +23,7 @@ security:
                 check_path: /login
                 provider: fos_userbundle
                 resource_owners:
-                    facebook: "/login/check-facebook/"
+                    facebook: "/login/check-facebook"
                     google:   "/login/check-google"
                 oauth_user_provider:
                     service: my_user_provider
