@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d564100d9f5b29f7eef875157ca8cb4c",
+    "hash": "2e4631bd06901211290f53bf3b67b192",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -697,12 +697,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "23d15ad680fe5b695df1565e7854342e608bc483"
+                "reference": "ae2be6ca5886696ec6b20e31340387a3fd7d676e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/23d15ad680fe5b695df1565e7854342e608bc483",
-                "reference": "23d15ad680fe5b695df1565e7854342e608bc483",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/ae2be6ca5886696ec6b20e31340387a3fd7d676e",
+                "reference": "ae2be6ca5886696ec6b20e31340387a3fd7d676e",
                 "shasum": ""
             },
             "require": {
@@ -757,7 +757,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2014-01-26 23:20:11"
+            "time": "2014-02-19 14:32:53"
         },
         {
             "name": "google/apiclient",
@@ -765,12 +765,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/google/google-api-php-client.git",
-                "reference": "b8007b16d07baedec074c104c01c6cb1204afb15"
+                "reference": "4a2846270f5710beaf9a437a4dfdef8d1881a54b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/b8007b16d07baedec074c104c01c6cb1204afb15",
-                "reference": "b8007b16d07baedec074c104c01c6cb1204afb15",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/4a2846270f5710beaf9a437a4dfdef8d1881a54b",
+                "reference": "4a2846270f5710beaf9a437a4dfdef8d1881a54b",
                 "shasum": ""
             },
             "require": {
@@ -797,7 +797,7 @@
                 "source": "https://github.com/google/google-api-php-client/tree/master",
                 "issues": "https://github.com/google/google-api-php-client/issues"
             },
-            "time": "2014-02-15 05:19:47"
+            "time": "2014-02-19 05:23:55"
         },
         {
             "name": "guzzle/guzzle",
@@ -893,28 +893,28 @@
         },
         {
             "name": "hwi/oauth-bundle",
-            "version": "0.3.x-dev",
+            "version": "dev-master",
             "target-dir": "HWI/Bundle/OAuthBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hwi/HWIOAuthBundle.git",
-                "reference": "7658c86bb43a3bcd022ecc867a10e80a6eadd1c9"
+                "reference": "cb90e60c079bbf3aed8044cd71d5e03e32d60133"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/7658c86bb43a3bcd022ecc867a10e80a6eadd1c9",
-                "reference": "7658c86bb43a3bcd022ecc867a10e80a6eadd1c9",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/cb90e60c079bbf3aed8044cd71d5e03e32d60133",
+                "reference": "cb90e60c079bbf3aed8044cd71d5e03e32d60133",
                 "shasum": ""
             },
             "require": {
                 "kriswallsmith/buzz": "~0.7",
                 "php": ">=5.3.3",
-                "symfony/framework-bundle": "~2.1",
+                "symfony/framework-bundle": "~2.3",
                 "symfony/options-resolver": "~2.1",
                 "symfony/security-bundle": "~2.1"
             },
             "require-dev": {
-                "doctrine/orm": "~2.2",
+                "doctrine/orm": "~2.3",
                 "symfony/twig-bundle": "~2.1",
                 "symfony/validator": "~2.1"
             },
@@ -926,12 +926,12 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.3-dev"
+                    "dev-master": "0.4-dev"
                 }
             },
             "autoload": {
                 "psr-0": {
-                    "HWI\\Bundle\\OAuthBundle": ""
+                    "HWI\\Bundle\\OAuthBundle\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -949,7 +949,7 @@
                     "homepage": "https://github.com/hwi/HWIOAuthBundle/contributors"
                 },
                 {
-                    "name": "Alexander",
+                    "name": "Alexander Mols",
                     "email": "iam.asm89@gmail.com",
                     "homepage": "http://asm89.github.io/"
                 },
@@ -1002,7 +1002,7 @@
                 "yahoo",
                 "yandex"
             ],
-            "time": "2014-02-14 10:45:48"
+            "time": "2014-02-17 15:29:08"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1760,17 +1760,17 @@
         },
         {
             "name": "symfony/monolog-bundle",
-            "version": "v2.5.0",
+            "version": "v2.5.1",
             "target-dir": "Symfony/Bundle/MonologBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/MonologBundle.git",
-                "reference": "29a17a347dfc41aed34ce9b72cceaf375635c408"
+                "reference": "71ad844ac29401f86619f9d643393265451e858b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/29a17a347dfc41aed34ce9b72cceaf375635c408",
-                "reference": "29a17a347dfc41aed34ce9b72cceaf375635c408",
+                "url": "https://api.github.com/repos/symfony/MonologBundle/zipball/71ad844ac29401f86619f9d643393265451e858b",
+                "reference": "71ad844ac29401f86619f9d643393265451e858b",
                 "shasum": ""
             },
             "require": {
@@ -1803,7 +1803,9 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Symfony Community",
@@ -1816,7 +1818,7 @@
                 "log",
                 "logging"
             ],
-            "time": "2014-01-19 13:23:40"
+            "time": "2014-02-19 14:49:26"
         },
         {
             "name": "symfony/swiftmailer-bundle",
