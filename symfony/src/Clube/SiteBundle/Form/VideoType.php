@@ -16,11 +16,14 @@ class VideoType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('createDate')
-            ->add('isWinner')
             ->add('path')
             ->add('project', 'entity_hidden')
             ->add('file')
+            ->add('user', 'entity_hidden')
+            ->add('videoPrize', 'entity', array(
+                'class' => 'SiteBundle:VideoPrize',
+                'property' => 'prizePlace',
+            ))
         ;
     }
     

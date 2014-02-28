@@ -16,8 +16,7 @@ class VideoPrizeType extends AbstractType
     {
         $builder
             ->add('prizeAmount', null, array('label' => 'Valor'))
-            ->add('prizePlace')
-            ->add('createDate')
+            ->add('prizePlace', null, array('label' => 'Colocação'))
             ->add('video', 'entity_hidden')
             ->add('project', 'entity_hidden')
         ;

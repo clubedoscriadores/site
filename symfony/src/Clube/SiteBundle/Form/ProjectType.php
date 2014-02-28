@@ -15,24 +15,17 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('objective')
-            ->add('detail')
-            ->add('requirements')
-            ->add('createDate')
-            ->add('ideaEndDate')
-            ->add('videoEndDate')
-            ->add('totalPrize')
-            ->add('projectStatus','entity',array(
-                'class' => 'SiteBundle:ProjectStatus',
-                'property' => 'name'
-            ))
-            ->add('company','entity',array(
-                'class' => 'SiteBundle:Company',
-                'property' => 'name'
-            ))
-            ->add('users')
-            ->add('file')
+            ->add('name', null, array('label' => 'Nome'))
+            ->add('objective', null, array('label' => 'Objetivos'))
+            ->add('detail', null, array('label' => 'Detalhes'))
+            ->add('requirements', null, array('label' => 'Requisitos'))
+            ->add('maxIdeas', 'integer', array('label' => 'Máximo de ideias'))
+            ->add('maxVideos', 'integer', array('label' => 'Máximo de videos'))
+            ->add('requirements', null, array('label' => 'Requisitos'))
+            ->add('ideaEndDate', 'date', array('label' => 'Limite ideia','format' => 'ddMMyyyy','data' =>  date_create()))
+            ->add('videoEndDate', 'date', array('label' => 'Limite video','format' => 'ddMMyyyy','data' =>  date_create()))
+            ->add('file', null, array('label' => 'Imagem'))
+            ->add('company', 'entity_hidden')
         ;
     }
     

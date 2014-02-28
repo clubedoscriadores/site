@@ -14,7 +14,7 @@ projetos:
     pattern:  /projetos
     defaults: { _controller: SiteBundle:Project:index }
 projetos_new:
-    pattern:  /novo/projeto
+    pattern:  /novo/projeto/{id}
     defaults: { _controller: SiteBundle:Project:new }
 projetos_create:
     pattern:  /criar/projeto
@@ -39,6 +39,9 @@ projetos_update:
 site_contato:
     pattern:  /contato
     defaults: { _controller: SiteBundle:Default:contato }
+admin:
+    pattern:  /ed
+    defaults: { _controller: SiteBundle:Admin:index }
 marca:
     pattern:  /ed/marcas
     defaults: { _controller: SiteBundle:Company:index }
@@ -55,7 +58,7 @@ marca_update:
     pattern:  /ed/marcas/atualizar/{id}
     defaults: { _controller: SiteBundle:Company:update }
 marca_show:
-    pattern:  /ed/marcas/detalhe/{id}
+    pattern:  /marcas/detalhe/{id}
     defaults: { _controller: SiteBundle:Company:show }
 marca_delete:
     pattern:  /ed/marcas/excluir/{id}

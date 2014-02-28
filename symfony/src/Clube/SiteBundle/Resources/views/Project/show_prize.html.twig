@@ -5,8 +5,9 @@
             <h2 class="cc-project-prize-itens-title">{{ "Premiação" }}</h2>
             <ul class="cc-project-prize-itens">
                 {% for prize in entity.ideaPrizes %}
-                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }}</li>
+                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }} <a href="{{ path('premiacao_ideia_edit', { 'id': prize.id }) }}">editar</a></li>
                 {% endfor %}
+                <li><a class="cc-button" href="{{ path('premiacao_ideia_new', { 'id': entity.id }) }}">Adicionar</a></li>
             </ul>
         </dd>
         <dt class="cc-project-brief-title">{{ 'Videos' }}</dt>
@@ -14,8 +15,9 @@
             <h2 class="cc-project-prize-itens-title">{{ "Premiação" }}</h2>
             <ul class="cc-project-prize-itens">
                 {% for prize in entity.videoPrizes %}
-                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }}</li>
+                    <li class="cc-project-prize-item">{{ prize.prizePlace }}. {{ 'R$ ' }}{{ prize.prizeAmount|number_format(2, ',', '.')  }}  <a href="{{ path('premiacao_video_edit', { 'id': prize.id }) }}">editar</a></li>
                 {% endfor %}
+                <li><a class="cc-button" href="{{ path('premiacao_video_new', { 'id': entity.id }) }}">Adicionar</a></li>
             </ul>
         </dd>
     </dl>

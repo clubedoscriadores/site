@@ -415,9 +415,11 @@ class VideoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setCreateDate(new \DateTime("now"));
+
             $em->flush();
 
-            return $this->redirect($this->generateUrl('video_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'video')));
         }
 
         return array(
@@ -444,9 +446,11 @@ class VideoController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Video entity.');
             }
+            $projectId = $entity->getProject()->getId();
 
             $em->remove($entity);
             $em->flush();
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'video')));
         }
 
         return $this->redirect($this->generateUrl('video'));

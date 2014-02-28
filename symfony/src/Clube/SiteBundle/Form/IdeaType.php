@@ -18,8 +18,12 @@ class IdeaType extends AbstractType
             ->add('title', null, array('label' => 'Título'))
             ->add('detail', null, array('label' => 'Detalhes'))
             ->add('createDate')
-            ->add('isWinner')
             ->add('project', 'entity_hidden')
+            ->add('user', 'entity_hidden')
+            ->add('ideaPrize', 'entity', array(
+                'class' => 'SiteBundle:IdeaPrize',
+                'property' => 'prizePlace',
+            ))
         ;
     }
     

@@ -213,9 +213,12 @@ class IdeaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $this->_removeAssociatePrize($em, $entity->getIdeaPrize()->getId());
+
+            $entity->setCreateDate(new \DateTime("now"));
             $em->flush();
 
-            return $this->redirect($this->generateUrl('ideia_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'ideia')));
         }
 
         return array(
@@ -224,6 +227,16 @@ class IdeaController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
+    private function _removeAssociatePrize($em, $ideaPrizeId)
+    {
+        $em->getConnection()
+           ->executeUpdate(
+            "UPDATE idea SET idea_prize_id = NULL
+             WHERE idea_prize_id=$ideaPrizeId;");
+
+    }
+
     /**
      * Deletes a Idea entity.
      *
@@ -242,9 +255,11 @@ class IdeaController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Idea entity.');
             }
+            $projectId = $entity->getProject()->getId();
 
             $em->remove($entity);
             $em->flush();
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'ideia')));
         }
 
         return $this->redirect($this->generateUrl('ideia'));

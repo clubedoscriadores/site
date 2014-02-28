@@ -1,0 +1,73 @@
+.cc-company-header
+{
+    background: #F5F5F5;
+    padding: 0px;
+    margin-bottom: 15px;
+}
+
+.cc-company .cc-header
+{
+    text-align: left;
+    margin: 0px 0px 0px 15px;
+    padding: 0px;
+}
+
+.cc-company-header-images
+{
+    height: 250px;
+}
+.cc-company-logo {
+    float: left;
+}
+
+.cc-company-background{
+    float: left;
+}
+
+.cc-company-logo-img {
+    width: 250px;
+    height: 250px;
+}
+.cc-company-background-img {
+    height: 250px;
+    width: 705px;
+}
+
+.cc-company-info-title
+{
+    display: inline-block;
+    width: 235px;
+    padding: 0px 0px 5px 15px;
+    vertical-align: top;
+}
+
+.cc-company-title
+{
+    margin: 0px;
+    font-size: 22px;
+    font-family: Tahoma, Geneva, sans-serif;
+    color: #222;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cc-company-site
+{
+    margin: 0px;
+}
+
+.cc-company-info-detail
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 694px;
+    padding: 0px 6px 10px 0px;
+}
+
+.cc-company-detail
+{
+    margin: 0px;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+}

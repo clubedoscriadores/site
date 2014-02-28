@@ -12,13 +12,28 @@
     padding: 0px 0px 20px 40px;
 }
 
+.cc-form-wrapper
+{
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: #000;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+
 .cc-form-input
 {
     height: 35px;
     margin-bottom: 15px;
 }
 
-.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label, .cc-form-textarea-large label, .cc-form-multiple-label
+.cc-form-number
+{
+    height: 35px;
+    margin-bottom: 15px;
+}
+
+.cc-form-input label, .cc-form-date label, .cc-form-select label, .cc-form-textarea label, .cc-form-textarea-large label, .cc-form-multiple-label, .cc-form-number label
 {
     width: 150px;
     text-align: right;
@@ -27,6 +42,17 @@
     display: block;
     height: 35px;
     float: left;
+}
+
+.cc-form-ckeditor
+{
+    margin-bottom: 15px;
+}
+
+.cc-form-ckeditor label
+{
+    margin-bottom: 10px;
+    display: block;
 }
 
 .cc-form-date label
@@ -52,6 +78,11 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.cc-form-full .cc-form-input input
+{
+    width: 620px;
 }
 
 .cc-form-textarea
@@ -149,6 +180,12 @@
     margin-left: 173px;
 }
 
+.cc-form-submit-center
+{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 .cc-form-multiple-itens
 {
     margin: 0 0 20px 170px;
@@ -159,4 +196,14 @@
 .cc-form-message
 {
     margin: 20px 0px 20px 170px;
+}
+
+.cc-form-number input[type=number]
+{
+    width: 50px;
+    display: inline-block;
+    padding: 7px 28px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px;
 }

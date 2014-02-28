@@ -25,7 +25,7 @@ DirectoryIndex app.php
     # redirect -> request -> ...).
     # So in case you get a "too many redirects" error or you always get redirected
     # to the start page because your Apache does not expose the REDIRECT_STATUS
-    # environment variable, you have 2 choices:
+    # environment variable, you have 2 choices: 
     # - disable this feature by commenting the following 2 lines or
     # - use Apache >= 2.3.9 and replace all L flags by END flags and remove the
     #   following RewriteCond (best solution)

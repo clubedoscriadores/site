@@ -18,7 +18,11 @@ class CompanyType extends AbstractType
         $builder
             ->add('name', null, array(
                 'label' => 'Nome'))
-            ->remove('createDate')
+            ->add('logo', null, array('label' => 'Logo (250x250)'))
+            ->add('background', null, array('label' => 'Capa (705x250)'))
+            ->add('link', null, array('label' => 'Link amigável'))
+            ->add('site', null, array('label' => 'Site'))
+            ->add('detail', null, array('label' => 'Detalhes'))
             ->add('users', 'entity', array(
                 'label' => 'Usuários',
                 'label_attr' => array('class' => 'cc-form-multiple-label'),

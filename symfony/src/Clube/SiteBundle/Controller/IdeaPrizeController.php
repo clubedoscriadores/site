@@ -64,7 +64,7 @@ class IdeaPrizeController extends Controller
             $em->persist($project);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('premiacao_ideia_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'premiados')));
         }
 
         return array(
@@ -227,9 +227,16 @@ class IdeaPrizeController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setCreateDate(new \DateTime("now"));
             $em->flush();
 
-            return $this->redirect($this->generateUrl('premiacao_ideia_edit', array('id' => $id)));
+            $project = $em->getRepository('SiteBundle:Project')->find($entity->getProject()->getId());
+            $totalAmount = $this->_sumTotalAmount($project);
+            $project->setTotalPrize($totalAmount);
+            $em->persist($project);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $entity->getProject()->getId(), 'aba' => 'premiados')));
         }
 
         return array(
@@ -256,12 +263,14 @@ class IdeaPrizeController extends Controller
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find IdeaPrize entity.');
             }
-
+            $projectId = $entity->getProject()->getId();
             $em->remove($entity);
             $em->flush();
+
+            return $this->redirect($this->generateUrl('projetos_show_2', array('id' => $projectId, 'aba' => 'premiados')));
         }
 
-        return $this->redirect($this->generateUrl('premiacao_ideia'));
+        return $this->redirect($this->generateUrl('projetos'));
     }
 
     /**

@@ -1,16 +1,42 @@
-{% extends '::base.html.twig' %}
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <form action="{{ path('ideia_update', {'id':entity.id}) }}" {{ form_enctype(edit_form) }} method="POST" class="cc-register-form cc-contact">
+        <input type="hidden" name="_method" value="PUT" />
+        <h1 class="cc-register-title">{{ 'Envie sua ideia' }}</h1>
+        <div class="cc-register-wrapper">
+            <div class="cc-errors">
+                {{ form_errors(edit_form) }}
+            </div>
 
-{% block body -%}
-    <h1>Idea edit</h1>
+            <div class="cc-form-input">
+                {{ form_label(edit_form.title) }}
+                {{ form_widget(edit_form.title) }}
+                {{ form_errors(edit_form.title) }}
+            </div>
 
-    {{ form(edit_form) }}
+            <div class="cc-form-input">
+                {{ form_label(edit_form.ideaPrize) }}
+                {{ form_widget(edit_form.ideaPrize) }}
+                {{ form_errors(edit_form.ideaPrize) }}
+            </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ideia') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            <div class="cc-form-textarea-large">
+                {{ form_label(edit_form.detail) }}
+                {{ form_widget(edit_form.detail) }}
+                {{ form_errors(edit_form.detail) }}
+            </div>
+            {{ form_widget(edit_form.project) }}
+            {{ form_widget(edit_form.user) }}
+
+            {{ form_widget(edit_form._token) }}
+
+
+            <div class="cc-form-submit">
+                <button class="cc-button">Enviar</button>
+            </div>
+
+        </div>
+    </form>
+    {{ form(delete_form) }}
 {% endblock %}
+

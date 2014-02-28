@@ -1,16 +1,32 @@
-{% extends '::base.html.twig' %}
+{% extends 'SiteBundle::layout.html.twig' %}
+{% block content %}
+    <form action="{{ path('premiacao_video_update', {'id':entity.id}) }}" {{ form_enctype(edit_form) }} method="POST" class="cc-register-form cc-contact">
+        <input type="hidden" name="_method" value="PUT" />
+        <h1 class="cc-register-title">{{ 'Cadastro de prêmios para videos' }}</h1>
+        <div class="cc-register-wrapper">
+            <div class="cc-errors">
+                {{ form_errors(edit_form) }}
+            </div>
+            <div class="cc-form-input">
+                {{ form_label(edit_form.prizePlace) }}
+                {{ form_widget(edit_form.prizePlace) }}
+                {{ form_errors(edit_form.prizePlace) }}
+            </div>
+            <div class="cc-form-input">
+                {{ form_label(edit_form.prizeAmount) }}
+                {{ form_widget(edit_form.prizeAmount) }}
+                {{ form_errors(edit_form.prizeAmount) }}
+            </div>
 
-{% block body -%}
-    <h1>VideoPrize edit</h1>
+            {{ form_widget(edit_form.project) }}
+            {{ form_widget(edit_form.video) }}
+            {{ form_widget(edit_form._token) }}
 
-    {{ form(edit_form) }}
+            <div class="cc-form-submit">
+                <button class="cc-button">Enviar</button>
+            </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('premiacao_video') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        </div>
+    </form>
+    {{ form(delete_form) }}
 {% endblock %}

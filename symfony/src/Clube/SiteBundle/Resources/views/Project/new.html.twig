@@ -1,14 +1,69 @@
 {% extends 'SiteBundle::layout.html.twig' %}
 {% block content %}
-    <h1>Project creation</h1>
 
-    {{ form(form) }}
+<h1 class="cc-register-title">Novo projeto</h1>
+<form action="{{ path('projetos_create') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('projetos') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
+    <div class="cc-form-wrapper">
+        <div class="cc-form-input">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <div class="cc-form-number">
+            {{ form_label(form.maxIdeas) }}
+            {{ form_widget(form.maxIdeas) }}
+            {{ form_errors(form.maxIdeas) }}
+        </div>
+        <div class="cc-form-number">
+            {{ form_label(form.maxVideos) }}
+            {{ form_widget(form.maxVideos) }}
+            {{ form_errors(form.maxVideos) }}
+        </div>
+        <div class="cc-form-date">
+            {{ form_label(form.ideaEndDate) }}
+            {{ form_widget(form.ideaEndDate) }}
+            {{ form_errors(form.ideaEndDate) }}
+        </div>
+        <div class="cc-form-date">
+            {{ form_label(form.videoEndDate) }}
+            {{ form_widget(form.videoEndDate) }}
+            {{ form_errors(form.videoEndDate) }}
+        </div>
+        <div class="cc-form-input">
+            {{ form_label(form.file) }}
+            {{ form_widget(form.file) }}
+            {{ form_errors(form.file) }}
+        </div>
+        <div class="cc-form-ckeditor">
+            {{ form_label(form.objective) }}
+            {{ form_widget(form.objective) }}
+            {{ form_errors(form.objective) }}
+        </div>
+        <div class="cc-form-ckeditor">
+            {{ form_label(form.detail) }}
+            {{ form_widget(form.detail) }}
+            {{ form_errors(form.detail) }}
+        </div>
+        <div class="cc-form-ckeditor">
+            {{ form_label(form.requirements) }}
+            {{ form_widget(form.requirements) }}
+            {{ form_errors(form.requirements) }}
+        </div>
+
+        {{ form_widget(form._token) }}
+        {{ form_widget(form.company) }}
+
+        <div class="cc-form-submit-center">
+            <button class="cc-button">Registrar</button>
+        </div>
+    </div>
+</form>
+<script src="{{ asset('bundles/site/ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'clube_sitebundle_project_objective' );
+    CKEDITOR.replace( 'clube_sitebundle_project_detail' );
+    CKEDITOR.replace( 'clube_sitebundle_project_requirements' );
+</script>
 {% endblock %}

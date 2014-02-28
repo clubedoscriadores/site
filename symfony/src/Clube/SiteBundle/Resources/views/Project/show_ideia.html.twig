@@ -7,6 +7,7 @@
                     <li class="cc-project-prize-item">
                         <h2 class="cc-project-prize-itens-title">{{ idea.title }}</h2>
                         <p>{{ idea.detail }}</p>
+                        <a href="{{ path('ideia_edit', {'id':idea.id}) }}">Editar</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -16,8 +16,7 @@ class IdeaPrizeType extends AbstractType
     {
         $builder
             ->add('prizeAmount', null, array('label' => 'Valor'))
-            ->add('prizePlace', 'hidden')
-            ->add('createDate')
+            ->add('prizePlace', null, array('label' => 'Colocação'))
             ->add('project', 'entity_hidden')
             ->add('idea', 'entity_hidden')
         ;

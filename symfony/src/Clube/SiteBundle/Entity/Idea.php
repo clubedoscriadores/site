@@ -55,13 +55,6 @@ class Idea
     protected $user;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_winner", type="boolean")
-     */
-    private $isWinner;
-
-    /**
      * @ORM\OneToOne(targetEntity="IdeaPrize")
      * @ORM\JoinColumn(name="idea_prize_id", referencedColumnName="id")
      */
@@ -144,19 +137,6 @@ class Idea
     public function getCreateDate()
     {
         return $this->createDate;
-    }
-
-    /**
-     * Set isWinner
-     *
-     * @param boolean $isWinner
-     * @return Idea
-     */
-    public function setIsWinner($isWinner)
-    {
-        $this->isWinner = $isWinner;
-
-        return $this;
     }
 
     /**

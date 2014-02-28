@@ -50,8 +50,10 @@ class ProjectController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity->setMaxIdeas(5);
-            $entity->setMaxVideos(5);
+            $status = $em->getRepository('SiteBundle:ProjectStatus')->findOneByName('Ideia');
+            $entity->setCreateDate(new \DateTime("now"));
+            $entity->setProjectStatus($status);
+            $entity->setTotalPrize(0);
 
             $em->persist($entity);
             $em->flush();
@@ -91,9 +93,16 @@ class ProjectController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $company = $em->getRepository('SiteBundle:Company')->find($id);
+
+        if ($company == null)
+            throw new NotFoundHttpException("Page not found");
+
         $entity = new Project();
+        $entity->setCompany($company);
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -130,10 +139,13 @@ class ProjectController extends Controller
             $pagination = $this->_getVideoPagination();
         }
 
+        $deleteForm = $this->createDeleteForm($id);
+
         return array(
             'entity'      => $entity,
             'aba' => $aba,
-            'pagination' => $pagination
+            'pagination' => $pagination,
+            'delete_form' => $deleteForm->createView(),
         );
     }
 

@@ -58,13 +58,6 @@ class Video
     protected $project;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="is_winner", type="boolean")
-     */
-    private $isWinner;
-
-    /**
      * @ORM\OneToOne(targetEntity="VideoPrize")
      * @ORM\JoinColumn(name="video_prize_id", referencedColumnName="id")
      */
@@ -296,29 +289,6 @@ class Video
     public function getProjectId()
     {
         return $this->projectId;
-    }
-
-    /**
-     * Set isWinner
-     *
-     * @param boolean $isWinner
-     * @return Video
-     */
-    public function setIsWinner($isWinner)
-    {
-        $this->isWinner = $isWinner;
-
-        return $this;
-    }
-
-    /**
-     * Get isWinner
-     *
-     * @return boolean 
-     */
-    public function getIsWinner()
-    {
-        return $this->isWinner;
     }
 
     /**

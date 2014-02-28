@@ -117,12 +117,8 @@ class Project
     private $maxVideos;
 
     /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="users")
-     */
-    private $users;
-
-    /**
      * @ORM\OneToMany(targetEntity="IdeaPrize", mappedBy="project")
+     * @ORM\OrderBy({"prizePlace" = "ASC"})
      */
     protected $ideaPrizes;
 
@@ -685,7 +681,6 @@ class Project
     {
         $this->ideas = new \Doctrine\Common\Collections\ArrayCollection();
         $this->videos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->prizes = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -800,40 +795,6 @@ class Project
     {
         return $this->videos;
     }
-
-    /**
-     * Add users
-     *
-     * @param \Clube\SiteBundle\Entity\User $users
-     * @return Project
-     */
-    public function addUser(\Clube\SiteBundle\Entity\User $users)
-    {
-        $this->users[] = $users;
-
-        return $this;
-    }
-
-    /**
-     * Remove users
-     *
-     * @param \Clube\SiteBundle\Entity\User $users
-     */
-    public function removeUser(\Clube\SiteBundle\Entity\User $users)
-    {
-        $this->users->removeElement($users);
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getUsers()
-    {
-        return $this->users;
-    }
-
 
     /**
      * Set path

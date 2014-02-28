@@ -1,7 +1,27 @@
 {% extends 'SiteBundle::layout.html.twig' %}
 {% block content %}
-    <section class="cc-contact cc-register-form">
-        <h1 class="cc-header">Marca</h1>
+    <section class="cc-contact cc-company">
+        <div class="cc-company-header">
+            <div class="cc-company-header-images">
+                <div class="cc-company-logo">
+                    <img class="cc-company-logo-img" alt="Logo da {{ entity.name }}" src="{{ asset(entity.getLogoWebPath()) }}" />
+                </div>
+                <div class="cc-company-background">
+                    <img class="cc-company-background-img" alt="{{ entity.name }}" src="{{ asset(entity.getBackgroundWebPath()) }}" />
+                </div>
+            </div>
+            <div class="cc-company-info">
+                <div class="cc-company-info-title">
+                    <h1 class="cc-company-title">{{ entity.name }}</h1>
+                    <p class="cc-company-site">
+                        <a href="http://{{ entity.site }}">{{ entity.site }}</a>
+                    </p>
+                </div>
+                <div class="cc-company-info-detail">
+                    <p class="cc-company-detail">{{ entity.detail }}</p>
+                </div>
+            </div>
+        </div>
 
         <table class="record_properties">
             <tbody>
@@ -29,7 +49,7 @@
                 </tr>
             </tbody>
         </table>
-
+        <a class="cc-button" href="{{ path('projetos_new', { 'id': entity.id }) }}">Adicionar</a>
     </section>
 
         <ul class="record_actions">

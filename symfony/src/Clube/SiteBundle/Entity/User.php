@@ -79,14 +79,6 @@ class User extends BaseUser
      */
     private $companies;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Project", inversedBy="users")
-     * @ORM\JoinTable(name="users_projects",
-     *     joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")}
-     * )
-     */
-    private $projects;
 
     public function __construct()
     {
@@ -365,39 +357,6 @@ class User extends BaseUser
     public function getCompanies()
     {
         return $this->companies;
-    }
-
-    /**
-     * Add projects
-     *
-     * @param \Clube\SiteBundle\Entity\Project $projects
-     * @return User
-     */
-    public function addProject(\Clube\SiteBundle\Entity\Project $projects)
-    {
-        $this->projects[] = $projects;
-
-        return $this;
-    }
-
-    /**
-     * Remove projects
-     *
-     * @param \Clube\SiteBundle\Entity\Project $projects
-     */
-    public function removeProject(\Clube\SiteBundle\Entity\Project $projects)
-    {
-        $this->projects->removeElement($projects);
-    }
-
-    /**
-     * Get projects
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getProjects()
-    {
-        return $this->projects;
     }
 
     /**
