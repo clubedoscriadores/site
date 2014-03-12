@@ -1,3 +1,4 @@
 symfony/app/config/parameters.yml.dist
 symfony/app/config/parameters.yml.dist
 symfony/web/.htaccess
+symfony/web/.htaccess
