@@ -32,6 +32,11 @@ class DefaultController extends Controller
         return $this->render('SiteBundle:Default:comofunciona.html.twig');
     }
 
+    public function sobreAction()
+    {
+        return $this->render('SiteBundle:Default:sobre.html.twig');
+    }
+
     public function projetosAction()
     {
         return $this->render('SiteBundle:Default:projetos.html.twig');
