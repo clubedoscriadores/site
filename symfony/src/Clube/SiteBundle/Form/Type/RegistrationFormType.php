@@ -13,7 +13,9 @@ class RegistrationFormType extends BaseType
 
         // add your custom field
         $builder
-            ->remove('username')
+            ->add('username', null, array(
+                'label' => 'Seu portfólio'
+            ))
             ->add('name', null, array(
                 'label' => 'Nome'
             ))

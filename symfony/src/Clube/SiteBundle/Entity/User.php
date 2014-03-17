@@ -83,7 +83,6 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        parent::setUsername("empty");
     }
 
     /**
@@ -99,13 +98,11 @@ class User extends BaseUser
     public function setEmail($email)
     {
         parent::setEmail($email);
-        parent::setUsername($email);
     }
 
     public function setEmailCanonical($emailCanonical)
     {
         parent::setEmailCanonical($emailCanonical);
-        parent::setUsernameCanonical($emailCanonical);
     }
 
     /**

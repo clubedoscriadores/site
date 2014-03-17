@@ -23,7 +23,7 @@
 
 .cc-register-form
 {
-
+    position: relative;
 }
 
 .cc-register-wrapper
@@ -37,8 +37,10 @@
 
 .cc-register-image
 {
-    display: inline-block;
-    vertical-align: top;
+    display: block;
+    position: absolute;
+    top: 115px;
+    right: 78px;
 }
 
 .cc-contact-image

@@ -11,6 +11,7 @@
         {{ form_errors(form.plainPassword.second) }}
         {{ form_errors(form.birthDate) }}
         {{ form_errors(form.gender) }}
+        {{ form_errors(form.username) }}
         {{ form_errors(form.isAgree) }}
     </div>
     <div class="cc-register-wrapper">
@@ -46,6 +47,12 @@
 				{{ form_label(form.gender) }}
 				{{ form_widget(form.gender) }}
 			</div>
+
+            <div class="cc-form-input">
+                {{ form_label(form.username) }}
+                <span>www.clubedoscriadores.com.br/criador/</span>
+                {{ form_widget(form.username) }}
+            </div>
 			
 			<div class="cc-form-checkbox">
 				{{ form_widget(form.isAgree) }}
@@ -72,5 +79,14 @@
 	<div class="cc-register-image">
 		<img src="{{ asset('bundles/site/images/registrar.png') }}" alt="Registrar" />
 	</div>
+
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('bundles/site/js/jquery.friendurl.js') }}"></script>
+        <script type="text/javascript">
+            $(function(){
+                $('#fos_user_registration_form_name').friendurl({id : 'fos_user_registration_form_username'});
+            });
+        </script>
+    {% endblock %}
 
 </form>
