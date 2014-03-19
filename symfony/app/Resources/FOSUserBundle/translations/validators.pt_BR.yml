@@ -1,6 +1,6 @@
 fos_user:
     username:
-        already_used: Este nome de usuário já está sendo usado
+        already_used: O nome utilizado pra portfolio já existe. Digite outro
         blank: É necessário preencher o nome de usuário
         short: "[-Inf,Inf]Este de usuário é muito curto"
         long: "[-Inf,Inf]Este de usuário é muito longo"
