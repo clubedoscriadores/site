@@ -1,66 +1,76 @@
 {% extends 'SiteBundle::layout.html.twig' %}
 {% block content %}
 	<section class="cc-about-section">
-		<nav class="cc-about-nav">
-			<ul class="cc-about-nav-itens">
-				<li class="cc-about-nav-item"><a href="{{ path('site_criadores') }}" class="cc-about-nav-link cc-selected">Para criadores</a></li>
-				<li class="cc-about-nav-item"><a href="{{ path('site_empresas') }}" class="cc-about-nav-link">Para marcas</a></li>
-				<li class="cc-about-nav-item"><a href="{{ path('site_comofunciona') }}" class="cc-about-nav-link">Como funciona</a></li>
-			</ul>
-		</nav>
+        <div class="cc-wrapper">
+            <nav class="cc-about-nav">
+                <ul class="cc-about-nav-itens">
+                    <li class="cc-about-nav-item"><a href="{{ path('site_criadores') }}" class="cc-about-nav-link cc-selected">Para criadores</a></li>
+                    <li class="cc-about-nav-item"><a href="{{ path('site_empresas') }}" class="cc-about-nav-link">Para marcas</a></li>
+                    <li class="cc-about-nav-item"><a href="{{ path('site_comofunciona') }}" class="cc-about-nav-link">Como funciona</a></li>
+                </ul>
+            </nav>
+        </div>
 		<div class="cc-about-nav-content">
-			<p class="cc-about-nav-text">{{ 'Grandes marcas precisam de suas ideias. Junte-se a maior comunidade criativa do Brasil' }}</p>
+            <div class="cc-wrapper">
+			    <p class="cc-about-nav-text">{{ 'Grandes marcas precisam de suas ideias. Junte-se a maior comunidade criativa do Brasil' }}</p>
+            </div>
 		</div>
 		<div class="cc-about-nav-decote"></div>
 	</section>
 	<section class="cc-about-section">
-		<div class="cc-about-criadores">
-			<p class="cc-about-text">{{ 'O Clube dos Criadores foi construído para revolucionar a forma como o trabalho criativo é feito, tornando-o acessível a todos. Profissionais de publicidade, estudantes, produtoras de vídeo, produtores de conteúdo ou simplesmente, pessoas criativas: todos podem participar dos projetos lançados pelas empresas.' }}</p>
-		</div>
-		<div class="cc-img2-sprite cc-img-chart"></div>
+        <div class="cc-wrapper">
+            <div class="cc-about-criadores">
+                <p class="cc-about-text">{{ 'O Clube dos Criadores foi construído para revolucionar a forma como o trabalho criativo é feito, tornando-o acessível a todos. Profissionais de publicidade, estudantes, produtoras de vídeo, produtores de conteúdo ou simplesmente, pessoas criativas: todos podem participar dos projetos lançados pelas empresas.' }}</p>
+            </div>
+		    <div class="cc-img2-sprite cc-img-chart"></div>
+        </div>
 	</section>
 	<section class="cc-about-section">
 		<div class="cc-benefits">
-			<h2 class="cc-benefits-header">{{ 'Benefícios' }}</h2>
-			<ul class="cc-benefits-itens">
-				<li class="cc-benefits-item">
-					<p class="cc-benefits-text">{{ 'Trabalhar com grandes marcas com projetos reais' }}</p>
-					<div class="cc-benefits-ball"></div>
-				</li>
-				<li class="cc-benefits-item">
-					<p class="cc-benefits-text cc-bottom">{{ 'Desenvolver o lado criativo e produtivo' }}</p>
-					<div class="cc-benefits-ball"></div>
-				</li>
-				<li class="cc-benefits-item">
-					<p class="cc-benefits-text">{{ 'Ser recompensado por isso - dinheiro e reconhecimento' }}</p>
-					<div class="cc-benefits-ball"></div>
-				</li>
-				<li class="cc-benefits-item">
-					<p class="cc-benefits-text cc-bottom">{{ 'Melhorar portfolio e imagem perante ao mercado' }}</p>
-					<div class="cc-benefits-ball"></div>
-				</li>
-				<li class="cc-benefits-item">
-					<p class="cc-benefits-text"><br>{{ 'Compartilhar conhecimento' }}</p>
-					<div class="cc-benefits-ball"></div>
-				</li>
-			</ul>
-			<div class="cc-benefits-arrow">
-				<div class="cc-benefits-back">
-					<div class="cc-benefits-arrow-body">
-						<div class="cc-benefits-arrow-begin"></div>
-					</div>
-				</div>
-				<div class="cc-benefits-front">
-					<div class="cc-benefits-arrow-end"></div>
-				</div>
-			</div>
+            <div class="cc-wrapper">
+                <h2 class="cc-benefits-header">{{ 'Benefícios' }}</h2>
+                <ul class="cc-benefits-itens">
+                    <li class="cc-benefits-item">
+                        <p class="cc-benefits-text">{{ 'Trabalhar com grandes marcas com projetos reais' }}</p>
+                        <div class="cc-benefits-ball"></div>
+                    </li>
+                    <li class="cc-benefits-item">
+                        <p class="cc-benefits-text cc-bottom">{{ 'Desenvolver o lado criativo e produtivo' }}</p>
+                        <div class="cc-benefits-ball"></div>
+                    </li>
+                    <li class="cc-benefits-item">
+                        <p class="cc-benefits-text">{{ 'Ser recompensado por isso - dinheiro e reconhecimento' }}</p>
+                        <div class="cc-benefits-ball"></div>
+                    </li>
+                    <li class="cc-benefits-item">
+                        <p class="cc-benefits-text cc-bottom">{{ 'Melhorar portfolio e imagem perante ao mercado' }}</p>
+                        <div class="cc-benefits-ball"></div>
+                    </li>
+                    <li class="cc-benefits-item">
+                        <p class="cc-benefits-text"><br>{{ 'Compartilhar conhecimento' }}</p>
+                        <div class="cc-benefits-ball"></div>
+                    </li>
+                </ul>
+                <div class="cc-benefits-arrow">
+                    <div class="cc-benefits-back">
+                        <div class="cc-benefits-arrow-body">
+                            <div class="cc-benefits-arrow-begin"></div>
+                        </div>
+                    </div>
+                    <div class="cc-benefits-front">
+                        <div class="cc-benefits-arrow-end"></div>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</section>
 	<section class="cc-about-section">
-		<div class="cc-about-world">
-			<p class="cc-about-text">{{ 'Grandes idéias e trabalho criativo pode vir de qualquer um, em qualquer lugar.' }}</p>
-			<p class="cc-about-text">{{ 'Pessoas com as mais diversas formações, especialidades e experiências de vida.' }}</p>
-		</div>
-		<div class="cc-img2-sprite cc-img-world"></div>
+        <div class="cc-wrapper">
+            <div class="cc-about-world">
+                <p class="cc-about-text">{{ 'Grandes idéias e trabalho criativo pode vir de qualquer um, em qualquer lugar.' }}</p>
+                <p class="cc-about-text">{{ 'Pessoas com as mais diversas formações, especialidades e experiências de vida.' }}</p>
+            </div>
+            <div class="cc-img2-sprite cc-img-world"></div>
+        </div>
 	</section>
 {% endblock %}

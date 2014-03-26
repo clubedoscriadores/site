@@ -2,55 +2,59 @@
 {% block content %}
     <section class="cc-contact cc-company">
         <div class="cc-company-header">
-            <div class="cc-company-header-images">
-                <div class="cc-company-logo">
-                    <img class="cc-company-logo-img" alt="Logo da {{ entity.name }}" src="{{ asset(entity.getLogoWebPath()) }}" />
+            <div class="cc-wrapper">
+                <div class="cc-company-header-images">
+                    <div class="cc-company-logo">
+                        <img class="cc-company-logo-img" alt="Logo da {{ entity.name }}" src="{{ asset(entity.getLogoWebPath()) }}" />
+                    </div>
+                    <div class="cc-company-background">
+                        <img class="cc-company-background-img" alt="{{ entity.name }}" src="{{ asset(entity.getBackgroundWebPath()) }}" />
+                    </div>
                 </div>
-                <div class="cc-company-background">
-                    <img class="cc-company-background-img" alt="{{ entity.name }}" src="{{ asset(entity.getBackgroundWebPath()) }}" />
-                </div>
-            </div>
-            <div class="cc-company-info">
-                <div class="cc-company-info-title">
-                    <h1 class="cc-company-title">{{ entity.name }}</h1>
-                    <p class="cc-company-site">
-                        <a href="http://{{ entity.site }}">{{ entity.site }}</a>
-                    </p>
-                </div>
-                <div class="cc-company-info-detail">
-                    <p class="cc-company-detail">{{ entity.detail }}</p>
+                <div class="cc-company-info">
+                    <div class="cc-company-info-title">
+                        <h1 class="cc-company-title"><img alt="Link" src="{{ asset('bundles/site/images/bookmark-black.png')}}" /> {{ entity.name }}</h1>
+                        <p class="cc-company-site">
+                            <img alt="Link" src="{{ asset('bundles/site/images/link-black.png')}}" /> <a href="http://{{ entity.site }}">{{ entity.site }}</a>
+                        </p>
+                    </div>
+                    <div class="cc-company-info-detail">
+                        <p class="cc-company-detail"><img alt="Link" src="{{ asset('bundles/site/images/info-black.png')}}" /> {{ entity.detail }}</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <ul class="cc-project-itens">
-            {% for project in entity.projects %}
-                <li class="cc-project-item{% if loop.index % 4 == 0 %}{{ ' cc-last' }}{% endif %}">
-                    <div class="cc-project-image">
-                        <a href="{{ path('projetos_show', { 'id': project.id }) }}">
-                            <img class="cc-project-img" src="{{ asset(project.getWebPath()) }}" alt="{{ project.name }}" />
-                        </a>
+        <div class="cc-list-project">
+            <div class="cc-wrapper">
+                <ul class="cc-project-itens">
+                    {% for project in entity.projects %}
+                        <li class="cc-project-item{% if loop.index % 4 == 0 %}{{ ' cc-last' }}{% endif %}">
+                            <div class="cc-project-image">
+                                <a href="{{ path('projetos_show', { 'id': project.id }) }}">
+                                    <img class="cc-project-img" src="{{ asset(project.getWebPath()) }}" alt="{{ project.name }}" />
+                                </a>
 
-                    </div>
-                    <h2 class="cc-project-name" title="{{ project.name }}">{{ project.name }}</h2>
-                    <p class="cc-project-prize">{{ 'R$ ' }}{{ project.totalPrize|number_format(2, ',', '.')  }}</p>
-                    <div class="cc-project-end">
-                        <p class="cc-project-end-text">{{ project.renderEndDate() }}</p>
-                        <div class="cc-project-end-bar" style="width:{{ project.renderBar() }}%"></div>
-                    </div>
-                    <div class="cc-project-status">
-                        {% if project.projectStatus.name == 'Ideia' %}
-                            <img src="{{ asset('bundles/site/images/project/idea-icon.png')}}" alt="Ideia" />
-                        {% endif %}
-                        {% if project.projectStatus.name == 'Video' %}
-                            <img src="{{ asset('bundles/site/images/project/movie-icon.png')}}" alt="Video" />
-                        {% endif %}
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-
-
+                            </div>
+                            <h2 class="cc-project-name" title="{{ project.name }}">{{ project.name }}</h2>
+                            <p class="cc-project-prize">{{ 'R$ ' }}{{ project.totalPrize|number_format(2, ',', '.')  }}</p>
+                            <div class="cc-project-end">
+                                <p class="cc-project-end-text">{{ project.renderEndDate() }}</p>
+                                <div class="cc-project-end-bar" style="width:{{ project.renderBar() }}%"></div>
+                            </div>
+                            <div class="cc-project-status">
+                                {% if project.projectStatus.name == 'Ideia' %}
+                                    <img src="{{ asset('bundles/site/images/project/idea-icon.png')}}" alt="Ideia" />
+                                {% endif %}
+                                {% if project.projectStatus.name == 'Video' %}
+                                    <img src="{{ asset('bundles/site/images/project/movie-icon.png')}}" alt="Video" />
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
         <a class="cc-button" href="{{ path('projetos_new', { 'id': entity.id }) }}">Adicionar</a>
     </section>
 

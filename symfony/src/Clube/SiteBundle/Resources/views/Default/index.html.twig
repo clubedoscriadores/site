@@ -14,38 +14,42 @@
 {% endblock %}
 {% block content %}
 	<section class="cc-home-top">
-		<h1 class="cc-header">{{ 'Plataforma social que conecta grandes marcas com o poder da criação coletiva' }}</h1>
-		<p class="cc-text">{{ 'O Clube dos Criadores é a primeira plataforma criativa social brasileira dedicada a criação de vídeos publicitários (online advertising videos). Em uma ponta, projetos de grandes marcas, na outra, milhares de pessoas talentosas e criativas em todo o Brasil.' }}</p>
-		<div class="cc-img-ideia cc-img-sprite"></div>
-		<div class="cc-decote"></div>
-	</section>
+        <div class="cc-wrapper">
+            <h1 class="cc-header">{{ 'Plataforma social que conecta grandes marcas com o poder da criação coletiva' }}</h1>
+            <p class="cc-text">{{ 'O Clube dos Criadores é a primeira plataforma criativa social brasileira dedicada a criação de vídeos publicitários (online advertising videos). Em uma ponta, projetos de grandes marcas, na outra, milhares de pessoas talentosas e criativas em todo o Brasil.' }}</p>
+            <div class="cc-img-ideia cc-img-sprite"></div>
+        </div>
+        <div class="cc-decote"></div>
+    </section>
 	<section class="cc-home-bottom">
-		<ul class="cc-about-itens">
-			<li class="cc-about-item">
-				<div class="cc-img-camera cc-img-sprite"></div>
-				<div class="cc-about-wrapper">
-					<h2 class="cc-header-2">Para criadores</h2>
-					<p class="cc-text-2">{{ 'Se você é criativo, tem boas ideias e/ou faz boas produções em vídeo, cadastre-se!' }}</p>
-					<p class="cc-button-area"><a href="{{ path('site_criadores') }}" class="cc-button">Saiba mais</a></p>
-				</div>
-			</li>
-			<li class="cc-about-item">
-				<div class="cc-img-predio cc-img-sprite"></div>
-				<div class="cc-about-wrapper">
-					<h2 class="cc-header-2">Para marcas</h2>
-					<p class="cc-text-2">{{ 'Centenas de referências criativas para a sua marca além de vídeos incríveis. Crie seu projeto' }}</p>
-					<p class="cc-button-area"><a href="{{ path('site_empresas') }}" class="cc-button">Saiba mais</a></p>
-				</div>
-			</li>
-			<li class="cc-about-item cc-last">
-				<div class="cc-img-engrenagem cc-img-sprite"></div>
-				<div class="cc-about-wrapper">
-					<h2 class="cc-header-2">Como funciona</h2>
-					<p class="cc-text-2">{{ 'Saiba como nosso processo de criação coletiva funciona.' }}<br><br></p>
-					<p class="cc-button-area"><a href="{{ path('site_comofunciona') }}" class="cc-button">Saiba mais</a></p>
-				</div>
-			</li>
-		</ul>
+        <div class="cc-wrapper">
+            <ul class="cc-about-itens">
+                <li class="cc-about-item">
+                    <div class="cc-img-camera cc-img-sprite"></div>
+                    <div class="cc-about-wrapper">
+                        <h2 class="cc-header-2">Para criadores</h2>
+                        <p class="cc-text-2">{{ 'Se você é criativo, tem boas ideias e/ou faz boas produções em vídeo, cadastre-se!' }}</p>
+                        <p class="cc-button-area"><a href="{{ path('site_criadores') }}" class="cc-button">Saiba mais</a></p>
+                    </div>
+                </li>
+                <li class="cc-about-item">
+                    <div class="cc-img-predio cc-img-sprite"></div>
+                    <div class="cc-about-wrapper">
+                        <h2 class="cc-header-2">Para marcas</h2>
+                        <p class="cc-text-2">{{ 'Centenas de referências criativas para a sua marca além de vídeos incríveis. Crie seu projeto' }}</p>
+                        <p class="cc-button-area"><a href="{{ path('site_empresas') }}" class="cc-button">Saiba mais</a></p>
+                    </div>
+                </li>
+                <li class="cc-about-item cc-last">
+                    <div class="cc-img-engrenagem cc-img-sprite"></div>
+                    <div class="cc-about-wrapper">
+                        <h2 class="cc-header-2">Como funciona</h2>
+                        <p class="cc-text-2">{{ 'Saiba como nosso processo de criação coletiva funciona.' }}<br><br></p>
+                        <p class="cc-button-area"><a href="{{ path('site_comofunciona') }}" class="cc-button">Saiba mais</a></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
 	</section>
 {% endblock %}
 

@@ -30,6 +30,11 @@ body {
 	text-align: left;
 }
 
+.cc-logo
+{
+    display: inline-block;
+}
+
 .cc-logo-img
 {
 	width: 189px;
@@ -38,23 +43,32 @@ body {
 
 .cc-layout-login
 {
-	text-align: right;
-	font-family: Tahoma, Geneva, sans-serif;
-	font-size: 14px;
-	font-weight: bold;
-	color: #666666;
+    float: right;
+    padding: 37px 0px 0px 0px;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #8B8B8B;
+    width: 220px;
+    text-align: right;
 }
 
 .cc-layout-login-link
 {
-	color: #666666;
+	color: #8B8B8B;
 	text-decoration: none;
+    margin-right: 10px;
 }
 
-.cc-layout-login-link:hover
+.cc-layout-login-button
 {
-	text-decoration: underline;
+    padding: 3px 8px;
+    background: #1F1F1F;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
 }
+
 
 .cc-layout-login-separator
 {
@@ -63,38 +77,47 @@ body {
 	text-align: center;
 }
 
+.cc-nav
+{
+    display: inline-block;
+    vertical-align: top;
+}
+
 .cc-nav-itens
 {
-	padding: 5px 20px;
+	padding: 8px 20px 0px 30px;
 	margin: 0px auto;
-	width: 915px;
-	background: #4A77B7;
+    display: inline-block;
 	list-style: none;
 }
 
 .cc-nav-item
 {
 	display: inline-block;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
-	color: #FFF;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	font-size: 22px;
-	width: 170px;
 }
 
 .cc-nav-link
 {
-	color: #FFF;
+	color: #000;
 	text-decoration: none;
+    padding: 3px 5px;
 }
 
 .cc-nav-link:hover
 {
-	text-decoration: underline;
+    background: #F5DD3C;
+}
+
+.cc-footer
+{
+    background: #F7DB2F;
+
 }
 
 .cc-footer-wrapper
 {
-	background: #F7DB2F;
 	width: 915px;
 	margin: 0px auto;
 	padding: 10px 20px;

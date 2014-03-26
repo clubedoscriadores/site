@@ -1,44 +1,46 @@
 {% extends 'SiteBundle::layout.html.twig' %}
 {% block content %}
 <form action="{{ path('site_contato') }}" {{ form_enctype(form) }} method="POST" class="cc-register-form cc-contact">
-    <h1 class="cc-register-title">{{ 'Entre em contato conosco para esclarecer dúvidas, nos enviar sugestões e críticas' }}</h1>
-	<div class="cc-register-wrapper">
+    <div class="cc-wrapper">
+        <h1 class="cc-register-title">{{ 'Entre em contato conosco para esclarecer dúvidas, nos enviar sugestões e críticas' }}</h1>
+        <div class="cc-register-wrapper">
 
-		
 
-		<div class="cc-form-input">
-			{{ form_label(form.name) }}
-			{{ form_widget(form.name) }}
-		</div>
 
-		<div class="cc-form-input">
-			{{ form_label(form.email) }}
-			{{ form_widget(form.email) }}
-		</div>
+            <div class="cc-form-input">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
 
-		<div class="cc-form-input">
-			{{ form_label(form.subject) }}
-			{{ form_widget(form.subject) }}
-		</div>
-		
-		<div class="cc-form-textarea">
-			{{ form_label(form.message) }}
-			{{ form_widget(form.message) }}
-		</div>
-		{{ form_widget(form._token) }}
-		<div class="cc-form-submit">
-			<button class="cc-button">Enviar</button>
-		</div>
-	</div>
-	<div class="cc-contact-image">
-		<img src="{{ asset('bundles/site/images/contato.png') }}" alt="Contato" />
-	</div>
-	<div class="cc-errors">
-		{{ form_errors(form) }}
-		{{ form_errors(form.name) }}
-		{{ form_errors(form.email) }}
-		{{ form_errors(form.subject) }}
-		{{ form_errors(form.message) }}
-	</div>
+            <div class="cc-form-input">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+
+            <div class="cc-form-input">
+                {{ form_label(form.subject) }}
+                {{ form_widget(form.subject) }}
+            </div>
+
+            <div class="cc-form-textarea">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message) }}
+            </div>
+            {{ form_widget(form._token) }}
+            <div class="cc-form-submit">
+                <button class="cc-button">Enviar</button>
+            </div>
+        </div>
+        <div class="cc-contact-image">
+            <img src="{{ asset('bundles/site/images/contato.png') }}" alt="Contato" />
+        </div>
+        <div class="cc-errors">
+            {{ form_errors(form) }}
+            {{ form_errors(form.name) }}
+            {{ form_errors(form.email) }}
+            {{ form_errors(form.subject) }}
+            {{ form_errors(form.message) }}
+        </div>
+    </div>
 </form>
 {% endblock %}

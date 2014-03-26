@@ -8,73 +8,76 @@
 	  </style>
 	<![endif]-->
     <section class="cc-project-show">
-        <div class="cc-project-top">
-            <div class="cc-project-image">
-                <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
+        <div class="cc-wrapper">
+            <div class="cc-project-top">
+                <div class="cc-project-image">
+                    <img class="cc-project-img" src="{{ asset(entity.getWebPath()) }}" alt="{{ entity.name }}" />
+                </div>
+                <div class="cc-project-submit">
+                    <h1 class="cc-project-title">{{ entity.name }}</h1>
+                    <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
+                    <p class="cc-company-name"><a class="cc-company-link" href="{{ path('marca_show', { 'id': entity.company.id }) }}" >{{ entity.company.name }}</a></p>
+                    <div class="cc-progress">
+                        <div class="cc-progress-title">
+                            <div class="cc-progress-title-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ 'Ideia' }}</div>
+                            <div class="cc-progress-title-last">{{ 'Vídeo' }}</div>
+                        </div>
+                        <div class="cc-progress-back">
+                            <div class="cc-progress-bar" style="width:{{ entity.renderBarReverse() }}%"></div>
+                            <div class="cc-progress-end cc-progress-idea" style="left:{{ entity.renderPositionIdea() }}%"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
+                            <div class="cc-progress-end cc-progress-last"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
+                        </div>
+                        <div class="cc-progress-date">
+                            <div class="cc-progress-date-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ entity.ideaEndDate|date('d-m-Y') }}</div>
+                            <div class="cc-progress-date-last">{{ entity.videoEndDate|date('d-m-Y') }}</div>
+                        </div>
+                    </div>
+                    <dl class="cc-calendar">
+                        <dt class="cc-calendar-title">{{ entity.endDate|datetime('%b') }}</dt>
+                        <dd class="cc-calendar-content">{{ entity.endDate|date('d') }}</dd>
+                    </dl>
+                    <div class="cc-project-submit-area">
+                        <div class="cc-project-end-date">
+                            <p class="cc-project-end-date-text">{{ entity.renderRemaining() }}</p>
+                        </div>
+                        <div class="cc-project-submit-button">
+                            {% if entity.projectStatus.name == 'Ideia' %}
+                                <a class="cc-button" href="{{ path('ideia_new', { 'id': entity.id }) }}" >Envie sua ideia</a>
+                            {% endif %}
+                            {% if entity.projectStatus.name == 'Video' %}
+                                <a class="cc-button" href="{{ path('video_new', { 'id': entity.id }) }}" >Envie seu video</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="cc-project-submit">
-                <h1 class="cc-project-title">{{ entity.name }}</h1>
-                <p class="cc-project-prize">{{ 'R$ ' }}{{ entity.totalPrize|number_format(2, ',', '.')  }}</p>
-				<div class="cc-progress">
-					<div class="cc-progress-title">
-						<div class="cc-progress-title-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ 'Ideia' }}</div> 
-						<div class="cc-progress-title-last">{{ 'Vídeo' }}</div> 
-					</div>
-					<div class="cc-progress-back">
-						<div class="cc-progress-bar" style="width:{{ entity.renderBarReverse() }}%"></div>
-						<div class="cc-progress-end cc-progress-idea" style="left:{{ entity.renderPositionIdea() }}%"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
-						<div class="cc-progress-end cc-progress-last"><img src="{{ asset('bundles/site/images/project/prize.png') }}" alt="p" /></div>
-					</div>
-					<div class="cc-progress-date">
-						<div class="cc-progress-date-idea" style="left:{{ entity.renderPositionIdea() }}%">{{ entity.ideaEndDate|date('d-m-Y') }}</div> 
-						<div class="cc-progress-date-last">{{ entity.videoEndDate|date('d-m-Y') }}</div> 
-					</div>
-				</div>
-                <dl class="cc-calendar">
-                    <dt class="cc-calendar-title">{{ entity.endDate|datetime('%b') }}</dt>
-                    <dd class="cc-calendar-content">{{ entity.endDate|date('d') }}</dd>
-                </dl>
-				<div class="cc-project-submit-area">
-					<div class="cc-project-end-date">
-						<p class="cc-project-end-date-text">{{ entity.renderRemaining() }}</p>
-					</div>
-					<div class="cc-project-submit-button">
-                        {% if entity.projectStatus.name == 'Ideia' %}
-                            <a class="cc-button" href="{{ path('ideia_new', { 'id': entity.id }) }}" >Envie sua ideia</a>
-                        {% endif %}
-                        {% if entity.projectStatus.name == 'Video' %}
-                            <a class="cc-button" href="{{ path('video_new', { 'id': entity.id }) }}" >Envie seu video</a>
-                        {% endif %}
-					</div>
-				</div>
+            <div></div>
+            <div>
+                <nav class="cc-project-nav">
+                    <ul class="cc-project-nav-itens">
+                        <li class="cc-project-nav-item{% if aba == 'instrucoes' %} cc-selected{% endif %}"><a href="{{ path('projetos_show', { 'id': entity.id }) }}" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
+                        <li class="cc-project-nav-item{% if aba == 'premiados' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'premiados' }) }}" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
+                        <li class="cc-project-nav-item{% if aba == 'forum' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'forum' }) }}" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
+                        <li class="cc-project-nav-item{% if aba == 'ideia' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'ideia' }) }}" class="cc-project-nav-link">{{ 'Ideia' }}</a></li>
+                        <li class="cc-project-nav-item{% if aba == 'video' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'video' }) }}" class="cc-project-nav-link">{{ 'Vídeo' }}</a></li>
+                    </ul>
+                </nav>
+                {% if aba == 'instrucoes' %}
+                    {% include "SiteBundle:Project:show_brief.html.twig" %}
+                {% endif %}
+                {% if aba == 'premiados' %}
+                    {% include "SiteBundle:Project:show_prize.html.twig" %}
+                {% endif %}
+                {% if aba == 'forum' %}
+                    {% include "SiteBundle:Project:show_forum.html.twig" %}
+                {% endif %}
+                {% if aba == 'ideia' %}
+                    {% include "SiteBundle:Project:show_ideia.html.twig" %}
+                {% endif %}
+                {% if aba == 'video' %}
+                    {% include "SiteBundle:Project:show_video.html.twig" %}
+                {% endif %}
             </div>
-        </div>
-        <div></div>
-        <div>
-            <nav class="cc-project-nav">
-                <ul class="cc-project-nav-itens">
-                    <li class="cc-project-nav-item{% if aba == 'instrucoes' %} cc-selected{% endif %}"><a href="{{ path('projetos_show', { 'id': entity.id }) }}" class="cc-project-nav-link">{{ 'Instruções' }}</a></li>
-                    <li class="cc-project-nav-item{% if aba == 'premiados' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'premiados' }) }}" class="cc-project-nav-link">{{ 'Premiados' }}</a></li>
-                    <li class="cc-project-nav-item{% if aba == 'forum' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'forum' }) }}" class="cc-project-nav-link">{{ 'Fórum' }}</a></li>
-                    <li class="cc-project-nav-item{% if aba == 'ideia' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'ideia' }) }}" class="cc-project-nav-link">{{ 'Ideia' }}</a></li>
-                    <li class="cc-project-nav-item{% if aba == 'video' %} cc-selected{% endif %}"><a href="{{ path('projetos_show_2', { 'id': entity.id, 'aba': 'video' }) }}" class="cc-project-nav-link">{{ 'Vídeo' }}</a></li>
-                </ul>
-            </nav>
-            {% if aba == 'instrucoes' %}
-                {% include "SiteBundle:Project:show_brief.html.twig" %}
-            {% endif %}
-            {% if aba == 'premiados' %}
-                {% include "SiteBundle:Project:show_prize.html.twig" %}
-            {% endif %}
-            {% if aba == 'forum' %}
-                {% include "SiteBundle:Project:show_forum.html.twig" %}
-            {% endif %}
-            {% if aba == 'ideia' %}
-                {% include "SiteBundle:Project:show_ideia.html.twig" %}
-            {% endif %}
-            {% if aba == 'video' %}
-                {% include "SiteBundle:Project:show_video.html.twig" %}
-            {% endif %}
         </div>
     </section>
     {{ form(delete_form) }}

@@ -19,7 +19,7 @@
 .cc-about-nav-link
 {
 	display: inline-block;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 25px;
 	background: #BCBCBC;
@@ -35,11 +35,6 @@
 	background: #9EC412;
 }
 
-.cc-about-nav-link:hover
-{
-	text-decoration: underline;
-}
-
 .cc-about-nav-content
 {
 	background: #9EC412;	
@@ -48,7 +43,7 @@
 
 .cc-about-nav-text
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 42px;
 	font-weight: bold;
@@ -63,7 +58,7 @@
 
 .cc-about-text
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #000;
 	font-size: 26px;
 	font-weight: normal;
@@ -93,7 +88,7 @@
 
 .cc-benefits-header
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 45px;
 	font-weight: bold;
@@ -176,7 +171,7 @@
 
 .cc-benefits-text
 {
-	font-family: Tahoma, Geneva, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 16px;
 	font-weight: normal;
@@ -396,7 +391,7 @@
 
 .cc-briefing-feature-text
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 40px;
 	font-weight: bold;
@@ -480,7 +475,7 @@
 
 .cc-gap-dt
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 42px;
 	font-weight: normal;
@@ -490,7 +485,7 @@
 
 .cc-gap-dd
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #000;
 	font-size: 16px;
 	font-weight: normal;
@@ -556,7 +551,7 @@
 
 .cc-people-text
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #000;
 	font-size: 26px;
 	font-weight: normal;
@@ -582,7 +577,7 @@
 
 .cc-crowsrc-title
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #000;
 	font-size: 26px;
 	font-weight: bold;
@@ -591,7 +586,7 @@
 
 .cc-crowsrc-text
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     color: #000;
     font-size: 16px;
     font-weight: normal;
@@ -606,10 +601,20 @@
 .cc-about .cc-text
 {
     color: #333;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
-    font-family: MyriadPro-Regular, 'Myriad Pro Regular', MyriadPro, 'Myriad Pro', Helvetica, Arial, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     padding: 5px;
     margin: 0px;
     width: auto;
+}
+.cc-about .cc-project-title {
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
+    font-size: 36px;
+    font-weight: normal;
+    text-align: left;
+    margin: 10px 0 20px;
+    padding: 10px 0px 5px 0px;
+    border-bottom: 1px solid #eee;
+    color: #333;
 }

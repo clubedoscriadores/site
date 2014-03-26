@@ -3,7 +3,7 @@
 }
 .cc-project-title
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     font-size: 46px;
     font-weight: bold;
     text-align: center;
@@ -48,7 +48,7 @@
 
 .cc-project-name
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     border-bottom: 1px solid #CCCCCC;
     color: #333333;
     font-size: 18px;
@@ -65,7 +65,7 @@
 
 .cc-project-prize
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     color: #333333;
     font-size: 24px;
     font-weight: bold;
@@ -79,7 +79,7 @@
 
 .cc-project-end
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     border-bottom: 1px solid #CCCCCC;
     color: #222222;
     font-size: 18px;
@@ -158,7 +158,7 @@
 	font-weight: normal;
 	padding: 0px;
 	text-align: left;
-	margin-bottom: 10px;
+	margin-bottom: 0px;
 }
 
 .cc-project-show .cc-project-prize 
@@ -166,8 +166,20 @@
 	color: #0f77c8;
 	font-size: 36px;
 	text-align: left;
-	margin: 0px 0px 20px 0px;
+	margin: 0px 0px 0px 0px;
 	border: 0px;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
+}
+
+.cc-project-show .cc-company-name
+{
+    margin: 0px;
+}
+
+.cc-project-show .cc-company-link
+{
+    color: #8B8B8B;
+    text-decoration: none;
 }
 
 .cc-calendar 
@@ -273,7 +285,7 @@
 
 .cc-progress-date
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	height: 22px;
 	position: relative;
 }
@@ -292,7 +304,7 @@
 
 .cc-progress-title
 {
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	height: 22px;
 	position: relative;
 }
@@ -324,7 +336,7 @@
 	vertical-align: top;
 }
 
-.cc-project-nav-itens 
+.cc-project-nav-itens
 {
 	list-style: none;
 	padding: 30px 0px 0px 0px;
@@ -352,7 +364,7 @@
 .cc-project-nav-link 
 {
 	display: inline-block;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	color: #FFF;
 	font-size: 25px;
 	background: #BCBCBC;
@@ -368,7 +380,7 @@
 	margin: 0px;
 	border: 1px solid #ccc;
 	margin-top: -1px;
-	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
 	padding: 20px;
 	font-size: 16px;
 	color: #333;
@@ -391,14 +403,14 @@
 
 .cc-project-prize-itens-title
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     font-size: 18px;
     margin: 0px 0px 10px;
 }
 
 .cc-project-prize-itens
 {
-    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    font-family: Helvetica Neue, Helvetica, Liberation Sans, Arial, sans-serif;
     font-size: 14px;
     list-style: none;
     margin: 0px 0px 15px 20px;
