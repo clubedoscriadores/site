@@ -55,10 +55,12 @@
                 </ul>
             </div>
         </div>
-        <a class="cc-button" href="{{ path('projetos_new', { 'id': entity.id }) }}">Adicionar</a>
+        {% if(is_edit == true) %}
+            <a class="cc-button" href="{{ path('projetos_new', { 'id': entity.id }) }}">Adicionar</a>
+        {% endif %}
     </section>
 
-
-    {{ form(delete_form) }}
-
+    {% if(is_edit == true) %}
+        {{ form(delete_form) }}
+    {% endif %}
 {% endblock %}

@@ -9,6 +9,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Clube\SiteBundle\Entity\Company;
 use Clube\SiteBundle\Form\CompanyType;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Security\Acl\Domain\RoleSecurityIdentity;
 
 /**
  * Company controller.
@@ -52,6 +57,17 @@ class CompanyController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+
+            // creating the ACL
+            $aclProvider = $this->get('security.acl.provider');
+            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+            $acl = $aclProvider->createAcl($objectIdentity);
+
+            $sid = new RoleSecurityIdentity('ROLE_ADMIN');
+
+            // grant master access
+            $acl->insertObjectAce($sid, MaskBuilder::MASK_MASTER);
+            $aclProvider->updateAcl($acl);
 
             return $this->redirect($this->generateUrl('marca_show', array('id' => $entity->getId())));
         }
@@ -118,9 +134,17 @@ class CompanyController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $isEdit = false;
+        $securityContext = $this->get('security.context');
+
+        // check for edit access
+        if (true === $securityContext->isGranted('EDIT', $entity)) {
+            $isEdit = true;
+        }
         return array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
+            'is_edit'     => $isEdit,
         );
     }
 
@@ -192,6 +216,22 @@ class CompanyController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+
+            // creating the ACL
+            $aclProvider = $this->get('security.acl.provider');
+            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+
+            try {
+                $acl = $aclProvider->findAcl($objectIdentity);
+            } catch (\Symfony\Component\Security\Acl\Exception\AclNotFoundException $e) {
+                $acl = $aclProvider->createAcl($objectIdentity);
+            }
+
+            $sid = new RoleSecurityIdentity('ROLE_ADMIN');
+
+            // grant master access
+            $acl->insertObjectAce($sid, MaskBuilder::MASK_MASTER);
+            $aclProvider->updateAcl($acl);
 
             return $this->redirect($this->generateUrl('marca_show', array('id' => $id)));
         }

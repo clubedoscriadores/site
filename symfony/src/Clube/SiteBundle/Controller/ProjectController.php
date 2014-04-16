@@ -9,6 +9,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Clube\SiteBundle\Entity\Project;
 use Clube\SiteBundle\Form\ProjectType;
+use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
+use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
+use Symfony\Component\Security\Acl\Permission\MaskBuilder;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Project controller.
@@ -58,6 +62,20 @@ class ProjectController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            // creating the ACL
+            $aclProvider = $this->get('security.acl.provider');
+            $objectIdentity = ObjectIdentity::fromDomainObject($entity);
+            $acl = $aclProvider->createAcl($objectIdentity);
+
+            // retrieving the security identity of the currently logged-in user
+            $securityContext = $this->get('security.context');
+            $user = $securityContext->getToken()->getUser();
+            $securityIdentity = UserSecurityIdentity::fromAccount($user);
+
+            // grant owner access
+            $acl->insertObjectAce($securityIdentity, MaskBuilder::MASK_OWNER);
+            $aclProvider->updateAcl($acl);
+
             return $this->redirect($this->generateUrl('projetos_show', array('id' => $entity->getId())));
         }
 
@@ -101,6 +119,12 @@ class ProjectController extends Controller
         if ($company == null)
             throw new NotFoundHttpException("Page not found");
 
+        $securityContext = $this->get('security.context');
+        // check for edit access
+        if (false === $securityContext->isGranted('EDIT', $company)) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Project();
         $entity->setCompany($company);
         $form   = $this->createCreateForm($entity);
@@ -141,11 +165,20 @@ class ProjectController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $isEdit = false;
+        $securityContext = $this->get('security.context');
+
+        // check for edit access
+        if (true === $securityContext->isGranted('EDIT', $entity->getCompany())) {
+            $isEdit = true;
+        }
+
         return array(
             'entity'      => $entity,
             'aba' => $aba,
             'pagination' => $pagination,
             'delete_form' => $deleteForm->createView(),
+            'is_edit' => $isEdit,
         );
     }
 

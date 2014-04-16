@@ -2,7 +2,6 @@
 {% block content %}
     <section class="cc-project">
         <div class="cc-wrapper">
-            <h1 class="cc-project-title">{{ 'Escolha um projeto' }}</h1>
             <ul class="cc-project-itens">
                 {% for entity in entities %}
                     <li class="cc-project-item{% if loop.index % 4 == 0 %}{{ ' cc-last' }}{% endif %}">
