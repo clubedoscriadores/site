@@ -1,6 +1,6 @@
 delimiter //
-
-CREATE OR REPLACE PROCEDURE updateProjectStatus ()
+DROP PROCEDURE IF EXISTS updateProjectStatus;
+CREATE PROCEDURE updateProjectStatus ()
 BEGIN
 	UPDATE `project`
 	SET
